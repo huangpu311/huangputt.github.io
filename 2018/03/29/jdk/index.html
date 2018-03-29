@@ -1,0 +1,219 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+
+  
+  <title>centos安装jdk | 小江的个人博客</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="description" content="安装之前先检查一下系统有没有自带open-jdk 命令： rpm -qa |grep java rpm -qa |grep jdk rpm -qa |grep gcj 如果没有输入信息表示没有安装。 如果安装可以使用rpm -qa | grep java | xargs rpm -e –nodeps 批量卸载所有带有Java的文件  这句命令的关键字是java 首先检索包含java的列表 yum">
+<meta property="og:type" content="article">
+<meta property="og:title" content="centos安装jdk">
+<meta property="og:url" content="https://huangpu311.github.io/xiaojiang/2018/03/29/jdk/index.html">
+<meta property="og:site_name" content="小江的个人博客">
+<meta property="og:description" content="安装之前先检查一下系统有没有自带open-jdk 命令： rpm -qa |grep java rpm -qa |grep jdk rpm -qa |grep gcj 如果没有输入信息表示没有安装。 如果安装可以使用rpm -qa | grep java | xargs rpm -e –nodeps 批量卸载所有带有Java的文件  这句命令的关键字是java 首先检索包含java的列表 yum">
+<meta property="og:locale" content="default">
+<meta property="og:updated_time" content="2017-12-29T02:17:10.688Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="centos安装jdk">
+<meta name="twitter:description" content="安装之前先检查一下系统有没有自带open-jdk 命令： rpm -qa |grep java rpm -qa |grep jdk rpm -qa |grep gcj 如果没有输入信息表示没有安装。 如果安装可以使用rpm -qa | grep java | xargs rpm -e –nodeps 批量卸载所有带有Java的文件  这句命令的关键字是java 首先检索包含java的列表 yum">
+  
+    <link rel="alternate" href="/xiaojiang/atom.xml" title="小江的个人博客" type="application/atom+xml">
+  
+  
+    <link rel="icon" href="/favicon.png">
+  
+  
+    <link href="//fonts.googleapis.com/css?family=Source+Code+Pro" rel="stylesheet" type="text/css">
+  
+  <link rel="stylesheet" href="/xiaojiang/css/style.css">
+</head>
+
+<body>
+  <div id="container">
+    <div id="wrap">
+      <header id="header">
+  <div id="banner"></div>
+  <div id="header-outer" class="outer">
+    <div id="header-title" class="inner">
+      <h1 id="logo-wrap">
+        <a href="/xiaojiang/" id="logo">小江的个人博客</a>
+      </h1>
+      
+    </div>
+    <div id="header-inner" class="inner">
+      <nav id="main-nav">
+        <a id="main-nav-toggle" class="nav-icon"></a>
+        
+          <a class="main-nav-link" href="/xiaojiang/">Home</a>
+        
+          <a class="main-nav-link" href="/xiaojiang/archives">Archives</a>
+        
+      </nav>
+      <nav id="sub-nav">
+        
+          <a id="nav-rss-link" class="nav-icon" href="/xiaojiang/atom.xml" title="RSS Feed"></a>
+        
+        <a id="nav-search-btn" class="nav-icon" title="Search"></a>
+      </nav>
+      <div id="search-form-wrap">
+        <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" class="search-form-input" placeholder="Search"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="https://huangpu311.github.io/xiaojiang"></form>
+      </div>
+    </div>
+  </div>
+</header>
+      <div class="outer">
+        <section id="main"><article id="post-jdk" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/xiaojiang/2018/03/29/jdk/" class="article-date">
+  <time datetime="2018-03-29T13:10:58.444Z" itemprop="datePublished">2018-03-29</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      centos安装jdk
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>安装之前先检查一下系统有没有自带open-jdk</p>
+<p>命令：</p>
+<p>rpm -qa |grep java</p>
+<p>rpm -qa |grep jdk</p>
+<p>rpm -qa |grep gcj</p>
+<p>如果没有输入信息表示没有安装。</p>
+<p>如果安装可以使用rpm -qa | grep java | xargs rpm -e –nodeps 批量卸载所有带有Java的文件  这句命令的关键字是java</p>
+<p>首先检索包含java的列表</p>
+<p>yum list java<em><br>检索1.8的列表<br>yum list java-1.8</em><br>安装1.8.0的所有文件<br>yum install java-1.8.0-openjdk* -y<br>使用命令检查是否安装成功<br>java -version<br>到此安装结束了。这样安装有一个好处就是不需要对path进行设置，自动就设置好了</p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="https://huangpu311.github.io/xiaojiang/2018/03/29/jdk/" data-id="cjfcjwdxl000618vaexud88xn" class="article-share-link">Share</a>
+      
+      
+    </footer>
+  </div>
+  
+    
+<nav id="article-nav">
+  
+    <a href="/xiaojiang/2018/03/29/kettle/" id="article-nav-newer" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Newer</strong>
+      <div class="article-nav-title">
+        
+          kettle
+        
+      </div>
+    </a>
+  
+  
+    <a href="/xiaojiang/2018/03/29/javap指令集/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Older</strong>
+      <div class="article-nav-title">javap命令</div>
+    </a>
+  
+</nav>
+
+  
+</article>
+
+</section>
+        
+          <aside id="sidebar">
+  
+    
+
+  
+    
+
+  
+    
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Archives</h3>
+    <div class="widget">
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/xiaojiang/archives/2018/03/">March 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/xiaojiang/archives/2018/02/">February 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/xiaojiang/archives/2018/01/">January 2018</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Recent Posts</h3>
+    <div class="widget">
+      <ul>
+        
+          <li>
+            <a href="/xiaojiang/2018/03/29/分布式/">分布式</a>
+          </li>
+        
+          <li>
+            <a href="/xiaojiang/2018/03/29/vip项目导入/">vip项目导入遇到的问题</a>
+          </li>
+        
+          <li>
+            <a href="/xiaojiang/2018/03/29/kettle/">kettle</a>
+          </li>
+        
+          <li>
+            <a href="/xiaojiang/2018/03/29/jdk/">centos安装jdk</a>
+          </li>
+        
+          <li>
+            <a href="/xiaojiang/2018/03/29/javap指令集/">javap命令</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+
+  
+</aside>
+        
+      </div>
+      <footer id="footer">
+  
+  <div class="outer">
+    <div id="footer-info" class="inner">
+      &copy; 2018 小江<br>
+      Powered by <a href="http://hexo.io/" target="_blank">Hexo</a>
+    </div>
+  </div>
+</footer>
+    </div>
+    <nav id="mobile-nav">
+  
+    <a href="/xiaojiang/" class="mobile-nav-link">Home</a>
+  
+    <a href="/xiaojiang/archives" class="mobile-nav-link">Archives</a>
+  
+</nav>
+    
+
+<script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
+
+
+  <link rel="stylesheet" href="/xiaojiang/fancybox/jquery.fancybox.css">
+  <script src="/xiaojiang/fancybox/jquery.fancybox.pack.js"></script>
+
+
+<script src="/xiaojiang/js/script.js"></script>
+
+
+
+  </div>
+</body>
+</html>

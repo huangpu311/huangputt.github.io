@@ -1,0 +1,268 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+
+  
+  <title>nginx | 小江的个人博客</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="description" content="nginx命令nginx三个模块核心模块： HTTP模块、EVENT模块和MAIL模块基础模块： HTTP Access模块、HTTP FastCGI模块、HTTP Proxy模块和HTTP Rewrite模块第三方模块： HTTP Upstream Request Hash模块、Notice模块和HTTP Access Key模块及用户自己开发的模块 来源: 实验楼 链接: https://ww">
+<meta property="og:type" content="article">
+<meta property="og:title" content="nginx">
+<meta property="og:url" content="https://huangpu311.github.io/xiaojiang/2018/03/22/nginx/index.html">
+<meta property="og:site_name" content="小江的个人博客">
+<meta property="og:description" content="nginx命令nginx三个模块核心模块： HTTP模块、EVENT模块和MAIL模块基础模块： HTTP Access模块、HTTP FastCGI模块、HTTP Proxy模块和HTTP Rewrite模块第三方模块： HTTP Upstream Request Hash模块、Notice模块和HTTP Access Key模块及用户自己开发的模块 来源: 实验楼 链接: https://ww">
+<meta property="og:locale" content="default">
+<meta property="og:updated_time" content="2018-03-22T00:57:50.076Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="nginx">
+<meta name="twitter:description" content="nginx命令nginx三个模块核心模块： HTTP模块、EVENT模块和MAIL模块基础模块： HTTP Access模块、HTTP FastCGI模块、HTTP Proxy模块和HTTP Rewrite模块第三方模块： HTTP Upstream Request Hash模块、Notice模块和HTTP Access Key模块及用户自己开发的模块 来源: 实验楼 链接: https://ww">
+  
+    <link rel="alternate" href="/xiaojiang/atom.xml" title="小江的个人博客" type="application/atom+xml">
+  
+  
+    <link rel="icon" href="/favicon.png">
+  
+  
+    <link href="//fonts.googleapis.com/css?family=Source+Code+Pro" rel="stylesheet" type="text/css">
+  
+  <link rel="stylesheet" href="/xiaojiang/css/style.css">
+</head>
+
+<body>
+  <div id="container">
+    <div id="wrap">
+      <header id="header">
+  <div id="banner"></div>
+  <div id="header-outer" class="outer">
+    <div id="header-title" class="inner">
+      <h1 id="logo-wrap">
+        <a href="/xiaojiang/" id="logo">小江的个人博客</a>
+      </h1>
+      
+    </div>
+    <div id="header-inner" class="inner">
+      <nav id="main-nav">
+        <a id="main-nav-toggle" class="nav-icon"></a>
+        
+          <a class="main-nav-link" href="/xiaojiang/">Home</a>
+        
+          <a class="main-nav-link" href="/xiaojiang/archives">Archives</a>
+        
+      </nav>
+      <nav id="sub-nav">
+        
+          <a id="nav-rss-link" class="nav-icon" href="/xiaojiang/atom.xml" title="RSS Feed"></a>
+        
+        <a id="nav-search-btn" class="nav-icon" title="Search"></a>
+      </nav>
+      <div id="search-form-wrap">
+        <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" class="search-form-input" placeholder="Search"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="https://huangpu311.github.io/xiaojiang"></form>
+      </div>
+    </div>
+  </div>
+</header>
+      <div class="outer">
+        <section id="main"><article id="post-nginx" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/xiaojiang/2018/03/22/nginx/" class="article-date">
+  <time datetime="2018-03-22T00:56:57.000Z" itemprop="datePublished">2018-03-22</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      nginx
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h2 id="nginx命令"><a href="#nginx命令" class="headerlink" title="nginx命令"></a>nginx命令</h2><h3 id="nginx三个模块"><a href="#nginx三个模块" class="headerlink" title="nginx三个模块"></a>nginx三个模块</h3><p>核心模块： HTTP模块、EVENT模块和MAIL模块<br>基础模块： HTTP Access模块、HTTP FastCGI模块、HTTP Proxy模块和HTTP Rewrite模块<br>第三方模块： HTTP Upstream Request Hash模块、Notice模块和HTTP Access Key模块及用户自己开发的模块</p>
+<p>来源: 实验楼</p>
+<p>链接: <a href="https://www.shiyanlou.com/courses/95" target="_blank" rel="noopener">https://www.shiyanlou.com/courses/95</a></p>
+<p>本课程内容，由作者授权实验楼发布，未经允许，禁止转载、下载及非法传播</p>
+<h3 id="nginx安装"><a href="#nginx安装" class="headerlink" title="nginx安装"></a>nginx安装</h3><p>1、tar -zxvf  安装包</p>
+<p>2、.进入文件夹 运行 ./configure –prefix=  目录，默认安装到/usr/local/nginx</p>
+<p>3、运行 make &amp; make install</p>
+<p>启动命令</p>
+<p>进入sbin文件夹 ，运行./nginx即可</p>
+<p>./nginx -s stop  停止</p>
+<p>./nginx -s quit   退出</p>
+<p>./nginx -s reload  重新加载nginx.conf</p>
+<p>查看nginx是否运行</p>
+<p>ps -ef| grep nginx</p>
+<p>验证nginx.conf是否报错</p>
+<p>./nginx -t</p>
+<p>重新加载nginx 文件</p>
+<p>./nginx -s reload</p>
+<h3 id="虚拟主机"><a href="#虚拟主机" class="headerlink" title="虚拟主机"></a>虚拟主机</h3><p>基于域名的虚拟主机</p>
+<p>修改host 文件</p>
+<p>基于端口号的虚拟主机</p>
+<p>基于ip的虚拟主机</p>
+<h3 id="nginx-日志配置"><a href="#nginx-日志配置" class="headerlink" title="nginx 日志配置"></a>nginx 日志配置</h3><p>通过access_log进行日志记录</p>
+<p>error.log</p>
+<p>nginx 日志切割</p>
+<h3 id="location的语法和匹配规则"><a href="#location的语法和匹配规则" class="headerlink" title="location的语法和匹配规则"></a>location的语法和匹配规则</h3><p>功能描述：执行 URL 重定向,允许你去掉带有恶意的 URL，包含多个参数（修改）.利用正则的匹配，分组和引用，达到目的</p>
+<p>来源: 实验楼</p>
+<p>链接: <a href="https://www.shiyanlou.com/courses/95" target="_blank" rel="noopener">https://www.shiyanlou.com/courses/95</a></p>
+<p>本课程内容，由作者授权实验楼发布，未经允许，禁止转载、下载及非法传播</p>
+<p>精准匹配</p>
+<p>优先级最高的匹配规则</p>
+<p>一般匹配</p>
+<p>如果存在多个相同前缀的一般匹配，那么最终会按照最大长度的进行匹配。</p>
+<p>正则匹配</p>
+<h3 id="rewaite模块"><a href="#rewaite模块" class="headerlink" title="rewaite模块"></a>rewaite模块</h3><p>模块：ngx_http_rewrite_module</p>
+<p>支持url 重写；if判断、return </p>
+<p>作用范围：server/location/if中；只能对域名，后面的出处的参数外的字符串起作用。</p>
+<p>if(条件){}</p>
+<p>=号或者~;</p>
+<p>return 指令</p>
+<p>return code </p>
+<p>if($request_uri~ *\sh){</p>
+<p>​    return 403</p>
+<p>}</p>
+<p>语法： rewrite regex replacement [flag]{last/break/redirect 返回临时302/permant 返回永久302}</p>
+<p>重写连接</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line"> server &#123;</span><br><span class="line">    listen       80;</span><br><span class="line">    server_name  localhost;</span><br><span class="line"></span><br><span class="line">    location / &#123;</span><br><span class="line">      rewrite '^/images/([a-z]&#123;3&#125;)/(.*)\.(png)$' /mic?file=$2.$3 break ;</span><br><span class="line">      set $image_file $2;</span><br><span class="line">      set $image_type $3;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    location /mic &#123;</span><br><span class="line">      access_log logs/hp.log main;</span><br><span class="line">      root html;</span><br><span class="line">      try_files /$arg_file /image404.html;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    location = /image404.html&#123;</span><br><span class="line">      return 404 "imgage not found exception";</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>图片缓存</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">  server &#123;</span><br><span class="line">    listen       80;</span><br><span class="line">    server_name  localhost;</span><br><span class="line">    location /&#123;</span><br><span class="line">      root html;</span><br><span class="line">      index index.html index.htm;</span><br><span class="line">    &#125;</span><br><span class="line">    location ~\.(png|jpg|js|css|gif)$ &#123;</span><br><span class="line">      root html/images;</span><br><span class="line">      expires 5m;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>Gzip压缩策略</p>
+<p>浏览器请求服务端 会告诉服务端当前浏览器可以支持的压缩类型；</p>
+<p>服务端会把内容根据浏览器所支持的压缩策略去进行压缩返回;</p>
+<p>浏览器拿到数据以后解码；</p>
+<p>gzip、deflate、sdch</p>
+<h3 id="Proxy-模块"><a href="#Proxy-模块" class="headerlink" title="Proxy 模块"></a>Proxy 模块</h3><p>模块：ngx_http_proxy_module</p>
+<p>功能描述：此模块能代理请求到其它服务器.也就是说允许你把客户端的 HTTP 请求转到后端服务器(这部分的指令非常多，但不是全部都会被用到，这里是比较常见的指令简介)</p>
+<h3 id="upstream-模块"><a href="#upstream-模块" class="headerlink" title="upstream 模块"></a>upstream 模块</h3><p>模块：ngx_http_upstream_modules</p>
+<p>功能简介：该指令使请求被上行信道之间的基于客户端的 IP 地址分布</p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="https://huangpu311.github.io/xiaojiang/2018/03/22/nginx/" data-id="cjfcjwdxv000d18vazmij3r4l" class="article-share-link">Share</a>
+      
+      
+    </footer>
+  </div>
+  
+    
+<nav id="article-nav">
+  
+    <a href="/xiaojiang/2018/03/22/spring-cloud/" id="article-nav-newer" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Newer</strong>
+      <div class="article-nav-title">
+        
+          spring-cloud
+        
+      </div>
+    </a>
+  
+  
+    <a href="/xiaojiang/2018/02/27/医疗/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Older</strong>
+      <div class="article-nav-title">医疗</div>
+    </a>
+  
+</nav>
+
+  
+</article>
+
+</section>
+        
+          <aside id="sidebar">
+  
+    
+
+  
+    
+
+  
+    
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Archives</h3>
+    <div class="widget">
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/xiaojiang/archives/2018/03/">March 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/xiaojiang/archives/2018/02/">February 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/xiaojiang/archives/2018/01/">January 2018</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Recent Posts</h3>
+    <div class="widget">
+      <ul>
+        
+          <li>
+            <a href="/xiaojiang/2018/03/29/分布式/">分布式</a>
+          </li>
+        
+          <li>
+            <a href="/xiaojiang/2018/03/29/vip项目导入/">vip项目导入遇到的问题</a>
+          </li>
+        
+          <li>
+            <a href="/xiaojiang/2018/03/29/kettle/">kettle</a>
+          </li>
+        
+          <li>
+            <a href="/xiaojiang/2018/03/29/jdk/">centos安装jdk</a>
+          </li>
+        
+          <li>
+            <a href="/xiaojiang/2018/03/29/javap指令集/">javap命令</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+
+  
+</aside>
+        
+      </div>
+      <footer id="footer">
+  
+  <div class="outer">
+    <div id="footer-info" class="inner">
+      &copy; 2018 小江<br>
+      Powered by <a href="http://hexo.io/" target="_blank">Hexo</a>
+    </div>
+  </div>
+</footer>
+    </div>
+    <nav id="mobile-nav">
+  
+    <a href="/xiaojiang/" class="mobile-nav-link">Home</a>
+  
+    <a href="/xiaojiang/archives" class="mobile-nav-link">Archives</a>
+  
+</nav>
+    
+
+<script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
+
+
+  <link rel="stylesheet" href="/xiaojiang/fancybox/jquery.fancybox.css">
+  <script src="/xiaojiang/fancybox/jquery.fancybox.pack.js"></script>
+
+
+<script src="/xiaojiang/js/script.js"></script>
+
+
+
+  </div>
+</body>
+</html>
