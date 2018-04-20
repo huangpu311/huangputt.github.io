@@ -122,7 +122,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://huangpu311.github.io/xiaojiang/2018/02/27/医疗/" data-id="cjfcjwdyp000j18valbz9rltj" class="article-share-link">Share</a>
+      <a data-url="https://huangpu311.github.io/xiaojiang/2018/02/27/医疗/" data-id="cjg78xzvm000iskva2xiscqpj" class="article-share-link">Share</a>
       
       
     </footer>
@@ -167,7 +167,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://huangpu311.github.io/xiaojiang/2018/02/27/dubbo/" data-id="cjfcjwdxb000218vaw7die3xz" class="article-share-link">Share</a>
+      <a data-url="https://huangpu311.github.io/xiaojiang/2018/02/27/dubbo/" data-id="cjg78xzu40000skvaipmmrvyr" class="article-share-link">Share</a>
       
       
     </footer>
@@ -249,7 +249,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://huangpu311.github.io/xiaojiang/2018/02/27/docker/" data-id="cjfcjwdx1000018vak8xgpbax" class="article-share-link">Share</a>
+      <a data-url="https://huangpu311.github.io/xiaojiang/2018/02/27/docker/" data-id="cjg78xzuk0005skva1uddp01p" class="article-share-link">Share</a>
       
       
     </footer>
@@ -309,7 +309,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://huangpu311.github.io/xiaojiang/2018/02/06/mongodb/" data-id="cjfcjwdxv000c18vajpla7c7t" class="article-share-link">Share</a>
+      <a data-url="https://huangpu311.github.io/xiaojiang/2018/02/06/mongodb/" data-id="cjg78xzvb000eskvaqgvexm91" class="article-share-link">Share</a>
       
       
     </footer>
@@ -341,12 +341,39 @@
     
     <div class="article-entry" itemprop="articleBody">
       
-        <h3 id="git-http方式保存-密码"><a href="#git-http方式保存-密码" class="headerlink" title="git http方式保存 密码"></a>git http方式保存 密码</h3><p>clone下来后，在.git/config 里面添加<br>[credential]<br>​    helper = store</p>
+        <h3 id="git-http方式保存-密码"><a href="#git-http方式保存-密码" class="headerlink" title="git http方式保存 密码"></a>git http方式保存 密码</h3><p>clone下来后，在.git/config 里面添加<br>[credential]<br>    helper = store</p>
+<h3 id="gitlab搭建"><a href="#gitlab搭建" class="headerlink" title="gitlab搭建"></a>gitlab搭建</h3><p><strong>安装配置依赖项</strong></p>
+<ol>
+<li>sudo yum install curl policycoreutils openssh-server openssh-clients</li>
+<li>sudo systemctl enable sshd</li>
+<li>sudo systemctl start sshd</li>
+<li>sudo yum install postfix</li>
+<li>sudo systemctl enable postfix</li>
+<li>sudo systemctl start postfix</li>
+<li>sudo firewall-cmd –permanent –add-service=http</li>
+<li>sudo systemctl reload firewalld</li>
+</ol>
+<p><strong>添加GitLab仓库,并安装到服务器上</strong></p>
+<ol>
+<li>curl -sS <a href="http://packages.gitlab.cc/install/gitlab-ce/script.rpm.sh" target="_blank" rel="noopener">http://packages.gitlab.cc/install/gitlab-ce/script.rpm.sh</a> | sudo bash</li>
+<li>sudo yum install gitlab-ce</li>
+</ol>
+<h4 id="启动GitLab"><a href="#启动GitLab" class="headerlink" title="启动GitLab"></a>启动GitLab</h4><ol>
+<li><p>sudo gitlab-ctl reconfigure</p>
+<p>gitlab-ctl reconfigure  更新配置文件</p>
+</li>
+</ol>
+<p>gitlab-ctl tail 查看日志</p>
+<p>默认配置地址 /etc/gilab/</p>
+<p>访问之后页面为502，跟踪日志为超时，需要配置</p>
+<p>gitlab_rails[‘webhook_timeout’] = 90 </p>
+<p>gitlab_rails[‘git_timeout’]=90</p>
+<p>之后就可以了。</p>
 
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://huangpu311.github.io/xiaojiang/2018/02/05/git/" data-id="cjfcjwdxb000418va7y6py9x8" class="article-share-link">Share</a>
+      <a data-url="https://huangpu311.github.io/xiaojiang/2018/02/05/git/" data-id="cjg78xzv7000bskvacg4mv1q0" class="article-share-link">Share</a>
       
       
     </footer>
@@ -589,7 +616,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://huangpu311.github.io/xiaojiang/2018/02/02/zookeeper/" data-id="cjfcjwdy5000i18vado7mo0ik" class="article-share-link">Share</a>
+      <a data-url="https://huangpu311.github.io/xiaojiang/2018/02/02/zookeeper/" data-id="cjg78xzvf000hskvardbjv6xc" class="article-share-link">Share</a>
       
       
     </footer>
@@ -625,7 +652,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://huangpu311.github.io/xiaojiang/2018/02/01/gradle/" data-id="cjfcjwdxb000518vak35a88vs" class="article-share-link">Share</a>
+      <a data-url="https://huangpu311.github.io/xiaojiang/2018/02/01/gradle/" data-id="cjg78xzu90001skva6zsejak6" class="article-share-link">Share</a>
       
       
     </footer>
@@ -666,7 +693,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://huangpu311.github.io/xiaojiang/2018/01/26/企业通问题排查/" data-id="cjfcjwdy5000g18vaokmca6q4" class="article-share-link">Share</a>
+      <a data-url="https://huangpu311.github.io/xiaojiang/2018/01/26/企业通问题排查/" data-id="cjg78xzvo000jskva7jzwj0fh" class="article-share-link">Share</a>
       
       
     </footer>
@@ -709,7 +736,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://huangpu311.github.io/xiaojiang/2018/01/24/java/" data-id="cjfcjwdxl000718vapb9kcalt" class="article-share-link">Share</a>
+      <a data-url="https://huangpu311.github.io/xiaojiang/2018/01/24/java/" data-id="cjg78xzui0004skva15gsoqav" class="article-share-link">Share</a>
       
       
     </footer>
@@ -745,7 +772,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://huangpu311.github.io/xiaojiang/2018/01/15/jvm/" data-id="cjfcjwdxl000918vas3rj2ks7" class="article-share-link">Share</a>
+      <a data-url="https://huangpu311.github.io/xiaojiang/2018/01/15/jvm/" data-id="cjg78xzuy0007skvax9g35jro" class="article-share-link">Share</a>
       
       
     </footer>
@@ -791,7 +818,7 @@
       <ul>
         
           <li>
-            <a href="/xiaojiang/2018/03/29/分布式/">分布式</a>
+            <a href="/xiaojiang/2018/03/29/kettle/">kettle</a>
           </li>
         
           <li>
@@ -799,7 +826,7 @@
           </li>
         
           <li>
-            <a href="/xiaojiang/2018/03/29/kettle/">kettle</a>
+            <a href="/xiaojiang/2018/03/29/分布式/">分布式</a>
           </li>
         
           <li>

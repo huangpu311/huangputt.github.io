@@ -14,7 +14,7 @@
 <meta property="og:site_name" content="小江的个人博客">
 <meta property="og:description" content="防火墙查看已经开放的接口 1firewall-cmd --list-ports 开启端口 1firewall-cmd --zone=public --add-port=80/tcp --permanent firewall-cmd –zone=public –add-port=2181/tcp –permanent firewall-cmd –reload 命令含义： –zone #作用域us –">
 <meta property="og:locale" content="default">
-<meta property="og:updated_time" content="2018-03-22T08:33:01.330Z">
+<meta property="og:updated_time" content="2018-04-19T06:56:26.905Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="centos7 命令">
 <meta name="twitter:description" content="防火墙查看已经开放的接口 1firewall-cmd --list-ports 开启端口 1firewall-cmd --zone=public --add-port=80/tcp --permanent firewall-cmd –zone=public –add-port=2181/tcp –permanent firewall-cmd –reload 命令含义： –zone #作用域us –">
@@ -97,6 +97,7 @@
 <p>–add-port=80/tcp #添加端口，格式为：端口/通讯协议</p>
 <p>–permanent #永久生效，没有此参数重启后失效</p>
 <p>firewall-cmd –reload #重启firewall<br>systemctl stop firewalld.service #停止firewall<br>systemctl disable firewalld.service #禁止firewall开机启动</p>
+<h4 id="查看端口号使用状态"><a href="#查看端口号使用状态" class="headerlink" title="查看端口号使用状态"></a>查看端口号使用状态</h4><p> netstat -tunlp |grep 端口号，用于查看指定的端口号的进程情况，如查看8000端口的情况，netstat -tunlp |grep 8000</p>
 <h2 id="后台运行"><a href="#后台运行" class="headerlink" title="后台运行"></a>后台运行</h2><p><strong>nohup</strong>  </p>
 <p>在处理命令前加上nohup即可，标准输出和标准错误缺省会被重定向到nohup.out 文件中，一般我们可以在结尾加上&amp; 来讲命令同时放入到后台运行，也可用 “?filename 2&gt;&amp;1”来更改缺省的重定向文件名。</p>
 <p>&amp;</p>
@@ -159,7 +160,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://huangpu311.github.io/xiaojiang/2018/03/29/centos7 命令/" data-id="cjfcjwdx1000118var0obvtyy" class="article-share-link">Share</a>
+      <a data-url="https://huangpu311.github.io/xiaojiang/2018/03/29/centos7 命令/" data-id="cjg78xzuc0002skvakv8utou2" class="article-share-link">Share</a>
       
       
     </footer>
@@ -217,7 +218,7 @@
       <ul>
         
           <li>
-            <a href="/xiaojiang/2018/03/29/分布式/">分布式</a>
+            <a href="/xiaojiang/2018/03/29/kettle/">kettle</a>
           </li>
         
           <li>
@@ -225,7 +226,7 @@
           </li>
         
           <li>
-            <a href="/xiaojiang/2018/03/29/kettle/">kettle</a>
+            <a href="/xiaojiang/2018/03/29/分布式/">分布式</a>
           </li>
         
           <li>
