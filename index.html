@@ -62,75 +62,6 @@
       <div class="outer">
         <section id="main">
   
-    <article id="post-kettle" class="article article-type-post" itemscope itemprop="blogPost">
-  <div class="article-meta">
-    <a href="/xiaojiang/2018/03/29/kettle/" class="article-date">
-  <time datetime="2018-03-29T13:10:58.446Z" itemprop="datePublished">2018-03-29</time>
-</a>
-    
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/xiaojiang/2018/03/29/kettle/">kettle</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p>kettle是一个独立的产品，但它包括了在ETL开发和部署阶段用到的多个程序，有独立的功能，也或多或少的依赖其他程序。</p>
-<p>###主要功能：</p>
-<p>1、spoon :集成开发环境，提供了一个图形用户界面，用于创建、编辑作业或也可以用于执行/调试作业或转换，它也有性能监控的功能。</p>
-<p>2、kitchen:作业的命令运行程序，可以通过shell脚本来调用</p>
-<p>3、pan：转换的命令运行程序，和kitchen一样通过shell脚本调用。执行作业</p>
-<p>4、Carte：轻量级HTTP服务器（基于jetty），后台运行，监听HTTP请求来运行一个作业。用于kettle集群</p>
-<p>下载地址</p>
-<p><a href="https://sourceforge.net/projects/pentaho/files/" target="_blank" rel="noopener">https://sourceforge.net/projects/pentaho/files/</a></p>
-<p>###文件格式：</p>
-<p>归档文件的命名格式按照pdi-ce-version.extension格式，</p>
-<p>pid代表Pentaho Data Integration</p>
-<p>ce 代表了Community Edition</p>
-<h3 id="ETL-34种子系统"><a href="#ETL-34种子系统" class="headerlink" title="ETL 34种子系统"></a>ETL 34种子系统</h3><h4 id="子系统1-3-：数据剖析，增量数据捕获-抽取"><a href="#子系统1-3-：数据剖析，增量数据捕获-抽取" class="headerlink" title="子系统1~3 ：数据剖析，增量数据捕获 抽取"></a>子系统1~3 ：数据剖析，增量数据捕获 抽取</h4><h5 id="子系统1：数据剖析系统"><a href="#子系统1：数据剖析系统" class="headerlink" title="子系统1：数据剖析系统"></a>子系统1：数据剖析系统</h5><p>这个子系统的目标是分析不同数据源的结构和内容。</p>
-<p>数据剖析提供了类似行统计NULL值个数统计等简单的统计项。</p>
-<p>kettle提供有限的剖析功能</p>
-<p>#####子系统2：增量捕获系统</p>
-<p>该子系统的目标是捕获源系统里数据的变化。</p>
-<p>当前kettl里没有特别的工具可以完成这一功能，但kettle里的一些步骤可以通过时间戳，快照方式获得变化的数据。</p>
-<h5 id="子系统3：抽取系统"><a href="#子系统3：抽取系统" class="headerlink" title="子系统3：抽取系统"></a>子系统3：抽取系统</h5><p>该子系统是要从不同的数据源抽取数据，并输入到ETL流程里。</p>
-<p>kimball明确区分了基于文件的和基于流的两种抽取。</p>
-<p>kettle认为抽取的主要区别不是文件或流，而是静态或者动态。</p>
-<h4 id="清洗和更正数据"><a href="#清洗和更正数据" class="headerlink" title="清洗和更正数据"></a>清洗和更正数据</h4><h5 id="子系统4：数据清洗和质量处理系统"><a href="#子系统4：数据清洗和质量处理系统" class="headerlink" title="子系统4：数据清洗和质量处理系统"></a>子系统4：数据清洗和质量处理系统</h5><p>数据清洗是指修改或整理进入到ETL流程中的脏数据。</p>
-<h5 id="子系统5：错误事件处理"><a href="#子系统5：错误事件处理" class="headerlink" title="子系统5：错误事件处理"></a>子系统5：错误事件处理</h5><p>错误事件处理的目的是记录下ETL过程中的每一个错误。</p>
-<h5 id="子系统6：审计维度"><a href="#子系统6：审计维度" class="headerlink" title="子系统6：审计维度"></a>子系统6：审计维度</h5><p>审计维度表示一类特殊的维度表，数据仓库里的所有事实都和设计维度表关联，设计维度表包含了对事实表变更的元数据，如加载数据的日期和时间、数据的质量指标等。</p>
-<h5 id="子系统7：排除重复记录系统"><a href="#子系统7：排除重复记录系统" class="headerlink" title="子系统7：排除重复记录系统"></a>子系统7：排除重复记录系统</h5><p>kettle未能很好的实现</p>
-<h5 id="子系统8：数据一致性"><a href="#子系统8：数据一致性" class="headerlink" title="子系统8：数据一致性"></a>子系统8：数据一致性</h5><h4 id="数据发布"><a href="#数据发布" class="headerlink" title="数据发布"></a>数据发布</h4><h5 id="子系统9：缓慢变更维度处理"><a href="#子系统9：缓慢变更维度处理" class="headerlink" title="子系统9：缓慢变更维度处理"></a>子系统9：缓慢变更维度处理</h5><p>缓慢变更维度（SCDs）是多维数据仓库或者总线架构的基础。</p>
-<p>覆盖：直接用新值代替旧值</p>
-<p>增加新行：把当前行标记为old，并设置一个结束时间戳，同时创建一个新行，标记为”current”,并设置一个新的开始时间。</p>
-<p>增加新列：给表一个新列存储新值，同时保留原来的值不变</p>
-<p>增加一个小维度</p>
-<p>分离历史表</p>
-<p>混合型</p>
-<h5 id="子系统10：代理键生成系统"><a href="#子系统10：代理键生成系统" class="headerlink" title="子系统10：代理键生成系统"></a>子系统10：代理键生成系统</h5><h5 id="子系统11：层次维度构建"><a href="#子系统11：层次维度构建" class="headerlink" title="子系统11：层次维度构建"></a>子系统11：层次维度构建</h5><p>层次可以让用户分析查看维度不同级别上的数据。最简单的层次概念是时间维度的层次。在现实中，时间维度需要至少一个以上的层次，如年-季-月-日</p>
-<h5 id="子系统12：特殊维度生成系统"><a href="#子系统12：特殊维度生成系统" class="headerlink" title="子系统12：特殊维度生成系统"></a>子系统12：特殊维度生成系统</h5><h5 id="子系统13：事实表加载"><a href="#子系统13：事实表加载" class="headerlink" title="子系统13：事实表加载"></a>子系统13：事实表加载</h5><h2 id="数据抽取"><a href="#数据抽取" class="headerlink" title="数据抽取"></a>数据抽取</h2>
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="https://huangpu311.github.io/xiaojiang/2018/03/29/kettle/" data-id="cjg7adn3l000a8cvav6s56pt0" class="article-share-link">Share</a>
-      
-      
-    </footer>
-  </div>
-  
-</article>
-
-
-  
     <article id="post-分布式" class="article article-type-post" itemscope itemprop="blogPost">
   <div class="article-meta">
     <a href="/xiaojiang/2018/03/29/分布式/" class="article-date">
@@ -231,7 +162,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://huangpu311.github.io/xiaojiang/2018/03/29/分布式/" data-id="cjg7adn48000h8cvadg6gw3f0" class="article-share-link">Share</a>
+      <a data-url="https://huangpu311.github.io/xiaojiang/2018/03/29/分布式/" data-id="cjg7avtwc000h64val23v5r1u" class="article-share-link">Share</a>
       
       
     </footer>
@@ -266,28 +197,97 @@
         <p>1、通过git clone将代码clone到本地</p>
 <p>2、通过idea打开本地文件（vip-project-space）</p>
 <p>3、然后右键项目，增加Module</p>
-<p><img src="/vip项目导入/1.png" alt="&quot;&quot;"></p>
+<p><img src="/xiaojiang/2018/03/29/vip项目导入/1.png" alt="&quot;&quot;"></p>
 <p>选择1.8版本</p>
-<p><img src="/vip项目导入/2.png" alt="&quot;&quot;"></p>
+<p><img src="/xiaojiang/2018/03/29/vip项目导入/2.png" alt="&quot;&quot;"></p>
 <p>选择项目，将对应的模块导入进来</p>
-<p><img src="/vip项目导入/3.png" alt="&quot;&quot;"></p>
+<p><img src="/xiaojiang/2018/03/29/vip项目导入/3.png" alt="&quot;&quot;"></p>
 <p>4、项目会报找不到对应的类如图</p>
-<p><img src="/vip项目导入/4.png" alt=""></p>
+<p><img src="/xiaojiang/2018/03/29/vip项目导入/4.png" alt=""></p>
 <p>选择file下的Project Structure</p>
-<p><img src="/vip项目导入/5.png" alt="&#39;&#39;"></p>
+<p><img src="/xiaojiang/2018/03/29/vip项目导入/5.png" alt="&#39;&#39;"></p>
 <p>选择语言特性</p>
-<p><img src="/vip项目导入/6.png" alt="“”">  </p>
+<p><img src="/xiaojiang/2018/03/29/vip项目导入/6.png" alt="“”">  </p>
 <p>设置Sources</p>
-<p><img src="/vip项目导入/7.png" alt="&#39;&#39;"></p>
+<p><img src="/xiaojiang/2018/03/29/vip项目导入/7.png" alt="&#39;&#39;"></p>
 <p>设置Resources</p>
-<p><img src="/vip项目导入/8.png" alt=""></p>
+<p><img src="/xiaojiang/2018/03/29/vip项目导入/8.png" alt=""></p>
 <p>5、刷新pom文件</p>
-<p><img src="/vip项目导入/9.png" alt="&#39;&#39;"></p>
+<p><img src="/xiaojiang/2018/03/29/vip项目导入/9.png" alt="&#39;&#39;"></p>
 
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://huangpu311.github.io/xiaojiang/2018/03/29/vip项目导入/" data-id="cjg7adn43000f8cvanr20c1nh" class="article-share-link">Share</a>
+      <a data-url="https://huangpu311.github.io/xiaojiang/2018/03/29/vip项目导入/" data-id="cjg7avtw9000e64va32wjqspp" class="article-share-link">Share</a>
+      
+      
+    </footer>
+  </div>
+  
+</article>
+
+
+  
+    <article id="post-kettle" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/xiaojiang/2018/03/29/kettle/" class="article-date">
+  <time datetime="2018-03-29T13:10:58.446Z" itemprop="datePublished">2018-03-29</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/xiaojiang/2018/03/29/kettle/">kettle</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>kettle是一个独立的产品，但它包括了在ETL开发和部署阶段用到的多个程序，有独立的功能，也或多或少的依赖其他程序。</p>
+<p>###主要功能：</p>
+<p>1、spoon :集成开发环境，提供了一个图形用户界面，用于创建、编辑作业或也可以用于执行/调试作业或转换，它也有性能监控的功能。</p>
+<p>2、kitchen:作业的命令运行程序，可以通过shell脚本来调用</p>
+<p>3、pan：转换的命令运行程序，和kitchen一样通过shell脚本调用。执行作业</p>
+<p>4、Carte：轻量级HTTP服务器（基于jetty），后台运行，监听HTTP请求来运行一个作业。用于kettle集群</p>
+<p>下载地址</p>
+<p><a href="https://sourceforge.net/projects/pentaho/files/" target="_blank" rel="noopener">https://sourceforge.net/projects/pentaho/files/</a></p>
+<p>###文件格式：</p>
+<p>归档文件的命名格式按照pdi-ce-version.extension格式，</p>
+<p>pid代表Pentaho Data Integration</p>
+<p>ce 代表了Community Edition</p>
+<h3 id="ETL-34种子系统"><a href="#ETL-34种子系统" class="headerlink" title="ETL 34种子系统"></a>ETL 34种子系统</h3><h4 id="子系统1-3-：数据剖析，增量数据捕获-抽取"><a href="#子系统1-3-：数据剖析，增量数据捕获-抽取" class="headerlink" title="子系统1~3 ：数据剖析，增量数据捕获 抽取"></a>子系统1~3 ：数据剖析，增量数据捕获 抽取</h4><h5 id="子系统1：数据剖析系统"><a href="#子系统1：数据剖析系统" class="headerlink" title="子系统1：数据剖析系统"></a>子系统1：数据剖析系统</h5><p>这个子系统的目标是分析不同数据源的结构和内容。</p>
+<p>数据剖析提供了类似行统计NULL值个数统计等简单的统计项。</p>
+<p>kettle提供有限的剖析功能</p>
+<p>#####子系统2：增量捕获系统</p>
+<p>该子系统的目标是捕获源系统里数据的变化。</p>
+<p>当前kettl里没有特别的工具可以完成这一功能，但kettle里的一些步骤可以通过时间戳，快照方式获得变化的数据。</p>
+<h5 id="子系统3：抽取系统"><a href="#子系统3：抽取系统" class="headerlink" title="子系统3：抽取系统"></a>子系统3：抽取系统</h5><p>该子系统是要从不同的数据源抽取数据，并输入到ETL流程里。</p>
+<p>kimball明确区分了基于文件的和基于流的两种抽取。</p>
+<p>kettle认为抽取的主要区别不是文件或流，而是静态或者动态。</p>
+<h4 id="清洗和更正数据"><a href="#清洗和更正数据" class="headerlink" title="清洗和更正数据"></a>清洗和更正数据</h4><h5 id="子系统4：数据清洗和质量处理系统"><a href="#子系统4：数据清洗和质量处理系统" class="headerlink" title="子系统4：数据清洗和质量处理系统"></a>子系统4：数据清洗和质量处理系统</h5><p>数据清洗是指修改或整理进入到ETL流程中的脏数据。</p>
+<h5 id="子系统5：错误事件处理"><a href="#子系统5：错误事件处理" class="headerlink" title="子系统5：错误事件处理"></a>子系统5：错误事件处理</h5><p>错误事件处理的目的是记录下ETL过程中的每一个错误。</p>
+<h5 id="子系统6：审计维度"><a href="#子系统6：审计维度" class="headerlink" title="子系统6：审计维度"></a>子系统6：审计维度</h5><p>审计维度表示一类特殊的维度表，数据仓库里的所有事实都和设计维度表关联，设计维度表包含了对事实表变更的元数据，如加载数据的日期和时间、数据的质量指标等。</p>
+<h5 id="子系统7：排除重复记录系统"><a href="#子系统7：排除重复记录系统" class="headerlink" title="子系统7：排除重复记录系统"></a>子系统7：排除重复记录系统</h5><p>kettle未能很好的实现</p>
+<h5 id="子系统8：数据一致性"><a href="#子系统8：数据一致性" class="headerlink" title="子系统8：数据一致性"></a>子系统8：数据一致性</h5><h4 id="数据发布"><a href="#数据发布" class="headerlink" title="数据发布"></a>数据发布</h4><h5 id="子系统9：缓慢变更维度处理"><a href="#子系统9：缓慢变更维度处理" class="headerlink" title="子系统9：缓慢变更维度处理"></a>子系统9：缓慢变更维度处理</h5><p>缓慢变更维度（SCDs）是多维数据仓库或者总线架构的基础。</p>
+<p>覆盖：直接用新值代替旧值</p>
+<p>增加新行：把当前行标记为old，并设置一个结束时间戳，同时创建一个新行，标记为”current”,并设置一个新的开始时间。</p>
+<p>增加新列：给表一个新列存储新值，同时保留原来的值不变</p>
+<p>增加一个小维度</p>
+<p>分离历史表</p>
+<p>混合型</p>
+<h5 id="子系统10：代理键生成系统"><a href="#子系统10：代理键生成系统" class="headerlink" title="子系统10：代理键生成系统"></a>子系统10：代理键生成系统</h5><h5 id="子系统11：层次维度构建"><a href="#子系统11：层次维度构建" class="headerlink" title="子系统11：层次维度构建"></a>子系统11：层次维度构建</h5><p>层次可以让用户分析查看维度不同级别上的数据。最简单的层次概念是时间维度的层次。在现实中，时间维度需要至少一个以上的层次，如年-季-月-日</p>
+<h5 id="子系统12：特殊维度生成系统"><a href="#子系统12：特殊维度生成系统" class="headerlink" title="子系统12：特殊维度生成系统"></a>子系统12：特殊维度生成系统</h5><h5 id="子系统13：事实表加载"><a href="#子系统13：事实表加载" class="headerlink" title="子系统13：事实表加载"></a>子系统13：事实表加载</h5><h2 id="数据抽取"><a href="#数据抽取" class="headerlink" title="数据抽取"></a>数据抽取</h2>
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="https://huangpu311.github.io/xiaojiang/2018/03/29/kettle/" data-id="cjg7avtw5000b64vahureipyu" class="article-share-link">Share</a>
       
       
     </footer>
@@ -332,7 +332,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://huangpu311.github.io/xiaojiang/2018/03/29/jdk/" data-id="cjg7adn3j00088cvaer73j5tr" class="article-share-link">Share</a>
+      <a data-url="https://huangpu311.github.io/xiaojiang/2018/03/29/jdk/" data-id="cjg7avtvz000764vaeovprlhe" class="article-share-link">Share</a>
       
       
     </footer>
@@ -405,7 +405,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://huangpu311.github.io/xiaojiang/2018/03/29/javap指令集/" data-id="cjg7adn3k00098cva9klqb9jx" class="article-share-link">Share</a>
+      <a data-url="https://huangpu311.github.io/xiaojiang/2018/03/29/javap指令集/" data-id="cjg7avtw6000c64vaita14ffh" class="article-share-link">Share</a>
       
       
     </footer>
@@ -446,7 +446,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://huangpu311.github.io/xiaojiang/2018/03/29/hexo搭建博客/" data-id="cjg7adn3g00078cvaih0d3jzl" class="article-share-link">Share</a>
+      <a data-url="https://huangpu311.github.io/xiaojiang/2018/03/29/hexo搭建博客/" data-id="cjg7avtvy000664vagjznbfvg" class="article-share-link">Share</a>
       
       
     </footer>
@@ -552,7 +552,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://huangpu311.github.io/xiaojiang/2018/03/29/centos7 命令/" data-id="cjg7adn2w00018cvaboaen5u5" class="article-share-link">Share</a>
+      <a data-url="https://huangpu311.github.io/xiaojiang/2018/03/29/centos7 命令/" data-id="cjg7avtvk000064val8ksw3fr" class="article-share-link">Share</a>
       
       
     </footer>
@@ -597,7 +597,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://huangpu311.github.io/xiaojiang/2018/03/29/hello-world/" data-id="cjg7adn3400048cva75cu8zuv" class="article-share-link">Share</a>
+      <a data-url="https://huangpu311.github.io/xiaojiang/2018/03/29/hello-world/" data-id="cjg7avtvx000564vaitzigixd" class="article-share-link">Share</a>
       
       
     </footer>
@@ -634,7 +634,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://huangpu311.github.io/xiaojiang/2018/03/22/spring-cloud/" data-id="cjg7adn3p000e8cvanea8lo03" class="article-share-link">Share</a>
+      <a data-url="https://huangpu311.github.io/xiaojiang/2018/03/22/spring-cloud/" data-id="cjg7avtwa000f64vaed0z2osm" class="article-share-link">Share</a>
       
       
     </footer>
@@ -728,7 +728,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://huangpu311.github.io/xiaojiang/2018/03/22/nginx/" data-id="cjg7adn3o000d8cvaxvzl2hm9" class="article-share-link">Share</a>
+      <a data-url="https://huangpu311.github.io/xiaojiang/2018/03/22/nginx/" data-id="cjg7avtw8000d64va45etfvec" class="article-share-link">Share</a>
       
       
     </footer>
@@ -774,15 +774,15 @@
       <ul>
         
           <li>
-            <a href="/xiaojiang/2018/03/29/kettle/">kettle</a>
-          </li>
-        
-          <li>
             <a href="/xiaojiang/2018/03/29/分布式/">分布式</a>
           </li>
         
           <li>
             <a href="/xiaojiang/2018/03/29/vip项目导入/">vip项目导入遇到的问题</a>
+          </li>
+        
+          <li>
+            <a href="/xiaojiang/2018/03/29/kettle/">kettle</a>
           </li>
         
           <li>
