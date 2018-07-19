@@ -62,6 +62,162 @@
       <div class="outer">
         <section id="main">
   
+    <article id="post-hexo搭建博客" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/xiaojiang/2018/03/29/hexo搭建博客/" class="article-date">
+  <time datetime="2018-03-29T13:10:58.439Z" itemprop="datePublished">2018-03-29</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/xiaojiang/2018/03/29/hexo搭建博客/">hexo搭建博客遇到的坑</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h2 id="每次都被github警告"><a href="#每次都被github警告" class="headerlink" title="每次都被github警告"></a>每次都被github警告</h2><p>The CNAME <code>shuoit.net</code> is already taken. Check out <a href="https://help.github.com/articles/troubleshooting-custom-domains/#cname-already-taken" target="_blank" rel="noopener">https://help.github.com/articles/troubleshooting-custom-domains/#cname-already-taken</a> for more information.</p>
+<p>For information on troubleshooting Jekyll see:</p>
+<p>如上警告，因为你没有配置域名，只需要把 里面的cname文件删掉即可</p>
+<h2 id="引入图片"><a href="#引入图片" class="headerlink" title="引入图片"></a>引入图片</h2><p><a href="http://blog.csdn.net/Sugar_Rainbow/article/details/57415705" target="_blank" rel="noopener">http://blog.csdn.net/Sugar_Rainbow/article/details/57415705</a></p>
+<p>如文章引用即可</p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="https://huangpu311.github.io/xiaojiang/2018/03/29/hexo搭建博客/" data-id="cjjry5gys0004mgvae9poo9ku" class="article-share-link">Share</a>
+      
+      
+    </footer>
+  </div>
+  
+</article>
+
+
+  
+    <article id="post-centos7 命令" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/xiaojiang/2018/03/29/centos7 命令/" class="article-date">
+  <time datetime="2018-03-29T13:10:58.345Z" itemprop="datePublished">2018-03-29</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/xiaojiang/2018/03/29/centos7 命令/">centos7 命令</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h2 id="防火墙"><a href="#防火墙" class="headerlink" title="防火墙"></a>防火墙</h2><p>查看已经开放的接口</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">firewall-cmd --list-ports</span><br></pre></td></tr></table></figure>
+<p>开启端口</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">firewall-cmd --zone=public --add-port=80/tcp --permanent</span><br></pre></td></tr></table></figure>
+<p>firewall-cmd –zone=public –add-port=2181/tcp –permanent</p>
+<p>firewall-cmd –reload</p>
+<p>命令含义：</p>
+<p>–zone #作用域us</p>
+<p>–add-port=80/tcp #添加端口，格式为：端口/通讯协议</p>
+<p>–permanent #永久生效，没有此参数重启后失效</p>
+<p>firewall-cmd –reload #重启firewall<br>systemctl stop firewalld.service #停止firewall<br>systemctl disable firewalld.service #禁止firewall开机启动</p>
+<h4 id="查看端口号使用状态"><a href="#查看端口号使用状态" class="headerlink" title="查看端口号使用状态"></a>查看端口号使用状态</h4><p> netstat -tunlp |grep 端口号，用于查看指定的端口号的进程情况，如查看8000端口的情况，netstat -tunlp |grep 8000</p>
+<h2 id="后台运行"><a href="#后台运行" class="headerlink" title="后台运行"></a>后台运行</h2><p><strong>nohup</strong>  </p>
+<p>在处理命令前加上nohup即可，标准输出和标准错误缺省会被重定向到nohup.out 文件中，一般我们可以在结尾加上&amp; 来讲命令同时放入到后台运行，也可用 “?filename 2&gt;&amp;1”来更改缺省的重定向文件名。</p>
+<p>&amp;</p>
+<p>加在一个命令的最后可以把这个命令放到后台执行，如gftp &amp;</p>
+<p>ctrl +z </p>
+<p>可以将一个正在前台执行的命令放到后台，并且处于暂停状态，不可执行</p>
+<p>jobs</p>
+<p>查看当前有多少在后台运行的命令</p>
+<p> netstat -nlp</p>
+<p>查看占用端口的服务</p>
+<p>netstat -nlp | grep :80</p>
+<p>查看端口号为80的服务</p>
+<p>rpm </p>
+<h2 id="mysql安装"><a href="#mysql安装" class="headerlink" title="mysql安装"></a>mysql安装</h2><p>下载mysql的repo源</p>
+<blockquote>
+<p>wget <a href="http://repo.mysql.com/mysql57-community-release-el7-8.noarch.rpm" target="_blank" rel="noopener">http://repo.mysql.com/mysql57-community-release-el7-8.noarch.rpm</a></p>
+<p>安装源  rpm -ivh mysql57-community-release-el7-8.noarch.rpm</p>
+<p>安装数据库 yum install mysql-server</p>
+<p>启动数据库  systemctl start mysqld</p>
+</blockquote>
+<p>####登录到msyql</p>
+<p>5.7版本默认对于root帐号有一个随机密码，可以通过 grep “password” /var/log/mysqld.log获得，root@localhost: 此处为随机密码<br>运行mysql -uroot -p 回车<br>粘贴随机密码</p>
+<h4 id="操作"><a href="#操作" class="headerlink" title="操作"></a>操作</h4><p>默认的随机密码是没办法直接对数据库做操作的，需要修改密码，然后，5.7版本用了validate_password密码加强插件，因此在修改密码的时候绝对不是 123456 能糊弄过去的。需要严格按照规范去设置密码<br>但是，如果想让密码简单点也可以，降低安全策略， 登录到mysql客户端执行如下两条命令</p>
+<p>set global validate_password_length=1;</p>
+<p>set global validate_password_policy=0; </p>
+<p>这样就能设置简单的密码了，但是密码长度必须是大于等于4位</p>
+<h4 id="赋权操作"><a href="#赋权操作" class="headerlink" title="赋权操作"></a>赋权操作</h4><p>默认情况下其他服务器的客户端不能直接访问mysql服务端，需要对ip授权</p>
+<p>GRANT ALL PRIVILEGES ON  <em>.</em> TO ‘root‘@’%’ IDENTIFIED BY ‘root’ WITH GRANT OPTION;</p>
+<p>grant replication slave on <em>.</em> to ‘repl‘@’%’ identified by ‘repl’;</p>
+<p>create user repl identified by ‘repl’;</p>
+<h2 id="文件压缩"><a href="#文件压缩" class="headerlink" title="文件压缩"></a>文件压缩</h2><p>tar </p>
+<p>-c：建立压缩档案</p>
+<p>-v:解压</p>
+<p>-t:查看内容</p>
+<p>-r:向压缩归档文件末尾追加文件</p>
+<p>-u:更新远压缩包中的文件</p>
+<p>这五个是独立的命令，压缩解压都要用到其中一个，可以和别的命令连用但只能用其中一个。下面参数时根据需要在压缩或解压档案时可选的</p>
+<p>-z:有gzip属性的</p>
+<p>-j:有bx2属性的</p>
+<p>-Z：有compress属性的</p>
+<p>-v：显示所有过程</p>
+<p>-O：将文件解开到标准输出</p>
+<p>下面参数时必须的</p>
+<p>-f：使用档案名字，切记，这个参数是最后一个参数，后面只能接档案名</p>
+<p>tar -cf all.tar*.jpg</p>
+<p>这条命令是将所有.jpg的文件打成一个名为all.tar的包。</p>
+<p>tar -rf all.tar *.gif</p>
+<p>这条命令是将所有.gif的文件增加到all.tar的包里面去。</p>
+<p>tar -uf all.tar logo.gif</p>
+<p>这条命令是更新原来tar包all.tar中的logo.gif</p>
+<p>tar -tf all.tar </p>
+<p>这条命令是列出all.tar包中的所有文件</p>
+<p>tar -xf all.tar</p>
+<p>这条命令是解出all.tar包中所有的文件</p>
+<p>linux下文件的复制、移动与删除命令为：cp，mv，rm</p>
+<p>参考文档：<a href="https://www.cnblogs.com/liaojie970/p/6746230.html" target="_blank" rel="noopener">https://www.cnblogs.com/liaojie970/p/6746230.html</a></p>
+<hr>
+<h2 id="日志操作"><a href="#日志操作" class="headerlink" title="日志操作"></a>日志操作</h2><p>  根据关键字查找日志文件  cat app.log |grep ‘error’</p>
+<p> 查询日志后十行数据  tail -n 10 app.log</p>
+<p>查询十行之后的日志  tail -n +10 app.log</p>
+<p>查询日志文件的头十行日志  head -n10 app.log</p>
+<p>查询日志中含有某个关键字并显示出行号  cat -n app.log | grep error</p>
+<p>把日志文件保存到txt文件  cat -n applog| grep error -&gt; temp.txt</p>
+<p>查询日志文件102行前十行和后十行的数据  cat  -n app.log |tail -n +92 |head -n 20</p>
+<hr>
+<h2 id="文件操作"><a href="#文件操作" class="headerlink" title="文件操作"></a>文件操作</h2><p>复制文件1到文件2</p>
+<p>cp file1 file2</p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="https://huangpu311.github.io/xiaojiang/2018/03/29/centos7 命令/" data-id="cjjry5gxs0000mgvaaccj3yzu" class="article-share-link">Share</a>
+      
+      
+    </footer>
+  </div>
+  
+</article>
+
+
+  
     <article id="post-hello-world" class="article article-type-post" itemscope itemprop="blogPost">
   <div class="article-meta">
     <a href="/xiaojiang/2018/03/29/hello-world/" class="article-date">
@@ -97,7 +253,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://huangpu311.github.io/xiaojiang/2018/03/29/hello-world/" data-id="cjgglmniq0007csvaqm5rvnu5" class="article-share-link">Share</a>
+      <a data-url="https://huangpu311.github.io/xiaojiang/2018/03/29/hello-world/" data-id="cjjry5gyv0006mgva1lncl1ui" class="article-share-link">Share</a>
       
       
     </footer>
@@ -134,7 +290,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://huangpu311.github.io/xiaojiang/2018/03/22/spring-cloud/" data-id="cjgglmniu000acsvalyc1s9ql" class="article-share-link">Share</a>
+      <a data-url="https://huangpu311.github.io/xiaojiang/2018/03/22/spring-cloud/" data-id="cjjry5gz8000gmgvap7mmlq8u" class="article-share-link">Share</a>
       
       
     </footer>
@@ -224,11 +380,12 @@
 <p>功能描述：此模块能代理请求到其它服务器.也就是说允许你把客户端的 HTTP 请求转到后端服务器(这部分的指令非常多，但不是全部都会被用到，这里是比较常见的指令简介)</p>
 <h3 id="upstream-模块"><a href="#upstream-模块" class="headerlink" title="upstream 模块"></a>upstream 模块</h3><p>模块：ngx_http_upstream_modules</p>
 <p>功能简介：该指令使请求被上行信道之间的基于客户端的 IP 地址分布</p>
+<h3 id="模拟文件命令"><a href="#模拟文件命令" class="headerlink" title="模拟文件命令"></a>模拟文件命令</h3><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#</span><span class="bash"><span class="comment">#############每个指令必须要用分号结束##############</span></span></span><br><span class="line"><span class="meta">#</span><span class="bash">user administrator administrators; <span class="comment">#配置用户或组，默认nobody nobody</span></span></span><br><span class="line"><span class="meta">#</span><span class="bash">worker_processes 2 ;<span class="comment"># 允许生成的进程数，默认为1</span></span></span><br><span class="line"><span class="meta">#</span><span class="bash">pid /nginx/pid/nginx.pid; <span class="comment"># 指定nginx进程允许文件存放地址</span></span></span><br><span class="line">error_log log/error.log debug ; # 制定日志路径级别，这个设置可以放入全局块，http块，server块，级别依次为debug|info|notice|warn|error|crit|alert|emerg</span><br><span class="line">events &#123;</span><br><span class="line">    accept_mutes on; #设置网路连接序列化，防止出现惊群现象发生，默认为on</span><br><span class="line">    multi_accept on; #设置一个进程是否同时</span><br><span class="line">    #use  epoll; #事件驱动模型 select|poll|kqueue|epoll|resig|dev|poll|eventport</span><br><span class="line">    work_connections 1024;</span><br><span class="line">&#125;</span><br><span class="line">http &#123;</span><br><span class="line">    include mime.types;# 文件扩展名与文件类型映射表</span><br><span class="line">    default_type application/octet-stream；#默认文件类型，默认为text/plain</span><br><span class="line">    access_log off;#取消服务日志</span><br><span class="line">    log_format myFormat '$remote_addr-'</span><br><span class="line">    </span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://huangpu311.github.io/xiaojiang/2018/03/22/nginx/" data-id="cjgglmnjn000mcsvayuxiqjmf" class="article-share-link">Share</a>
+      <a data-url="https://huangpu311.github.io/xiaojiang/2018/03/22/nginx/" data-id="cjjry5gz4000emgvano4yvyh9" class="article-share-link">Share</a>
       
       
     </footer>
@@ -298,7 +455,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://huangpu311.github.io/xiaojiang/2018/02/27/医疗/" data-id="cjgglmnjl000kcsvadizv2cus" class="article-share-link">Share</a>
+      <a data-url="https://huangpu311.github.io/xiaojiang/2018/02/27/医疗/" data-id="cjjry5gzi000rmgva18b8p6a8" class="article-share-link">Share</a>
       
       
     </footer>
@@ -343,7 +500,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://huangpu311.github.io/xiaojiang/2018/02/27/dubbo/" data-id="cjgglmnha0000csvafb6osimh" class="article-share-link">Share</a>
+      <a data-url="https://huangpu311.github.io/xiaojiang/2018/02/27/dubbo/" data-id="cjjry5gxz0002mgvabttf72j3" class="article-share-link">Share</a>
       
       
     </footer>
@@ -425,7 +582,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://huangpu311.github.io/xiaojiang/2018/02/27/docker/" data-id="cjgglmnik0005csvaexcn3m5z" class="article-share-link">Share</a>
+      <a data-url="https://huangpu311.github.io/xiaojiang/2018/02/27/docker/" data-id="cjjry5gxw0001mgvaqx32x5tq" class="article-share-link">Share</a>
       
       
     </footer>
@@ -485,7 +642,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://huangpu311.github.io/xiaojiang/2018/02/06/mongodb/" data-id="cjgglmniy000ccsvavd5dtxhy" class="article-share-link">Share</a>
+      <a data-url="https://huangpu311.github.io/xiaojiang/2018/02/06/mongodb/" data-id="cjjry5gz1000bmgvafez382uc" class="article-share-link">Share</a>
       
       
     </footer>
@@ -747,290 +904,13 @@
 <p>gitlab_rails[‘webhook_timeout’] = 90 </p>
 <p>gitlab_rails[‘git_timeout’]=90</p>
 <p>之后就可以了。</p>
+<p>卸载gitlab</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">一、停止gitlab</span><br><span class="line">sudo gitlab-ctl stop</span><br><span class="line">二、卸载gitlab</span><br><span class="line">sudo rpm -e gitlab-ce</span><br></pre></td></tr></table></figure>
 
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://huangpu311.github.io/xiaojiang/2018/02/05/git/" data-id="cjgglmnhe0001csva8zilklx7" class="article-share-link">Share</a>
-      
-      
-    </footer>
-  </div>
-  
-</article>
-
-
-  
-    <article id="post-zookeeper" class="article article-type-post" itemscope itemprop="blogPost">
-  <div class="article-meta">
-    <a href="/xiaojiang/2018/02/02/zookeeper/" class="article-date">
-  <time datetime="2018-02-02T07:22:25.000Z" itemprop="datePublished">2018-02-02</time>
-</a>
-    
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/xiaojiang/2018/02/02/zookeeper/">zookeeper</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p>###分布式环境的特点</p>
-<p>分布性</p>
-<p>并发性</p>
-<p>同时访问一个节点</p>
-<p>无序性</p>
-<p>进程之间的消息通信，会出现顺序不一致的问题</p>
-<p>###分布式环境下面临的问题</p>
-<p>网络通信（网络本身不可靠）</p>
-<p>网络分区/脑裂（当网络发生异常导致分布式系统中部分节点之间的网络延时不断增大，最终导致组成分布式架构的所有节点，只有部分节点能够通信）</p>
-<p>三态（在分布式架构除了成功、失败、超时）</p>
-<p>分布式事务</p>
-<p>ACID</p>
-<p>原子性、一致性、隔离性、持久性</p>
-<h3 id="中心化和去中心化"><a href="#中心化和去中心化" class="headerlink" title="中心化和去中心化"></a>中心化和去中心化</h3><p>冷备或者热备</p>
-<p>分布式架构，很多的架构思想采用的是当集群发生故障的时候，集群的人群会自动选举出一个新的领导。</p>
-<p>最典型的：zookeeper/etcd</p>
-<h3 id="经典的CAP-BASE理论"><a href="#经典的CAP-BASE理论" class="headerlink" title="经典的CAP/BASE理论"></a>经典的CAP/BASE理论</h3><p>CAP</p>
-<p>C一致性  Consistency  所有的节点时刻保持一致</p>
-<p>A 可用性 Availability  每个请求都能收到一个项目，无论相应成功或者失败</p>
-<p>P 分区容错 （Partition-tolerance）表示系统出现脑裂以后，可能导致某些server与集群中的其他机器失去联系</p>
-<p>CP/AP</p>
-<p>CAP 理论仅仅适用于原子读写Nosql场景，不适用于数据库系统</p>
-<p>BASE</p>
-<p>基于CAP理论，CAP理论并不适用于数据库事务（因为更新一些错误的数据而导致数据紊乱，无论什么样的数据库高可用方案都是徒劳），XA事务虽然可以保证数据库在分布式系统下的ACID特性，但是会带来性能方面的影响</p>
-<p>basically avaiable 基本可用，数据库采用分片模式，把100w的用户数据分在5个实例上。如果破坏了其中的一个案例，仍然可以保证百分八十用户可用。</p>
-<p>soft-state   软状态，，在基于clien-server模式的系统中，server端是否有状态，决定了系统是否具备良好的水平扩展、负载均衡、故障恢复等特性。Server端承诺会维护client端状态数据，这个状态仅仅会维持一小段时间。这段时间后，server端就会丢弃这个状态，恢复正常状态。如支付订单。</p>
-<p>Eventually consistent  数据的最终一致性</p>
-<h3 id="初步认识zookeeper"><a href="#初步认识zookeeper" class="headerlink" title="初步认识zookeeper"></a>初步认识zookeeper</h3><p>zookeeper是一个开源的分布式协调服务，是由雅虎创建的，基于google chubby。</p>
-<p>zookeeper是分布式数据一致性的解决方案</p>
-<p>数据的发布/订阅（配置中心disconf）、负载均衡（dubbo+zookeeper）、命名服务、master选举（kafka、hadoop、hbase）、分布式队列、分布式锁。</p>
-<p>zookeeper特性</p>
-<p>顺序一致性</p>
-<p>从同一个客户端发起的事务请求，最终会严格按照顺序被应用到zookeeper中</p>
-<p>原子性</p>
-<p>所有事务请求的处理结果在整个集群中的所有机器上的应用情况是一致的，也就是说，要么整个集群中的所有机器都成功应用了某一事务、要么全都不应用。</p>
-<p>可靠性</p>
-<p>一旦服务器成功应用了某个事务数据，并且客户端做了响应，那么这个数据在整个集群中一定是同步并且保留下来的</p>
-<p>实时性</p>
-<p>一旦一个事务被成功应用，客户端就能够立即从服务器端读取到事务变更后的最新数据状态（zookeeper仅仅保证在一定时间内，近实时）</p>
-<h3 id="zookeeper安装"><a href="#zookeeper安装" class="headerlink" title="zookeeper安装"></a>zookeeper安装</h3><p>1、下载zookeeper安装包</p>
-<p>2、解压zookeeper ，tar -zxvf  安装包</p>
-<p>3、cd 到zk_home/conf ，cp一份</p>
-<p>4、查看命令</p>
-<p>sh  zkServer.sh  xxx</p>
-<p>zkServer.sh {start|start-foreground|stop|restart|status|upgrade|print-cmd}</p>
-<p>2181是zookeeper默认的端口号</p>
-<p>5、连接客户端</p>
-<p>sh zkCli.sh -server ip:port</p>
-<h3 id="集群环境"><a href="#集群环境" class="headerlink" title="集群环境"></a>集群环境</h3><p>zookeeper 集群，包含三种角色：leader/follower/observer</p>
-<p>leader:接受所有Follower的提案请求并同意协调发起提案的投票。负责所有的Follower进行内部的数据交换（同步）</p>
-<p>Follower:直接为客户端服务并参与提案的投票，同时与Leader进行数据交换(同步)</p>
-<p>Observer:直接为客户端服务但不参与提案的投票，同时也与Leader进行数据交换(同步)</p>
-<p>是一种特殊的zookeeper节点，可以帮助解决zookeeper的扩展性（如果大量的客户端访问我们的zookeeper集群，需要增加zookeeper集群机器数量，从而增加zookeeper集群的性能。导致zookeeper写性能下降，zookeeper的数据变更需要半数以上服务器投票通过，造成网络消耗增加投票成本）</p>
-<p>observer 不参与投票，只接收投票结果</p>
-<p>不属于zookeeper的关键部位</p>
-<p>在zoo.cfg里面增加Peertype=observer</p>
-<p>1、修改配置文件（zoo.cfg）</p>
-<p>server.id=host:port:port</p>
-<p>id的取值范围为1~255,用id来标识该机器在集群中的机器序号</p>
-<p>2888表示follower节点与leader节点交换信息的端口号</p>
-<p>3181标识leader选举的端口号，是随机的，但是不能冲突。</p>
-<p>sever.1=192.168.233.129:2888:3181<br>server.2=192.168.233.130:2888:3181<br>server.3=192.168.233.131:2888:3181</p>
-<p>2、创建myid</p>
-<p>在每一个服务器的dataDir目录下创建一个myid的文件，文件就一行就行了，内容为 id。</p>
-<p>###zoo.cfg 配置文件分析</p>
-<p>tickTime</p>
-<p>  zoookeeper中最小的时间单位变量</p>
-<p>initLimit</p>
-<p> follower节点启动后与leader节点完成数据同步的时间</p>
-<p>syncLimit</p>
-<p>leader节点和follower节点进行心跳检测的最大延时时间</p>
-<p>dataDir</p>
-<p>表示zookeeper服务器存储快照文件的目录，默认放在dataDir目录下</p>
-<p>dataLogDir</p>
-<p>事务日志</p>
-<p>clientPort</p>
-<p>表示客户端和服务端建立连接的端口号</p>
-<h3 id="zookeeper中的一些概念"><a href="#zookeeper中的一些概念" class="headerlink" title="zookeeper中的一些概念"></a>zookeeper中的一些概念</h3><p>1、数据模型</p>
-<p>zookeeper的数据模型和文件系统类似，每个节点称为znode，是zookeeper中的最小数据单元。每个znode上都可以保存数据和挂载子节点。从而构成一个层次化的属性结构。</p>
-<p>持久化节点：节点创建后会一直存在服务器上，直到主动删除</p>
-<p>持久化有序节点：每个节点都会为他的一级节点维护一个顺序</p>
-<p>临时节点：临时节点的生命周期和客户端的会话保持一致，当客户端会话失效，该节点自动清理。</p>
-<p>临时有序节点：在临时节点上多了一个顺序性的特性</p>
-<p>会话</p>
-<h3 id="zookeeper的命令操作"><a href="#zookeeper的命令操作" class="headerlink" title="zookeeper的命令操作"></a>zookeeper的命令操作</h3><p>create [-s][-e] path data acl</p>
-<p>-s表示 节点是否有序 </p>
-<p>-e表示是否为临时节点</p>
-<p>默认情况下是持久化节点</p>
-<p>get path [watch]</p>
-<p>获得指定的path的信息</p>
-<p>set path data [version]</p>
-<p>修改节点path对应 的data</p>
-<p>乐观锁</p>
-<p>数据库里有一个version字段去控制数据行的版本号</p>
-<p>delete path [version]</p>
-<p>删除节点</p>
-<h3 id="stat信息"><a href="#stat信息" class="headerlink" title="stat信息"></a>stat信息</h3><p>[zk: localhost:2181(CONNECTED) 11] get /hp<br>111<br>cZxid = 0x100000002   节点被创建时的事务id<br>ctime = Wed Feb 07 05:43:57 EST 2018   节点被创建时的时间<br>mZxid = 0x100000002  节点被最后一次更新的事务id<br>mtime = Wed Feb 07 05:43:57 EST 2018  节点被修改的时间<br>pZxid = 0x10000000a  当前节点下的子节点最后一次被修改的事务id</p>
-<p>cversion = 2  子节点的版本号<br>dataVersion = 0   当前节点数据的版本号<br>aclVersion = 0  表示acl的版本号，修改节点权限</p>
-<p>ephemeralOwner = 0x0   创建临时节点的时候，会有一个sessionId，它会把值存储到sessionId<br>dataLength = 3  长度</p>
-<p>numChildren = 0 子节点数量</p>
-<h3 id="Watcher"><a href="#Watcher" class="headerlink" title="Watcher"></a>Watcher</h3><p>zookkeeper提供了分布式数据发布/订阅，zookeeper允许客户端向服务器端注册一个watcher监听，当服务器端的节点触发指定节点的时候会触发watcher，服务端会向客户端发送一个事件通知。</p>
-<p>watcher的通知是一次性，一旦触发一次通知后，该watcher就失效，如果需要永久监听，需要反复注册</p>
-<p>EventyType</p>
-<p>None: 客户端与服务端成功建立会话</p>
-<p>NodeCreated 节点创建</p>
-<p>NodeDeleted 节点删除</p>
-<p>NodeDataChanged 数据变更，数据内容</p>
-<p>NodeChildrenChanged 子节点发生变更：子节点删除、新增的时候才会触发</p>
-<p>###ACL</p>
-<p>zookeeper提供控制节点访问权限控制的功能，用于有效保证zookeeper中的数据安全性，避免误操作而导致系统出现重大事故。</p>
-<p>CREATE/READ/WRITE/DELETE/ADMIN</p>
-<p> java API的使用</p>
-<p>对数据的增删改查和权限控制</p>
-<p>zkclient</p>
-<p>curator</p>
-<p>curator本身是Netflix公司开源的zookpeeper客户端。</p>
-<p>curator-framework  支持 fluent风格，链式操作</p>
-<p>curator-replice  提供实现封装</p>
-<p>curator 连接重试策略</p>
-<p>ExponentalBackoffRetry()  衰减重试</p>
-<p>RetryNTime  指定最大重试次数</p>
-<p>RetryOnetime 仅重试一次</p>
-<p>RetryUnitilElapsed 一直重试直到规定的时间</p>
-<h3 id="数据存储"><a href="#数据存储" class="headerlink" title="数据存储"></a>数据存储</h3><p>内存数据和磁盘数据</p>
-<p>zookeeper会定时吧数据存储在磁盘上</p>
-<p>dataDir 存储的是数据快照</p>
-<p>dataLogDir 存储事务日志</p>
-<p>zookeeper有三种日志</p>
-<p>zookeeper.out  运行日志</p>
-<p>快照 存储某一时刻的全量数据</p>
-<p>事务日志  事务操作的日志记录</p>
-<h3 id="zookeeper的实际应用场景"><a href="#zookeeper的实际应用场景" class="headerlink" title="zookeeper的实际应用场景"></a>zookeeper的实际应用场景</h3><p>zookeeper能够实现的场景</p>
-<p>#####订阅发布订阅/配置中心</p>
-<p>实现配置信息的集中式管理和数据的动态更新</p>
-<p>实现配置中心有2种模式：push、pull</p>
-<p>长轮训：</p>
-<p>zookeeper采用的是推拉结合的方式。客户单向服务器端注册自己需要关注的节点。一旦节点数据发生变化，那么服务器端就会向客户端发送watcher事件通知。客户端收到通知后，主动到服务器端获取更新后的数据</p>
-<p>1、数据量比较小</p>
-<p>2、数据内容在运行时发动变更</p>
-<p>3、集群中的各个机器共享配置</p>
-<p>分布式锁</p>
-<p>#####通常实现分布式锁</p>
-<p>1、redis</p>
-<p>设置key,如果key存在则会返回0， </p>
-<p>2、数据方式实现</p>
-<p>创建一个表，通过索引唯一的方式</p>
-<p>create table(id,name) name增加唯一索引</p>
-<p>insert 一条数据xx  ，完成后delete删除这条数据</p>
-<p>mysql  for update  方式</p>
-<p>3、zookeeper实现</p>
-<p>排它锁</p>
-<p>共享锁（读锁）</p>
-<p>#####负载均衡</p>
-<p>请求或者数据分摊到多个计算机单元上。</p>
-<p>id生成器</p>
-<p>分布式队列</p>
-<p>统一命名服务</p>
-<p>master选举</p>
-<p>保证7*24小时可用，采用master-slave模式</p>
-<h3 id="zookeeper的原理分析"><a href="#zookeeper的原理分析" class="headerlink" title="zookeeper的原理分析"></a>zookeeper的原理分析</h3><p>####zookeeper集群角色</p>
-<p>leader  是zookeeper是zookeeper集群的核心</p>
-<p>1、是事务请求的唯一调度和处理者，保证集群事务处理的顺序性</p>
-<p>2、集群内部各个服务器的调度者</p>
-<p>follower</p>
-<p>1、处理客户端非事务请求，以及转发事务请求给leader服务器</p>
-<p>2、参与事务请求的提议的投票（客户端的一个事务请求，需要半数服务器投票通过以后才能通知leader commit、leader会发起一个提案，要求follower投票）</p>
-<p>3、参与leader选举的投票</p>
-<p>observer</p>
-<p>观察zookeeper集群中最新状态的变化并将这些状态同步到observer服务器上。</p>
-<p>增加observer不影响集群中事务处理能力，同时还能提升集群中 的非事务处理能力。</p>
-<h4 id="zookeeper的集群组成"><a href="#zookeeper的集群组成" class="headerlink" title="zookeeper的集群组成"></a>zookeeper的集群组成</h4><p>zookeeper一般是由2n+1台服务器组成（因为他们的投票需要过半） </p>
-<h4 id="leader选举"><a href="#leader选举" class="headerlink" title="leader选举"></a>leader选举</h4><p>leaderElection、AuthcFastLeaderElection、FastLeaderElection，默认是FastLeaderElection</p>
-<p>选举算法</p>
-<p>FastLeaderElection</p>
-<p>serverid:在配置server集群的时候，给定服务器的表示id(myid)</p>
-<p>zxid:服务器在运行时产生的数据id，zxid的值越大，表示数据越新</p>
-<p>Epoch:选举的轮训</p>
-<p>server的状态：Looking（第一次初始化启动）、Following、Observering,Leading</p>
-<p>Looking</p>
-<p>1、所有在集群中的server都会推荐自己为leader，然后把(myid、zxid、epoch)作为广播信息，广播给集群中的其他server，然后等待服务器返回</p>
-<p>2、每个服务器都会接收来自集群中的其他服务器的投票，集群中的每个服务器在接受到投票后，开始判断投票的有效性</p>
-<p>3、统计投票</p>
-<h4 id="zab协议的原理"><a href="#zab协议的原理" class="headerlink" title="zab协议的原理"></a>zab协议的原理</h4><p>1、在zookeeper的主备模式下，通过zab协议来保证集群中各个副本的数据一致性</p>
-<p>2、zookeeper使用的是单一的主进程来接收并处理所有的是武清区，并采用zab协议，把数据的状态变更以事务请求的形式广播到其他节点</p>
-<p>3、zab协议在主备模型架构中，保证了同一时刻只能有一个主进程来广播服务器的状态变更。</p>
-<p>4、所有的事务请求必须由全局唯一的服务器来协调处理。这个服务器叫leader，其他的叫follower，leader节点主要负责把客户端的事务请求转化成一个事务提议(proposal)，并分发给集群中的所有follower节点，再等待所有follower节点的回，一旦超过半数服务器进行了正确的反馈，那么leader就会commit这条消息。</p>
-<p>zab功能</p>
-<p>1、崩溃恢复</p>
-<p>2、原子广播</p>
-<p>a、什么情况下zab协议进入崩溃恢复模式</p>
-<p>1、服务器启动时</p>
-<p>2、当leader服务器出现网络中断、崩溃或者重启的情况</p>
-<p>3、集群中已经不存在过半的服务器与该leader保持正常通信</p>
-<p>b、zab协议进入崩溃恢复模式会做什么</p>
-<p>当leader出现问题 ，zab协议进入崩溃恢复模式，并且选举出新的leader。当新的leader选举出来以后，如果集群中已经有过半的机器完成了leader服务器的状态同步（数据同步），退出崩溃恢复，进入消息广播模式</p>
-<p>当新的机器加入到集群中的时候，如果已经存在leader服务器，那么新加入的服务器会自觉进入数据恢复模式，找到leader进行数据同步。</p>
-<h4 id="问题"><a href="#问题" class="headerlink" title="问题"></a>问题</h4><p>假设一个事务在leader服务器被提交了，并且已经有过半的follower返回了ack，在leader节点把commit消息发送给folower机器之前，leader服务挂了怎么办</p>
-<p>zab协议，一定需要保证已经被leader提交的事务也能够被follower提交</p>
-<p>zab协议要保证在崩溃恢复过程中跳过那些已经被丢弃的事务</p>
-<h4 id="zookeeper数据模型"><a href="#zookeeper数据模型" class="headerlink" title="zookeeper数据模型"></a>zookeeper数据模型</h4><p>临时节点（有序节点）持久化节点</p>
-<p>原子性：要么同时成功，要么同时失败</p>
-<p>单一视图：无论客户端连接到哪个服务器，所看到的模式都是一样的</p>
-<p>可靠性：一旦服务器端提交了一个事务并且获得服务器端返回成功的标志，那么这个事务所引起的服务器端的变更会一直保留</p>
-<p>实时性：近实时</p>
-<p>zookeeper不是用来存储数据的，通过监控数据状态的变化，达到基于数据的集群管理。</p>
-<h4 id="会话"><a href="#会话" class="headerlink" title="会话"></a>会话</h4><p>not_connected -&gt; connecting -&gt;connected -&gt; close</p>
-<p>#### </p>
-
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="https://huangpu311.github.io/xiaojiang/2018/02/02/zookeeper/" data-id="cjgglmnjj000jcsval8ex7yif" class="article-share-link">Share</a>
-      
-      
-    </footer>
-  </div>
-  
-</article>
-
-
-  
-    <article id="post-gradle" class="article article-type-post" itemscope itemprop="blogPost">
-  <div class="article-meta">
-    <a href="/xiaojiang/2018/02/01/gradle/" class="article-date">
-  <time datetime="2018-02-01T07:16:52.000Z" itemprop="datePublished">2018-02-01</time>
-</a>
-    
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/xiaojiang/2018/02/01/gradle/">gradle</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="https://huangpu311.github.io/xiaojiang/2018/02/01/gradle/" data-id="cjgglmnie0002csvafqwt6pel" class="article-share-link">Share</a>
+      <a data-url="https://huangpu311.github.io/xiaojiang/2018/02/05/git/" data-id="cjjry5gyl0003mgvaw4euv598" class="article-share-link">Share</a>
       
       
     </footer>
@@ -1077,7 +957,7 @@
   <div class="widget-wrap">
     <h3 class="widget-title">Archives</h3>
     <div class="widget">
-      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/xiaojiang/archives/2018/04/">April 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/xiaojiang/archives/2018/03/">March 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/xiaojiang/archives/2018/02/">February 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/xiaojiang/archives/2018/01/">January 2018</a></li></ul>
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/xiaojiang/archives/2018/07/">July 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/xiaojiang/archives/2018/05/">May 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/xiaojiang/archives/2018/04/">April 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/xiaojiang/archives/2018/03/">March 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/xiaojiang/archives/2018/02/">February 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/xiaojiang/archives/2018/01/">January 2018</a></li></ul>
     </div>
   </div>
 
@@ -1090,6 +970,14 @@
       <ul>
         
           <li>
+            <a href="/xiaojiang/2018/07/19/分销管理总览/">(no title)</a>
+          </li>
+        
+          <li>
+            <a href="/xiaojiang/2018/05/02/操作技巧/">操作技巧</a>
+          </li>
+        
+          <li>
             <a href="/xiaojiang/2018/04/23/spring源码阅读/">spring源码阅读</a>
           </li>
         
@@ -1099,14 +987,6 @@
         
           <li>
             <a href="/xiaojiang/2018/04/20/分销管理/">分销管理</a>
-          </li>
-        
-          <li>
-            <a href="/xiaojiang/2018/03/29/vip项目导入/">vip项目导入遇到的问题</a>
-          </li>
-        
-          <li>
-            <a href="/xiaojiang/2018/03/29/分布式/">分布式</a>
           </li>
         
       </ul>

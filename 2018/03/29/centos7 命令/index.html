@@ -14,7 +14,7 @@
 <meta property="og:site_name" content="小江的个人博客">
 <meta property="og:description" content="防火墙查看已经开放的接口 1firewall-cmd --list-ports 开启端口 1firewall-cmd --zone=public --add-port=80/tcp --permanent firewall-cmd –zone=public –add-port=2181/tcp –permanent firewall-cmd –reload 命令含义： –zone #作用域us –">
 <meta property="og:locale" content="default">
-<meta property="og:updated_time" content="2018-04-19T06:56:26.905Z">
+<meta property="og:updated_time" content="2018-07-16T06:46:30.334Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="centos7 命令">
 <meta name="twitter:description" content="防火墙查看已经开放的接口 1firewall-cmd --list-ports 开启端口 1firewall-cmd --zone=public --add-port=80/tcp --permanent firewall-cmd –zone=public –add-port=2181/tcp –permanent firewall-cmd –reload 命令含义： –zone #作用域us –">
@@ -155,12 +155,21 @@
 <p>linux下文件的复制、移动与删除命令为：cp，mv，rm</p>
 <p>参考文档：<a href="https://www.cnblogs.com/liaojie970/p/6746230.html" target="_blank" rel="noopener">https://www.cnblogs.com/liaojie970/p/6746230.html</a></p>
 <hr>
+<h2 id="日志操作"><a href="#日志操作" class="headerlink" title="日志操作"></a>日志操作</h2><p>  根据关键字查找日志文件  cat app.log |grep ‘error’</p>
+<p> 查询日志后十行数据  tail -n 10 app.log</p>
+<p>查询十行之后的日志  tail -n +10 app.log</p>
+<p>查询日志文件的头十行日志  head -n10 app.log</p>
+<p>查询日志中含有某个关键字并显示出行号  cat -n app.log | grep error</p>
+<p>把日志文件保存到txt文件  cat -n applog| grep error -&gt; temp.txt</p>
+<p>查询日志文件102行前十行和后十行的数据  cat  -n app.log |tail -n +92 |head -n 20</p>
 <hr>
+<h2 id="文件操作"><a href="#文件操作" class="headerlink" title="文件操作"></a>文件操作</h2><p>复制文件1到文件2</p>
+<p>cp file1 file2</p>
 
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://huangpu311.github.io/xiaojiang/2018/03/29/centos7 命令/" data-id="cjgglmniw000bcsvafu189zhv" class="article-share-link">Share</a>
+      <a data-url="https://huangpu311.github.io/xiaojiang/2018/03/29/centos7 命令/" data-id="cjjry5gxs0000mgvaaccj3yzu" class="article-share-link">Share</a>
       
       
     </footer>
@@ -219,7 +228,7 @@
   <div class="widget-wrap">
     <h3 class="widget-title">Archives</h3>
     <div class="widget">
-      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/xiaojiang/archives/2018/04/">April 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/xiaojiang/archives/2018/03/">March 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/xiaojiang/archives/2018/02/">February 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/xiaojiang/archives/2018/01/">January 2018</a></li></ul>
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/xiaojiang/archives/2018/07/">July 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/xiaojiang/archives/2018/05/">May 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/xiaojiang/archives/2018/04/">April 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/xiaojiang/archives/2018/03/">March 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/xiaojiang/archives/2018/02/">February 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/xiaojiang/archives/2018/01/">January 2018</a></li></ul>
     </div>
   </div>
 
@@ -232,6 +241,14 @@
       <ul>
         
           <li>
+            <a href="/xiaojiang/2018/07/19/分销管理总览/">(no title)</a>
+          </li>
+        
+          <li>
+            <a href="/xiaojiang/2018/05/02/操作技巧/">操作技巧</a>
+          </li>
+        
+          <li>
             <a href="/xiaojiang/2018/04/23/spring源码阅读/">spring源码阅读</a>
           </li>
         
@@ -241,14 +258,6 @@
         
           <li>
             <a href="/xiaojiang/2018/04/20/分销管理/">分销管理</a>
-          </li>
-        
-          <li>
-            <a href="/xiaojiang/2018/03/29/vip项目导入/">vip项目导入遇到的问题</a>
-          </li>
-        
-          <li>
-            <a href="/xiaojiang/2018/03/29/分布式/">分布式</a>
           </li>
         
       </ul>
