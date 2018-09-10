@@ -93,7 +93,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://huangpu311.github.io/xiaojiang/2018/03/29/hexo搭建博客/" data-id="cjjry5gys0004mgvae9poo9ku" class="article-share-link">Share</a>
+      <a data-url="https://huangpu311.github.io/xiaojiang/2018/03/29/hexo搭建博客/" data-id="cjlvy99hn0003mova34xx9bvi" class="article-share-link">Share</a>
       
       
     </footer>
@@ -157,6 +157,8 @@
 <p>安装数据库 yum install mysql-server</p>
 <p>启动数据库  systemctl start mysqld</p>
 </blockquote>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">rpm -qa | grep mysql 查看是否安装mysql</span><br><span class="line">rpm -e --nodeps mysql  删除mysql服务</span><br></pre></td></tr></table></figure>
+<p> mysql 5.6 安装<a href="https://www.cnblogs.com/xiaojf/p/6561312.html" target="_blank" rel="noopener">https://www.cnblogs.com/xiaojf/p/6561312.html</a></p>
 <p>####登录到msyql</p>
 <p>5.7版本默认对于root帐号有一个随机密码，可以通过 grep “password” /var/log/mysqld.log获得，root@localhost: 此处为随机密码<br>运行mysql -uroot -p 回车<br>粘贴随机密码</p>
 <h4 id="操作"><a href="#操作" class="headerlink" title="操作"></a>操作</h4><p>默认的随机密码是没办法直接对数据库做操作的，需要修改密码，然后，5.7版本用了validate_password密码加强插件，因此在修改密码的时候绝对不是 123456 能糊弄过去的。需要严格按照规范去设置密码<br>但是，如果想让密码简单点也可以，降低安全策略， 登录到mysql客户端执行如下两条命令</p>
@@ -204,11 +206,13 @@
 <hr>
 <h2 id="文件操作"><a href="#文件操作" class="headerlink" title="文件操作"></a>文件操作</h2><p>复制文件1到文件2</p>
 <p>cp file1 file2</p>
+<p>yum 操作<br> 安装maven</p>
+<p>wget <a href="http://repos.fedorapeople.org/repos/dchen/apache-maven/epel-apache-maven.repo" target="_blank" rel="noopener">http://repos.fedorapeople.org/repos/dchen/apache-maven/epel-apache-maven.repo</a> -O /etc/yum.repos.d/epel-apache-maven.repo<br>yum -y install apache-maven</p>
 
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://huangpu311.github.io/xiaojiang/2018/03/29/centos7 命令/" data-id="cjjry5gxs0000mgvaaccj3yzu" class="article-share-link">Share</a>
+      <a data-url="https://huangpu311.github.io/xiaojiang/2018/03/29/centos7 命令/" data-id="cjlvy99i00009movajynzp9td" class="article-share-link">Share</a>
       
       
     </footer>
@@ -253,7 +257,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://huangpu311.github.io/xiaojiang/2018/03/29/hello-world/" data-id="cjjry5gyv0006mgva1lncl1ui" class="article-share-link">Share</a>
+      <a data-url="https://huangpu311.github.io/xiaojiang/2018/03/29/hello-world/" data-id="cjlvy99hl0002movagl484032" class="article-share-link">Share</a>
       
       
     </footer>
@@ -290,7 +294,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://huangpu311.github.io/xiaojiang/2018/03/22/spring-cloud/" data-id="cjjry5gz8000gmgvap7mmlq8u" class="article-share-link">Share</a>
+      <a data-url="https://huangpu311.github.io/xiaojiang/2018/03/22/spring-cloud/" data-id="cjlvy99i3000cmova5ii1d679" class="article-share-link">Share</a>
       
       
     </footer>
@@ -385,7 +389,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://huangpu311.github.io/xiaojiang/2018/03/22/nginx/" data-id="cjjry5gz4000emgvano4yvyh9" class="article-share-link">Share</a>
+      <a data-url="https://huangpu311.github.io/xiaojiang/2018/03/22/nginx/" data-id="cjlvy99jg000smovavzhweeym" class="article-share-link">Share</a>
       
       
     </footer>
@@ -455,7 +459,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://huangpu311.github.io/xiaojiang/2018/02/27/医疗/" data-id="cjjry5gzi000rmgva18b8p6a8" class="article-share-link">Share</a>
+      <a data-url="https://huangpu311.github.io/xiaojiang/2018/02/27/医疗/" data-id="cjlvy99ip000qmovagpeq8hrs" class="article-share-link">Share</a>
       
       
     </footer>
@@ -496,11 +500,24 @@
 <p>服务的自动发现</p>
 <p>负载均衡</p>
 <h2 id="Dubbo的架构"><a href="#Dubbo的架构" class="headerlink" title="Dubbo的架构"></a>Dubbo的架构</h2><p>核心角色</p>
+<h2 id="集群容错"><a href="#集群容错" class="headerlink" title="集群容错"></a>集群容错</h2><p>failsafe 失败安全，可以任务把错误吞掉（记录日志） </p>
+<p>failover 默认   重试服务器 retrie (2)</p>
+<p>failfast 快速失败，失败后立马报错</p>
+<p>failback 失败后恢复</p>
+<p>forking  forks设置并行的最大数</p>
+<p>broadcast 广播，任意一台报错，则执行的方法报错</p>
+<p>通过cluster配置</p>
+<p>配置的优先级别 </p>
+<p> 客户端由于服务端</p>
+<p>1、方法级别优先，然后是接口 ，然后是全局</p>
+<p>2、如果级别是一样的，客户端优先</p>
+<h2 id="服务降级"><a href="#服务降级" class="headerlink" title="服务降级"></a>服务降级</h2><h2 id="java-spi"><a href="#java-spi" class="headerlink" title="java  spi"></a>java  spi</h2><p>1，在META-INF/service下面定义 java.sql.Driver下定义类</p>
+<p>2.</p>
 
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://huangpu311.github.io/xiaojiang/2018/02/27/dubbo/" data-id="cjjry5gxz0002mgvabttf72j3" class="article-share-link">Share</a>
+      <a data-url="https://huangpu311.github.io/xiaojiang/2018/02/27/dubbo/" data-id="cjlvy99hr0005movampvnnpyn" class="article-share-link">Share</a>
       
       
     </footer>
@@ -545,6 +562,8 @@
 <p>docker pull tomcat</p>
 <p>2、docker运行tomcat 容器</p>
 <p>docker run -d -p 9000:8080 tomcat:7</p>
+<p>netstat -antp|grep 3306</p>
+<p>docker run –name mysql5.7 -p 3306:3306 -v /hp/data/mysql/datadir:/var/lib/mysql -v /hp/data/mysql/conf.d:/etc/mysql/conf.d -e MYSQL_ROOT_PASSWORD=123456 -d mysql:5.7</p>
 <p>查看tomcat路径</p>
 <p>docker exec -it   name  /bin/bash</p>
 <p>进入容器</p>
@@ -582,7 +601,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://huangpu311.github.io/xiaojiang/2018/02/27/docker/" data-id="cjjry5gxw0001mgvaqx32x5tq" class="article-share-link">Share</a>
+      <a data-url="https://huangpu311.github.io/xiaojiang/2018/02/27/docker/" data-id="cjlvy99go0000movazey2gc9l" class="article-share-link">Share</a>
       
       
     </footer>
@@ -642,7 +661,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://huangpu311.github.io/xiaojiang/2018/02/06/mongodb/" data-id="cjjry5gz1000bmgvafez382uc" class="article-share-link">Share</a>
+      <a data-url="https://huangpu311.github.io/xiaojiang/2018/02/06/mongodb/" data-id="cjlvy99i2000bmovazisl9bxq" class="article-share-link">Share</a>
       
       
     </footer>
@@ -693,12 +712,12 @@
 <p>如果修改了已放到暂存区域，就是已暂存状态</p>
 <p>如果修改了，还没有放到暂存区域就是已修改状态</p>
 <h5 id="git命令"><a href="#git命令" class="headerlink" title="git命令"></a>git命令</h5><p>设置你的用户名称与邮件地址</p>
-<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">$</span> git config --global user.name "name"</span><br><span class="line"><span class="meta">$</span> git config --global user.email xxx@qq.com</span><br></pre></td></tr></table></figure>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">$</span><span class="bash"> git config --global user.name <span class="string">"name"</span></span></span><br><span class="line"><span class="meta">$</span><span class="bash"> git config --global user.email xxx@qq.com</span></span><br></pre></td></tr></table></figure>
 <p>查看设置的用户名和邮件地址</p>
 <figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git config --list</span><br></pre></td></tr></table></figure>
 <p>如果加了–global，那么在你电脑上默认都是用这个信息，如果有新的项目需要更换用户名和邮箱，那么将–global去掉再运行一遍即可。</p>
 <p>git帮助手册</p>
-<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">$</span> git help &lt;verb&gt;</span><br><span class="line"><span class="meta">$</span> git &lt;verb&gt; --help</span><br><span class="line"><span class="meta">$</span> man git-&lt;verb&gt;</span><br></pre></td></tr></table></figure>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">$</span><span class="bash"> git <span class="built_in">help</span> &lt;verb&gt;</span></span><br><span class="line"><span class="meta">$</span><span class="bash"> git &lt;verb&gt; --<span class="built_in">help</span></span></span><br><span class="line"><span class="meta">$</span><span class="bash"> man git-&lt;verb&gt;</span></span><br></pre></td></tr></table></figure>
 <p>如果需要获取config的帮助手册，输入命令 git config –help即可。</p>
 <table>
 <thead>
@@ -910,7 +929,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://huangpu311.github.io/xiaojiang/2018/02/05/git/" data-id="cjjry5gyl0003mgvaw4euv598" class="article-share-link">Share</a>
+      <a data-url="https://huangpu311.github.io/xiaojiang/2018/02/05/git/" data-id="cjlvy99i6000emova9aminx9l" class="article-share-link">Share</a>
       
       
     </footer>

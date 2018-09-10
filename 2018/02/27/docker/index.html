@@ -14,7 +14,7 @@
 <meta property="og:site_name" content="小江的个人博客">
 <meta property="og:description" content="Docker命令docker组成 dockerClient客户端 Docker Daemon守护进程 Docker Image镜像 DockerContainer容器  容器：对象 镜像：类 –name  docker 命名 1、docker  拉取tomcat镜像 docker pull tomcat 2、docker运行tomcat 容器 docker run -d -p 9000:8080">
 <meta property="og:locale" content="default">
-<meta property="og:updated_time" content="2018-02-27T05:42:31.607Z">
+<meta property="og:updated_time" content="2018-09-06T09:50:49.580Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="docker">
 <meta name="twitter:description" content="Docker命令docker组成 dockerClient客户端 Docker Daemon守护进程 Docker Image镜像 DockerContainer容器  容器：对象 镜像：类 –name  docker 命名 1、docker  拉取tomcat镜像 docker pull tomcat 2、docker运行tomcat 容器 docker run -d -p 9000:8080">
@@ -99,6 +99,8 @@
 <p>docker pull tomcat</p>
 <p>2、docker运行tomcat 容器</p>
 <p>docker run -d -p 9000:8080 tomcat:7</p>
+<p>netstat -antp|grep 3306</p>
+<p>docker run –name mysql5.7 -p 3306:3306 -v /hp/data/mysql/datadir:/var/lib/mysql -v /hp/data/mysql/conf.d:/etc/mysql/conf.d -e MYSQL_ROOT_PASSWORD=123456 -d mysql:5.7</p>
 <p>查看tomcat路径</p>
 <p>docker exec -it   name  /bin/bash</p>
 <p>进入容器</p>
@@ -136,7 +138,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://huangpu311.github.io/xiaojiang/2018/02/27/docker/" data-id="cjjry5gxw0001mgvaqx32x5tq" class="article-share-link">Share</a>
+      <a data-url="https://huangpu311.github.io/xiaojiang/2018/02/27/docker/" data-id="cjlvy99go0000movazey2gc9l" class="article-share-link">Share</a>
       
       
     </footer>

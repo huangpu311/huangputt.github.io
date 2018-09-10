@@ -14,7 +14,7 @@
 <meta property="og:site_name" content="小江的个人博客">
 <meta property="og:description" content="防火墙查看已经开放的接口 1firewall-cmd --list-ports 开启端口 1firewall-cmd --zone=public --add-port=80/tcp --permanent firewall-cmd –zone=public –add-port=2181/tcp –permanent firewall-cmd –reload 命令含义： –zone #作用域us –">
 <meta property="og:locale" content="default">
-<meta property="og:updated_time" content="2018-07-16T06:46:30.334Z">
+<meta property="og:updated_time" content="2018-09-06T08:44:48.547Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="centos7 命令">
 <meta name="twitter:description" content="防火墙查看已经开放的接口 1firewall-cmd --list-ports 开启端口 1firewall-cmd --zone=public --add-port=80/tcp --permanent firewall-cmd –zone=public –add-port=2181/tcp –permanent firewall-cmd –reload 命令含义： –zone #作用域us –">
@@ -118,6 +118,8 @@
 <p>安装数据库 yum install mysql-server</p>
 <p>启动数据库  systemctl start mysqld</p>
 </blockquote>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">rpm -qa | grep mysql 查看是否安装mysql</span><br><span class="line">rpm -e --nodeps mysql  删除mysql服务</span><br></pre></td></tr></table></figure>
+<p> mysql 5.6 安装<a href="https://www.cnblogs.com/xiaojf/p/6561312.html" target="_blank" rel="noopener">https://www.cnblogs.com/xiaojf/p/6561312.html</a></p>
 <p>####登录到msyql</p>
 <p>5.7版本默认对于root帐号有一个随机密码，可以通过 grep “password” /var/log/mysqld.log获得，root@localhost: 此处为随机密码<br>运行mysql -uroot -p 回车<br>粘贴随机密码</p>
 <h4 id="操作"><a href="#操作" class="headerlink" title="操作"></a>操作</h4><p>默认的随机密码是没办法直接对数据库做操作的，需要修改密码，然后，5.7版本用了validate_password密码加强插件，因此在修改密码的时候绝对不是 123456 能糊弄过去的。需要严格按照规范去设置密码<br>但是，如果想让密码简单点也可以，降低安全策略， 登录到mysql客户端执行如下两条命令</p>
@@ -165,11 +167,13 @@
 <hr>
 <h2 id="文件操作"><a href="#文件操作" class="headerlink" title="文件操作"></a>文件操作</h2><p>复制文件1到文件2</p>
 <p>cp file1 file2</p>
+<p>yum 操作<br> 安装maven</p>
+<p>wget <a href="http://repos.fedorapeople.org/repos/dchen/apache-maven/epel-apache-maven.repo" target="_blank" rel="noopener">http://repos.fedorapeople.org/repos/dchen/apache-maven/epel-apache-maven.repo</a> -O /etc/yum.repos.d/epel-apache-maven.repo<br>yum -y install apache-maven</p>
 
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://huangpu311.github.io/xiaojiang/2018/03/29/centos7 命令/" data-id="cjjry5gxs0000mgvaaccj3yzu" class="article-share-link">Share</a>
+      <a data-url="https://huangpu311.github.io/xiaojiang/2018/03/29/centos7 命令/" data-id="cjlvy99i00009movajynzp9td" class="article-share-link">Share</a>
       
       
     </footer>

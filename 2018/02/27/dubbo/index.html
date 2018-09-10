@@ -7,17 +7,17 @@
   
   <title>dubbo | 小江的个人博客</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="官网http://dubbo.io/ 文档地址 http://dubbo.io/books/dubbo-user-book/ dubbo是一个分布式的服务框架，提供高性能的以及透明化的RPC远程服务调用解决方案，以及AOA服务治理方案。 ##Dubbo的核心部分 远程通信 集群容错 服务的自动发现 负载均衡 Dubbo的架构核心角色">
+  <meta name="description" content="官网http://dubbo.io/ 文档地址 http://dubbo.io/books/dubbo-user-book/ dubbo是一个分布式的服务框架，提供高性能的以及透明化的RPC远程服务调用解决方案，以及AOA服务治理方案。 ##Dubbo的核心部分 远程通信 集群容错 服务的自动发现 负载均衡 Dubbo的架构核心角色 集群容错failsafe 失败安全，可以任务把错误吞掉（记录日志">
 <meta property="og:type" content="article">
 <meta property="og:title" content="dubbo">
 <meta property="og:url" content="https://huangpu311.github.io/xiaojiang/2018/02/27/dubbo/index.html">
 <meta property="og:site_name" content="小江的个人博客">
-<meta property="og:description" content="官网http://dubbo.io/ 文档地址 http://dubbo.io/books/dubbo-user-book/ dubbo是一个分布式的服务框架，提供高性能的以及透明化的RPC远程服务调用解决方案，以及AOA服务治理方案。 ##Dubbo的核心部分 远程通信 集群容错 服务的自动发现 负载均衡 Dubbo的架构核心角色">
+<meta property="og:description" content="官网http://dubbo.io/ 文档地址 http://dubbo.io/books/dubbo-user-book/ dubbo是一个分布式的服务框架，提供高性能的以及透明化的RPC远程服务调用解决方案，以及AOA服务治理方案。 ##Dubbo的核心部分 远程通信 集群容错 服务的自动发现 负载均衡 Dubbo的架构核心角色 集群容错failsafe 失败安全，可以任务把错误吞掉（记录日志">
 <meta property="og:locale" content="default">
-<meta property="og:updated_time" content="2018-02-27T09:12:44.877Z">
+<meta property="og:updated_time" content="2018-08-19T15:42:30.036Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="dubbo">
-<meta name="twitter:description" content="官网http://dubbo.io/ 文档地址 http://dubbo.io/books/dubbo-user-book/ dubbo是一个分布式的服务框架，提供高性能的以及透明化的RPC远程服务调用解决方案，以及AOA服务治理方案。 ##Dubbo的核心部分 远程通信 集群容错 服务的自动发现 负载均衡 Dubbo的架构核心角色">
+<meta name="twitter:description" content="官网http://dubbo.io/ 文档地址 http://dubbo.io/books/dubbo-user-book/ dubbo是一个分布式的服务框架，提供高性能的以及透明化的RPC远程服务调用解决方案，以及AOA服务治理方案。 ##Dubbo的核心部分 远程通信 集群容错 服务的自动发现 负载均衡 Dubbo的架构核心角色 集群容错failsafe 失败安全，可以任务把错误吞掉（记录日志">
   
     <link rel="alternate" href="/xiaojiang/atom.xml" title="小江的个人博客" type="application/atom+xml">
   
@@ -95,11 +95,24 @@
 <p>服务的自动发现</p>
 <p>负载均衡</p>
 <h2 id="Dubbo的架构"><a href="#Dubbo的架构" class="headerlink" title="Dubbo的架构"></a>Dubbo的架构</h2><p>核心角色</p>
+<h2 id="集群容错"><a href="#集群容错" class="headerlink" title="集群容错"></a>集群容错</h2><p>failsafe 失败安全，可以任务把错误吞掉（记录日志） </p>
+<p>failover 默认   重试服务器 retrie (2)</p>
+<p>failfast 快速失败，失败后立马报错</p>
+<p>failback 失败后恢复</p>
+<p>forking  forks设置并行的最大数</p>
+<p>broadcast 广播，任意一台报错，则执行的方法报错</p>
+<p>通过cluster配置</p>
+<p>配置的优先级别 </p>
+<p> 客户端由于服务端</p>
+<p>1、方法级别优先，然后是接口 ，然后是全局</p>
+<p>2、如果级别是一样的，客户端优先</p>
+<h2 id="服务降级"><a href="#服务降级" class="headerlink" title="服务降级"></a>服务降级</h2><h2 id="java-spi"><a href="#java-spi" class="headerlink" title="java  spi"></a>java  spi</h2><p>1，在META-INF/service下面定义 java.sql.Driver下定义类</p>
+<p>2.</p>
 
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://huangpu311.github.io/xiaojiang/2018/02/27/dubbo/" data-id="cjjry5gxz0002mgvabttf72j3" class="article-share-link">Share</a>
+      <a data-url="https://huangpu311.github.io/xiaojiang/2018/02/27/dubbo/" data-id="cjlvy99hr0005movampvnnpyn" class="article-share-link">Share</a>
       
       
     </footer>
