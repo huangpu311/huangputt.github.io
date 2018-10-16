@@ -7,17 +7,17 @@
   
   <title>centos7 命令 | 小江的个人博客</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="防火墙查看已经开放的接口 1firewall-cmd --list-ports 开启端口 1firewall-cmd --zone=public --add-port=80/tcp --permanent firewall-cmd –zone=public –add-port=2181/tcp –permanent firewall-cmd –reload 命令含义： –zone #作用域us –">
+  <meta name="description" content="防火墙zone 区域 Runtime ：当前生效，重启之后失效。 Permanent:永久生效，当前不生效，重启后生效 查看已经开放的接口 1firewall-cmd --list-ports 开启端口 1firewall-cmd --zone=public --add-port=80/tcp --permanent firewall-cmd –zone=public –add-port=2181">
 <meta property="og:type" content="article">
 <meta property="og:title" content="centos7 命令">
 <meta property="og:url" content="https://huangpu311.github.io/xiaojiang/2018/03/29/centos7 命令/index.html">
 <meta property="og:site_name" content="小江的个人博客">
-<meta property="og:description" content="防火墙查看已经开放的接口 1firewall-cmd --list-ports 开启端口 1firewall-cmd --zone=public --add-port=80/tcp --permanent firewall-cmd –zone=public –add-port=2181/tcp –permanent firewall-cmd –reload 命令含义： –zone #作用域us –">
+<meta property="og:description" content="防火墙zone 区域 Runtime ：当前生效，重启之后失效。 Permanent:永久生效，当前不生效，重启后生效 查看已经开放的接口 1firewall-cmd --list-ports 开启端口 1firewall-cmd --zone=public --add-port=80/tcp --permanent firewall-cmd –zone=public –add-port=2181">
 <meta property="og:locale" content="default">
-<meta property="og:updated_time" content="2018-09-06T08:44:48.547Z">
+<meta property="og:updated_time" content="2018-10-16T08:21:51.845Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="centos7 命令">
-<meta name="twitter:description" content="防火墙查看已经开放的接口 1firewall-cmd --list-ports 开启端口 1firewall-cmd --zone=public --add-port=80/tcp --permanent firewall-cmd –zone=public –add-port=2181/tcp –permanent firewall-cmd –reload 命令含义： –zone #作用域us –">
+<meta name="twitter:description" content="防火墙zone 区域 Runtime ：当前生效，重启之后失效。 Permanent:永久生效，当前不生效，重启后生效 查看已经开放的接口 1firewall-cmd --list-ports 开启端口 1firewall-cmd --zone=public --add-port=80/tcp --permanent firewall-cmd –zone=public –add-port=2181">
   
     <link rel="alternate" href="/xiaojiang/atom.xml" title="小江的个人博客" type="application/atom+xml">
   
@@ -86,14 +86,17 @@
     
     <div class="article-entry" itemprop="articleBody">
       
-        <h2 id="防火墙"><a href="#防火墙" class="headerlink" title="防火墙"></a>防火墙</h2><p>查看已经开放的接口</p>
+        <h2 id="防火墙"><a href="#防火墙" class="headerlink" title="防火墙"></a>防火墙</h2><p>zone 区域</p>
+<p>Runtime ：当前生效，重启之后失效。</p>
+<p>Permanent:永久生效，当前不生效，重启后生效</p>
+<p>查看已经开放的接口</p>
 <figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">firewall-cmd --list-ports</span><br></pre></td></tr></table></figure>
 <p>开启端口</p>
 <figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">firewall-cmd --zone=public --add-port=80/tcp --permanent</span><br></pre></td></tr></table></figure>
 <p>firewall-cmd –zone=public –add-port=2181/tcp –permanent</p>
 <p>firewall-cmd –reload</p>
 <p>命令含义：</p>
-<p>–zone #作用域us</p>
+<p>–zone #作用域</p>
 <p>–add-port=80/tcp #添加端口，格式为：端口/通讯协议</p>
 <p>–permanent #永久生效，没有此参数重启后失效</p>
 <p>firewall-cmd –reload #重启firewall<br>systemctl stop firewalld.service #停止firewall<br>systemctl disable firewalld.service #禁止firewall开机启动</p>
@@ -169,11 +172,117 @@
 <p>cp file1 file2</p>
 <p>yum 操作<br> 安装maven</p>
 <p>wget <a href="http://repos.fedorapeople.org/repos/dchen/apache-maven/epel-apache-maven.repo" target="_blank" rel="noopener">http://repos.fedorapeople.org/repos/dchen/apache-maven/epel-apache-maven.repo</a> -O /etc/yum.repos.d/epel-apache-maven.repo<br>yum -y install apache-maven</p>
+<h2 id="必备命令"><a href="#必备命令" class="headerlink" title="必备命令"></a>必备命令</h2><p>systemctl enable 服务名称    将服务加入到开机启动项中</p>
+<p>systemctl  start 服务名称  启动服务</p>
+<p>systemctl restart 服务名称  重启服务</p>
+<p>systemctl stop 服务名称   关闭服务</p>
+<p>systemctl status 服务名称  查看服务状态</p>
+<p>参数是为了让命令更加适合的执行命令</p>
+<p>man  man </p>
+<p>echo xxxx</p>
+<p>echo $SHELL</p>
+<p>date </p>
+<p>date “+Y-%m-%d  %H:%M:%:%S”  时间</p>
+<p>top命令：</p>
+<p>当前时间 ，开机时间</p>
+<p>load average: 0.00, 0.01, 0.05</p>
+<p>1分钟  5分钟 15分钟</p>
+<p>1分钟正常 ，5分钟危险</p>
+<p>进程数量、正在提供服务 ，等待 、停止，僵尸进程</p>
+<p>pid 进程号码</p>
+<p>user 进程发起</p>
+<p>pr ni  优先级  数字越小 优先级越高</p>
+<p>pidof   服务  查看pid</p>
+<p>ifconfig</p>
+<p>uname  -a</p>
+<p>uptime </p>
+<p>free -g 以G为单位查看信息</p>
+<p>who</p>
+<p>last</p>
+<p>history</p>
+<p>!+行号 执行过的命令</p>
+<p>history -c  清空 </p>
+<p>sosreport   简单排错</p>
+<p>liunx一切都是文件。</p>
+<p>cat  小文件</p>
+<p>more 大文件</p>
+<p>head  从头部看</p>
+<p>tail  从尾部看 </p>
+<p>wc 统计行  wc -l </p>
+<p>stat  文件的访问时间   修改时间  更改时间</p>
+<p>cut  </p>
+<p>diff 对比文件</p>
+<p>touch   创建文本文件</p>
+<p>mkdir -p  /x/x/x  进行层次创建</p>
+<p>cp -r  复制目录</p>
+<p>mv  剪切</p>
+<p>rm 删除  -f  不进行确认，强制删除  -r   进行目录操作</p>
+<p>dd  复制多少字节</p>
+<p>file 判断是否是文件</p>
+<p>tar czvf   压缩包名称   目录名称   按照gz格式进行压缩文件</p>
+<p>c创建压缩文件</p>
+<p>z   用gzip压缩 或者解压</p>
+<p>j  bzip2格式</p>
+<p>v   显示压缩过程</p>
+<p>f  目标文件名</p>
+<p>x解压</p>
+<p>tar  xzxvf   解压</p>
+<p>grep  匹配目标文件包含对应字符的内容   -n 显示行号 -v 反选 没有包含字符的行</p>
+<p>find   搜索  /  根目录  -name 文件名称   -user  归属给谁</p>
+<p>whereis    搜索</p>
+<p>exec 将前面搜索过的数据  cp -rf{} /root  \;</p>
+<p>星号 通配符</p>
+<p>?  匹配一个字符</p>
+<p>[1-9]   </p>
+<p>{1,2}  如果没有匹配到 会报错</p>
+<p>alias pp=’命令’</p>
+<h2 id="用户权限"><a href="#用户权限" class="headerlink" title="用户权限"></a>用户权限</h2><p>管理员 用户UID  1-999</p>
+<p>普通用户 UID 1000-</p>
+<p>管理员UID为0</p>
+<p>useradd 新增用户   -u指定用户uid</p>
+<p>groupadd </p>
+<p>基本组</p>
+<p>-g</p>
+<p>扩展组</p>
+<p>-G</p>
+<p>减号 普通文件或者文本文件  </p>
+<p>d目录文件</p>
+<p>l 链接文件</p>
+<p>b c  硬件设备</p>
+<p>r read </p>
+<p>w  write </p>
+<p>x  execute </p>
+<p>rwx   4 2 1      7  </p>
+<p>所有者 所有组  其他人</p>
+<p>普通文件 r 读取内容 w 写入  x 执行</p>
+<p>目录文件  r 查看列表的权限 w 写入   x  切换</p>
+<p>一般权限  </p>
+<p>rwx</p>
+<p>特殊权限</p>
+<p>suid   </p>
+<p>二进制可执行文件  u+s</p>
+<p>所有者的权限</p>
+<p>sgid</p>
+<p>所有组的权限   g+s</p>
+<p>sbid</p>
+<p>目录  o+t</p>
+<p>chmod 权限  文件名称  （-R 目录）</p>
+<p>chown 用户名称:用户组名  </p>
+<p>隐藏权限</p>
+<p>chattr   设置  +    -</p>
+<p>lsattr 查看</p>
+<p>i 删除 </p>
+<p>a 清空原来的内容</p>
+<p>FACL权限</p>
+<p>file access control list</p>
+<p>setfacl 设置</p>
+<p>setfacl -Rm u:zhangsan:rwx</p>
+<p>getfacl </p>
 
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://huangpu311.github.io/xiaojiang/2018/03/29/centos7 命令/" data-id="cjlvy99i00009movajynzp9td" class="article-share-link">Share</a>
+      <a data-url="https://huangpu311.github.io/xiaojiang/2018/03/29/centos7 命令/" data-id="cjnblvxvt0000povaw0qvfruq" class="article-share-link">Share</a>
       
       
     </footer>

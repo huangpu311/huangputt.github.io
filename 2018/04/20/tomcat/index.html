@@ -7,14 +7,17 @@
   
   <title>tomcat | 小江的个人博客</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta property="og:type" content="article">
+  <meta name="description" content="tomcat 架构目录结构  conf      catalina.policy    安全策略文件，控制jvm相关权限 ,参考java.security.Perission catalina.properties  Tomcat  catalina 行为控制配置文件，比如common classLoader logging.properties  Tomcat 日志配置文件，jdk logger">
+<meta property="og:type" content="article">
 <meta property="og:title" content="tomcat">
 <meta property="og:url" content="https://huangpu311.github.io/xiaojiang/2018/04/20/tomcat/index.html">
 <meta property="og:site_name" content="小江的个人博客">
+<meta property="og:description" content="tomcat 架构目录结构  conf      catalina.policy    安全策略文件，控制jvm相关权限 ,参考java.security.Perission catalina.properties  Tomcat  catalina 行为控制配置文件，比如common classLoader logging.properties  Tomcat 日志配置文件，jdk logger">
 <meta property="og:locale" content="default">
-<meta property="og:updated_time" content="2018-04-20T04:49:03.916Z">
+<meta property="og:updated_time" content="2018-09-28T09:53:47.150Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="tomcat">
+<meta name="twitter:description" content="tomcat 架构目录结构  conf      catalina.policy    安全策略文件，控制jvm相关权限 ,参考java.security.Perission catalina.properties  Tomcat  catalina 行为控制配置文件，比如common classLoader logging.properties  Tomcat 日志配置文件，jdk logger">
   
     <link rel="alternate" href="/xiaojiang/atom.xml" title="小江的个人博客" type="application/atom+xml">
   
@@ -83,11 +86,33 @@
     
     <div class="article-entry" itemprop="articleBody">
       
-        
+        <h1 id="tomcat-架构"><a href="#tomcat-架构" class="headerlink" title="tomcat 架构"></a>tomcat 架构</h1><h2 id="目录结构"><a href="#目录结构" class="headerlink" title="目录结构"></a>目录结构</h2><p>  conf  </p>
+<p>   catalina.policy    安全策略文件，控制jvm相关权限 ,参考java.security.Perission</p>
+<p>catalina.properties  Tomcat  catalina 行为控制配置文件，比如common classLoader</p>
+<p>logging.properties  Tomcat 日志配置文件，jdk logger</p>
+<p>server.xml :   Tomcat Server 的配置文件</p>
+<p>tomcat-users.xml  :Tomcat 角色配置文件，（Realm文件实现方式）</p>
+<p>context.xml  :全局的context配置文件</p>
+<p>web.xml sevlet标准的web.xml部署文件</p>
+<p>ETag 是Entity Tag的缩写，实体标签</p>
+<p>当浏览器请求服务器的某项资源时，服务器根据A算出一个哈希值  （xxx），并通过ETag返回给浏览器，浏览器吧”xxxx”哈希值和A同时换成在本地，当下次再次向服务器请求A时，如果A发生变换就把A返回给浏览器(200)，如果发现A没有变化就给浏览器返回一个304未修改。这样通过浏览器端的换成，可以节省服务器的带宽。</p>
+<p>lib目录</p>
+<p>存放公用的类库</p>
+<p>logs 目录</p>
+<p>localhost +日期  ：当tomcat应用起不来的时候，看此文件</p>
+<p>catalina.log   控制台输出，System.out 可以外置</p>
+<p>webapps目录:</p>
+<p>简化web部署</p>
+<p>方法一 ：放置在webapps目录下</p>
+<p>方法二：修改server.xml   在host下增加context</p>
+<p>  docBase  配置路径</p>
+<p>方法三：独立的context xml配置文件</p>
+<p>conf\Catalina\localhost   路径下  名称为contextPath ，内容配置context内</p>
+
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://huangpu311.github.io/xiaojiang/2018/04/20/tomcat/" data-id="cjlvy99i5000dmovawt3eis6z" class="article-share-link">Share</a>
+      <a data-url="https://huangpu311.github.io/xiaojiang/2018/04/20/tomcat/" data-id="cjnblvxxb000epovajxewk8ge" class="article-share-link">Share</a>
       
       
     </footer>
