@@ -14,7 +14,7 @@
 <meta property="og:site_name" content="小江的个人博客">
 <meta property="og:description" content="防火墙zone 区域 Runtime ：当前生效，重启之后失效。 Permanent:永久生效，当前不生效，重启后生效 查看已经开放的接口 1firewall-cmd --list-ports 开启端口 1firewall-cmd --zone=public --add-port=80/tcp --permanent firewall-cmd –zone=public –add-port=2181">
 <meta property="og:locale" content="default">
-<meta property="og:updated_time" content="2018-10-16T08:21:51.845Z">
+<meta property="og:updated_time" content="2019-04-19T05:36:35.058Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="centos7 命令">
 <meta name="twitter:description" content="防火墙zone 区域 Runtime ：当前生效，重启之后失效。 Permanent:永久生效，当前不生效，重启后生效 查看已经开放的接口 1firewall-cmd --list-ports 开启端口 1firewall-cmd --zone=public --add-port=80/tcp --permanent firewall-cmd –zone=public –add-port=2181">
@@ -123,6 +123,10 @@
 </blockquote>
 <figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">rpm -qa | grep mysql 查看是否安装mysql</span><br><span class="line">rpm -e --nodeps mysql  删除mysql服务</span><br></pre></td></tr></table></figure>
 <p> mysql 5.6 安装<a href="https://www.cnblogs.com/xiaojf/p/6561312.html" target="_blank" rel="noopener">https://www.cnblogs.com/xiaojf/p/6561312.html</a></p>
+<ol start="5">
+<li>7 &lt; <a href="http://www.php.cn/mysql-tutorials-386847.html&gt;" target="_blank" rel="noopener">http://www.php.cn/mysql-tutorials-386847.html&gt;</a> </li>
+</ol>
+<p><a href="https://blog.csdn.net/github_38336924/article/details/82221258" target="_blank" rel="noopener">https://blog.csdn.net/github_38336924/article/details/82221258</a>  jdk安装</p>
 <p>####登录到msyql</p>
 <p>5.7版本默认对于root帐号有一个随机密码，可以通过 grep “password” /var/log/mysqld.log获得，root@localhost: 此处为随机密码<br>运行mysql -uroot -p 回车<br>粘贴随机密码</p>
 <h4 id="操作"><a href="#操作" class="headerlink" title="操作"></a>操作</h4><p>默认的随机密码是没办法直接对数据库做操作的，需要修改密码，然后，5.7版本用了validate_password密码加强插件，因此在修改密码的时候绝对不是 123456 能糊弄过去的。需要严格按照规范去设置密码<br>但是，如果想让密码简单点也可以，降低安全策略， 登录到mysql客户端执行如下两条命令</p>
@@ -278,11 +282,396 @@
 <p>setfacl 设置</p>
 <p>setfacl -Rm u:zhangsan:rwx</p>
 <p>getfacl </p>
+<h2 id="实验楼"><a href="#实验楼" class="headerlink" title="实验楼"></a>实验楼</h2><h3 id="more命令"><a href="#more命令" class="headerlink" title="more命令"></a>more命令</h3><p>more命令功能类似于cat，cat 命令是将整个文件的内容从上到下显示在屏幕上。more命令会一页一页的显示,方便使用者阅读，而最基本的执行就是空白键(space)往下一页显示，按b键就会忘回(back)一页显示，而且还有搜寻字符串的功能，more命令从前向后读取文件，因此在启动时就加载整个文件</p>
+<p>命令格式 选项  文件</p>
+<table>
+<thead>
+<tr>
+<th>参数</th>
+<th>描述</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>+n</td>
+<td>从第n行开始</td>
+</tr>
+<tr>
+<td>-n</td>
+<td>定义屏幕大小为n行</td>
+</tr>
+<tr>
+<td>+/pattern</td>
+<td>在每个档案显示前搜寻该字符串，然后从该字符串前两行之后开始显示</td>
+</tr>
+<tr>
+<td>-c</td>
+<td>从顶部清屏，然后显示</td>
+</tr>
+<tr>
+<td>-d</td>
+<td>禁用响铃功能</td>
+</tr>
+<tr>
+<td>-p</td>
+<td>通过清除窗口而不是滚屏来对文件进行幻夜，与-c选项相似</td>
+</tr>
+<tr>
+<td>-s</td>
+<td>把连续的多个空行显示为一行</td>
+</tr>
+<tr>
+<td>-u</td>
+<td>把文件内容中的下划线去掉</td>
+</tr>
+</tbody>
+</table>
+<p>常用操作</p>
+<table>
+<thead>
+<tr>
+<th>符号</th>
+<th>描述</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>=</td>
+<td>输出当前行的行号</td>
+</tr>
+<tr>
+<td>q</td>
+<td>退出more</td>
+</tr>
+<tr>
+<td>空格键</td>
+<td>向下滚动已屏</td>
+</tr>
+<tr>
+<td>b</td>
+<td>返回上一屏</td>
+</tr>
+</tbody>
+</table>
+<h3 id="less命令"><a href="#less命令" class="headerlink" title="less命令"></a>less命令</h3><p>命令格式</p>
+<p>less 选项 文件</p>
+<p>常用参数</p>
+<table>
+<thead>
+<tr>
+<th>参数</th>
+<th>描述</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>-e</td>
+<td>当文件显示结束后，自动离开</td>
+</tr>
+<tr>
+<td>-f</td>
+<td>强迫打开特殊文件，如外围设备代号，目录和二进制文件</td>
+</tr>
+<tr>
+<td>-i</td>
+<td>忽略搜索时的大小写</td>
+</tr>
+<tr>
+<td>-m</td>
+<td>显示类似more命令的百分比</td>
+</tr>
+<tr>
+<td>-N</td>
+<td>显示每行的行号</td>
+</tr>
+<tr>
+<td>-s</td>
+<td>显示连续空行为一行</td>
+</tr>
+</tbody>
+</table>
+<p>常用操作</p>
+<table>
+<thead>
+<tr>
+<th>符号</th>
+<th>描述</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>/字符串</td>
+<td>向下搜索字符串的功能</td>
+</tr>
+<tr>
+<td>?字符串</td>
+<td>向上搜索字符串的功能</td>
+</tr>
+<tr>
+<td>n</td>
+<td>重复前一个搜索</td>
+</tr>
+<tr>
+<td>-N</td>
+<td>反向重复前一个搜索</td>
+</tr>
+<tr>
+<td>b</td>
+<td>向前翻一页</td>
+</tr>
+<tr>
+<td>d</td>
+<td>向后翻半页</td>
+</tr>
+<tr>
+<td>q</td>
+<td>退出less命令</td>
+</tr>
+<tr>
+<td>空格键</td>
+<td>向后翻一页</td>
+</tr>
+<tr>
+<td>向上键</td>
+<td>向上翻动一行</td>
+</tr>
+<tr>
+<td>向下键</td>
+<td>向下翻动一页</td>
+</tr>
+</tbody>
+</table>
+<h3 id="head命令"><a href="#head命令" class="headerlink" title="head命令"></a>head命令</h3><p>head用来显示档案的开头至标准输出中，默认head命令打印起相应文件的开头10行</p>
+<p>命令格式</p>
+<p>head  选项  文件</p>
+<table>
+<thead>
+<tr>
+<th>常用参数</th>
+<th>描述</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>-q</td>
+<td>隐藏文件名</td>
+</tr>
+<tr>
+<td>-v</td>
+<td>显示文件名</td>
+</tr>
+<tr>
+<td>-c&lt;字节&gt;</td>
+<td>显示字节数</td>
+</tr>
+<tr>
+<td>-n&lt;行数&gt;</td>
+<td>显示的行数</td>
+</tr>
+</tbody>
+</table>
+<h3 id="tail-命令"><a href="#tail-命令" class="headerlink" title="tail 命令"></a>tail 命令</h3><p>tail 命令主要用于显示指定文件末尾内容，常用查看日志文件。</p>
+<p>命令格式</p>
+<p>tail 选项 文件</p>
+<p>常用参数</p>
+<table>
+<thead>
+<tr>
+<th>参数</th>
+<th>描述</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>-f</td>
+<td>循环读取</td>
+</tr>
+<tr>
+<td>-q</td>
+<td>不显示处理信息</td>
+</tr>
+<tr>
+<td>-v</td>
+<td>显示详细的处理信息</td>
+</tr>
+<tr>
+<td>-c&lt;字节&gt;</td>
+<td>显示的字节数</td>
+</tr>
+<tr>
+<td>-n&lt;行数&gt;</td>
+<td>显示行数</td>
+</tr>
+</tbody>
+</table>
+<h3 id="which-命令"><a href="#which-命令" class="headerlink" title="which 命令"></a>which 命令</h3><p>which 命令的作用是在path变量指定的路径中搜索可执行文件 所在的位置，它一般用来确认系统中是否安装了指定的软件。</p>
+<p>命令格式</p>
+<p>which 可执行文件名称</p>
+<h3 id="whereis-命令"><a href="#whereis-命令" class="headerlink" title="whereis 命令"></a>whereis 命令</h3><p>whereis 命令主要用于定位可执行文件、源代码文件、帮助文件在文件系统中的位置，whereis命令还具有搜索源代码、指定备用搜索路径和索索不寻常的能力。</p>
+<p>whereis命令查询速度非常快，这是因为他根本不是在磁盘中漫无目的的乱找，而是在一个数据库中(/var/lib/mlocate/)查询，这个数据库是linux系统自动创建的，包含本地所有文件的信息，并且每天通过自动执行updatedb命令更新一次，这个正是因为这个数据库每天才更新一次，就会使得whereis命令的搜索结果有时候会不准确，比如刚添加的文件可能搜索不到。</p>
+<p>命令格式</p>
+<p>whereis 选项 文件</p>
+<p>常用参数</p>
+<table>
+<thead>
+<tr>
+<th>参数</th>
+<th>描述</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>-b</td>
+<td>定位可执行文件</td>
+</tr>
+<tr>
+<td>-m</td>
+<td>定位帮助文件</td>
+</tr>
+<tr>
+<td>-s</td>
+<td>定位源代码文件</td>
+</tr>
+<tr>
+<td>-u</td>
+<td>搜索默认路径下除可执行文件、源代码文件、帮助文件以外的其他文件</td>
+</tr>
+<tr>
+<td>-B</td>
+<td>指定搜素可执行文件的路径</td>
+</tr>
+<tr>
+<td>-M</td>
+<td>指定搜素帮助文件的路径</td>
+</tr>
+<tr>
+<td>-S</td>
+<td>指定搜索源代码文件的路径</td>
+</tr>
+</tbody>
+</table>
+<h3 id="locate命令"><a href="#locate命令" class="headerlink" title="locate命令"></a>locate命令</h3><p>locate命令跟whereis命令类似，且他们使用的是相同的数据库，但whereis命令只能搜索可执行文件、联机帮助和源代码文件，如果要获得更全面的搜索结果，可以用时locate命令。</p>
+<p>locate命令是用来十分复杂的匹配语法，可以使用特殊字元（如<code>*</code>,<code>?</code>）来指定需要查找的样本</p>
+<p>命令格式</p>
+<p>locate 选项 搜索字符串</p>
+<p>常用参数</p>
+<table>
+<thead>
+<tr>
+<th>参数</th>
+<th>描述</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>-q</td>
+<td>安静模式，不会显示任何错误信息</td>
+</tr>
+<tr>
+<td>-n</td>
+<td>至多显示n个输出</td>
+</tr>
+<tr>
+<td>-r</td>
+<td>使用正则表达式做寻找的条件</td>
+</tr>
+<tr>
+<td>-V</td>
+<td>显示版本讯息</td>
+</tr>
+</tbody>
+</table>
+<h3 id="find-命令"><a href="#find-命令" class="headerlink" title="find 命令"></a>find 命令</h3><p>find命令主要作用是沿着文件层次结构向下遍历，匹配符合条件的文件，并执行相应的操作。</p>
+<p>命令格式</p>
+<p>find 选项 搜索路径 表达式</p>
+<p>默认路径是当前目录，默认表达式为-print</p>
+<p>表达式可能是由下列成分组成：操作符、选项 、测试表达式以及动作</p>
+<table>
+<thead>
+<tr>
+<th>参数</th>
+<th>描述</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>-print</td>
+<td>find命令将匹配的文件输出到标准输出</td>
+</tr>
+<tr>
+<td>-exec</td>
+<td>find命令对匹配的文件执行该参数所给出的shell命令</td>
+</tr>
+<tr>
+<td>-name</td>
+<td>按照文件名来查找</td>
+</tr>
+<tr>
+<td>-type</td>
+<td>查找某一类型的文件</td>
+</tr>
+<tr>
+<td>-prune</td>
+<td>使用这一选项可以使find命令不在当前指定的目录中查找</td>
+</tr>
+<tr>
+<td>-user</td>
+<td>按照文件属性来查询文件</td>
+</tr>
+<tr>
+<td>-group</td>
+<td>按照文件所属组来查找文件</td>
+</tr>
+<tr>
+<td>-mtime -n +n</td>
+<td>按照文件的更高时间来查询， -n 表示文件更改时间距现在小于 n天，+n 表示文件更改时间距现在大于 n 天，find 命令还有-atime 和 -ctime 选项</td>
+</tr>
+</tbody>
+</table>
+<h3 id="wc-命令"><a href="#wc-命令" class="headerlink" title="wc 命令"></a>wc 命令</h3><p>wc命令是一个统计工具，主要用来显示文件所包含的行、字和字节数。</p>
+<p>wc命令是word count的缩写。</p>
+<h3 id="grep命令"><a href="#grep命令" class="headerlink" title="grep命令"></a>grep命令</h3><p>命令格式</p>
+<p>grep 选项 pattern  files</p>
+<p>常用参数</p>
+<table>
+<thead>
+<tr>
+<th>参数</th>
+<th>描述</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>-c</td>
+<td>计算找到 搜寻字符串 的次数</td>
+</tr>
+<tr>
+<td>-i</td>
+<td>忽略大小写的不同</td>
+</tr>
+<tr>
+<td>-n</td>
+<td>输出行数</td>
+</tr>
+<tr>
+<td>-v</td>
+<td>反向选择，打印不匹配的行</td>
+</tr>
+<tr>
+<td>-f</td>
+<td>递归搜索</td>
+</tr>
+<tr>
+<td>–color =auto</td>
+<td>将找到的关键词部分加上颜色显示</td>
+</tr>
+</tbody>
+</table>
 
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://huangpu311.github.io/xiaojiang/2018/03/29/centos7 命令/" data-id="cjnblvxvt0000povaw0qvfruq" class="article-share-link">Share</a>
+      <a data-url="https://huangpu311.github.io/xiaojiang/2018/03/29/centos7 命令/" data-id="ck8h6wq6e0001ecvaoa82gbs9" class="article-share-link">Share</a>
       
       
     </footer>
@@ -322,7 +711,7 @@
   <div class="widget-wrap">
     <h3 class="widget-title">Tags</h3>
     <div class="widget">
-      <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/xiaojiang/tags/spring源码/">spring源码</a></li><li class="tag-list-item"><a class="tag-list-link" href="/xiaojiang/tags/分销/">分销</a></li></ul>
+      <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/xiaojiang/tags/python/">python</a></li><li class="tag-list-item"><a class="tag-list-link" href="/xiaojiang/tags/spring源码/">spring源码</a></li><li class="tag-list-item"><a class="tag-list-link" href="/xiaojiang/tags/分销/">分销</a></li></ul>
     </div>
   </div>
 
@@ -332,7 +721,7 @@
   <div class="widget-wrap">
     <h3 class="widget-title">Tag Cloud</h3>
     <div class="widget tagcloud">
-      <a href="/xiaojiang/tags/spring源码/" style="font-size: 10px;">spring源码</a> <a href="/xiaojiang/tags/分销/" style="font-size: 10px;">分销</a>
+      <a href="/xiaojiang/tags/python/" style="font-size: 10px;">python</a> <a href="/xiaojiang/tags/spring源码/" style="font-size: 10px;">spring源码</a> <a href="/xiaojiang/tags/分销/" style="font-size: 10px;">分销</a>
     </div>
   </div>
 
@@ -341,7 +730,7 @@
   <div class="widget-wrap">
     <h3 class="widget-title">Archives</h3>
     <div class="widget">
-      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/xiaojiang/archives/2018/07/">July 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/xiaojiang/archives/2018/05/">May 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/xiaojiang/archives/2018/04/">April 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/xiaojiang/archives/2018/03/">March 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/xiaojiang/archives/2018/02/">February 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/xiaojiang/archives/2018/01/">January 2018</a></li></ul>
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/xiaojiang/archives/2019/09/">September 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/xiaojiang/archives/2019/02/">February 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/xiaojiang/archives/2019/01/">January 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/xiaojiang/archives/2018/07/">July 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/xiaojiang/archives/2018/05/">May 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/xiaojiang/archives/2018/04/">April 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/xiaojiang/archives/2018/03/">March 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/xiaojiang/archives/2018/02/">February 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/xiaojiang/archives/2018/01/">January 2018</a></li></ul>
     </div>
   </div>
 
@@ -354,23 +743,23 @@
       <ul>
         
           <li>
-            <a href="/xiaojiang/2018/07/19/分销管理总览/">(no title)</a>
+            <a href="/xiaojiang/2019/09/05/spring-boot/">(no title)</a>
           </li>
         
           <li>
-            <a href="/xiaojiang/2018/05/02/操作技巧/">操作技巧</a>
+            <a href="/xiaojiang/2019/02/27/正则表达式/">正则表达式</a>
           </li>
         
           <li>
-            <a href="/xiaojiang/2018/04/23/spring源码阅读/">spring源码阅读</a>
+            <a href="/xiaojiang/2019/02/22/并发编程/">并发编程</a>
           </li>
         
           <li>
-            <a href="/xiaojiang/2018/04/20/tomcat/">tomcat</a>
+            <a href="/xiaojiang/2019/01/24/mybatis/">mybatis</a>
           </li>
         
           <li>
-            <a href="/xiaojiang/2018/04/20/分销管理/">分销管理</a>
+            <a href="/xiaojiang/2019/01/18/java面试题/">java面试题</a>
           </li>
         
       </ul>
@@ -385,7 +774,7 @@
   
   <div class="outer">
     <div id="footer-info" class="inner">
-      &copy; 2018 小江<br>
+      &copy; 2020 小江<br>
       Powered by <a href="http://hexo.io/" target="_blank">Hexo</a>
     </div>
   </div>

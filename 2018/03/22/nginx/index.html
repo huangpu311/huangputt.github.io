@@ -7,17 +7,17 @@
   
   <title>nginx | 小江的个人博客</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="nginx命令nginx三个模块核心模块： HTTP模块、EVENT模块和MAIL模块基础模块： HTTP Access模块、HTTP FastCGI模块、HTTP Proxy模块和HTTP Rewrite模块第三方模块： HTTP Upstream Request Hash模块、Notice模块和HTTP Access Key模块及用户自己开发的模块 来源: 实验楼 链接: https://ww">
+  <meta name="description" content="nginx命令nginx三个模块核心模块： HTTP模块、EVENT模块和MAIL模块基础模块： HTTP Access模块、HTTP FastCGI模块、HTTP Proxy模块和HTTP Rewrite模块第三方模块： HTTP Upstream Request Hash模块、Notice模块和HTTP Access Key模块及用户自己开发的模块 nginx安装1、tar -zxvf  安装">
 <meta property="og:type" content="article">
 <meta property="og:title" content="nginx">
 <meta property="og:url" content="https://huangpu311.github.io/xiaojiang/2018/03/22/nginx/index.html">
 <meta property="og:site_name" content="小江的个人博客">
-<meta property="og:description" content="nginx命令nginx三个模块核心模块： HTTP模块、EVENT模块和MAIL模块基础模块： HTTP Access模块、HTTP FastCGI模块、HTTP Proxy模块和HTTP Rewrite模块第三方模块： HTTP Upstream Request Hash模块、Notice模块和HTTP Access Key模块及用户自己开发的模块 来源: 实验楼 链接: https://ww">
+<meta property="og:description" content="nginx命令nginx三个模块核心模块： HTTP模块、EVENT模块和MAIL模块基础模块： HTTP Access模块、HTTP FastCGI模块、HTTP Proxy模块和HTTP Rewrite模块第三方模块： HTTP Upstream Request Hash模块、Notice模块和HTTP Access Key模块及用户自己开发的模块 nginx安装1、tar -zxvf  安装">
 <meta property="og:locale" content="default">
-<meta property="og:updated_time" content="2018-07-17T09:41:46.918Z">
+<meta property="og:updated_time" content="2019-05-07T13:24:19.469Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="nginx">
-<meta name="twitter:description" content="nginx命令nginx三个模块核心模块： HTTP模块、EVENT模块和MAIL模块基础模块： HTTP Access模块、HTTP FastCGI模块、HTTP Proxy模块和HTTP Rewrite模块第三方模块： HTTP Upstream Request Hash模块、Notice模块和HTTP Access Key模块及用户自己开发的模块 来源: 实验楼 链接: https://ww">
+<meta name="twitter:description" content="nginx命令nginx三个模块核心模块： HTTP模块、EVENT模块和MAIL模块基础模块： HTTP Access模块、HTTP FastCGI模块、HTTP Proxy模块和HTTP Rewrite模块第三方模块： HTTP Upstream Request Hash模块、Notice模块和HTTP Access Key模块及用户自己开发的模块 nginx安装1、tar -zxvf  安装">
   
     <link rel="alternate" href="/xiaojiang/atom.xml" title="小江的个人博客" type="application/atom+xml">
   
@@ -87,10 +87,8 @@
     <div class="article-entry" itemprop="articleBody">
       
         <h2 id="nginx命令"><a href="#nginx命令" class="headerlink" title="nginx命令"></a>nginx命令</h2><h3 id="nginx三个模块"><a href="#nginx三个模块" class="headerlink" title="nginx三个模块"></a>nginx三个模块</h3><p>核心模块： HTTP模块、EVENT模块和MAIL模块<br>基础模块： HTTP Access模块、HTTP FastCGI模块、HTTP Proxy模块和HTTP Rewrite模块<br>第三方模块： HTTP Upstream Request Hash模块、Notice模块和HTTP Access Key模块及用户自己开发的模块</p>
-<p>来源: 实验楼</p>
-<p>链接: <a href="https://www.shiyanlou.com/courses/95" target="_blank" rel="noopener">https://www.shiyanlou.com/courses/95</a></p>
-<p>本课程内容，由作者授权实验楼发布，未经允许，禁止转载、下载及非法传播</p>
 <h3 id="nginx安装"><a href="#nginx安装" class="headerlink" title="nginx安装"></a>nginx安装</h3><p>1、tar -zxvf  安装包</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">./configure: error: C compiler cc is not found</span><br><span class="line">如果报错了则执行下面</span><br><span class="line">yum -y install gcc gcc-c++ autoconf automake make</span><br><span class="line"></span><br><span class="line">./configure: error: the HTTP rewrite module requires the PCRE library</span><br><span class="line">yum -y install pcre-devel</span><br><span class="line"></span><br><span class="line">yum install -y zlib-devel</span><br></pre></td></tr></table></figure>
 <p>2、.进入文件夹 运行 ./configure –prefix=  目录，默认安装到/usr/local/nginx</p>
 <p>3、运行 make &amp; make install</p>
 <p>启动命令</p>
@@ -145,11 +143,32 @@
 <h3 id="upstream-模块"><a href="#upstream-模块" class="headerlink" title="upstream 模块"></a>upstream 模块</h3><p>模块：ngx_http_upstream_modules</p>
 <p>功能简介：该指令使请求被上行信道之间的基于客户端的 IP 地址分布</p>
 <h3 id="模拟文件命令"><a href="#模拟文件命令" class="headerlink" title="模拟文件命令"></a>模拟文件命令</h3><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#</span><span class="bash"><span class="comment">#############每个指令必须要用分号结束##############</span></span></span><br><span class="line"><span class="meta">#</span><span class="bash">user administrator administrators; <span class="comment">#配置用户或组，默认nobody nobody</span></span></span><br><span class="line"><span class="meta">#</span><span class="bash">worker_processes 2 ;<span class="comment"># 允许生成的进程数，默认为1</span></span></span><br><span class="line"><span class="meta">#</span><span class="bash">pid /nginx/pid/nginx.pid; <span class="comment"># 指定nginx进程允许文件存放地址</span></span></span><br><span class="line">error_log log/error.log debug ; # 制定日志路径级别，这个设置可以放入全局块，http块，server块，级别依次为debug|info|notice|warn|error|crit|alert|emerg</span><br><span class="line">events &#123;</span><br><span class="line">    accept_mutes on; #设置网路连接序列化，防止出现惊群现象发生，默认为on</span><br><span class="line">    multi_accept on; #设置一个进程是否同时</span><br><span class="line">    #use  epoll; #事件驱动模型 select|poll|kqueue|epoll|resig|dev|poll|eventport</span><br><span class="line">    work_connections 1024;</span><br><span class="line">&#125;</span><br><span class="line">http &#123;</span><br><span class="line">    include mime.types;# 文件扩展名与文件类型映射表</span><br><span class="line">    default_type application/octet-stream；#默认文件类型，默认为text/plain</span><br><span class="line">    access_log off;#取消服务日志</span><br><span class="line">    log_format myFormat '$remote_addr-'</span><br><span class="line">    </span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h2 id="nginx-的配置"><a href="#nginx-的配置" class="headerlink" title="nginx 的配置"></a>nginx 的配置</h2><p> nginx使用一个master 进程来管理多个worker进程，一般情况下，worker进程的数量与服务器上的cpu核心数相等。worker是真正提供互联网服务的。</p>
+<h3 id="Nginx的通用语法"><a href="#Nginx的通用语法" class="headerlink" title="Nginx的通用语法"></a>Nginx的通用语法</h3><ul>
+<li><p>块配置 </p>
+<blockquote>
+<p>块配置项由一个块配置项名和一对大括号组成。如下</p>
+<figure class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line">&gt; events&#123;</span><br><span class="line">&gt;     ....</span><br><span class="line">&gt; &#125;</span><br><span class="line">&gt; http &#123;</span><br><span class="line">&gt;     upstream backend &#123;</span><br><span class="line">&gt;         server 127.0.0.1:8080</span><br><span class="line">&gt;     &#125;</span><br><span class="line">&gt;     gzip on ;</span><br><span class="line">&gt;     server &#123;</span><br><span class="line">&gt;         ...</span><br><span class="line">&gt;             location /webstatic &#123;</span><br><span class="line">&gt;              	gizp: off;</span><br><span class="line">&gt;         &#125;</span><br><span class="line">&gt;     &#125;</span><br><span class="line">&gt; &#125;</span><br><span class="line">&gt;</span><br></pre></td></tr></table></figure>
+</blockquote>
+<blockquote>
+<p>块配置项可以嵌套。内层块直接继承外层块。</p>
+</blockquote>
+</li>
+<li><p>配置的语法格式</p>
+<blockquote>
+<p>基本配置语法： 配置项名  配置项值1  配置项值2</p>
+<p>每行配置的结尾需要加上分号</p>
+</blockquote>
+</li>
+<li></li>
+</ul>
+<p>配置参考 <a href="https://www.cnblogs.com/chenhuan821361335/p/8185027.html" target="_blank" rel="noopener">https://www.cnblogs.com/chenhuan821361335/p/8185027.html</a></p>
+<p><a href="https://blog.csdn.net/code_shadow/article/details/81546471" target="_blank" rel="noopener">https://blog.csdn.net/code_shadow/article/details/81546471</a></p>
 
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://huangpu311.github.io/xiaojiang/2018/03/22/nginx/" data-id="cjnblvxxv000qpova1keywzwq" class="article-share-link">Share</a>
+      <a data-url="https://huangpu311.github.io/xiaojiang/2018/03/22/nginx/" data-id="ck8h6wq74000decva80vgpc06" class="article-share-link">Share</a>
       
       
     </footer>
@@ -189,7 +208,7 @@
   <div class="widget-wrap">
     <h3 class="widget-title">Tags</h3>
     <div class="widget">
-      <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/xiaojiang/tags/spring源码/">spring源码</a></li><li class="tag-list-item"><a class="tag-list-link" href="/xiaojiang/tags/分销/">分销</a></li></ul>
+      <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/xiaojiang/tags/python/">python</a></li><li class="tag-list-item"><a class="tag-list-link" href="/xiaojiang/tags/spring源码/">spring源码</a></li><li class="tag-list-item"><a class="tag-list-link" href="/xiaojiang/tags/分销/">分销</a></li></ul>
     </div>
   </div>
 
@@ -199,7 +218,7 @@
   <div class="widget-wrap">
     <h3 class="widget-title">Tag Cloud</h3>
     <div class="widget tagcloud">
-      <a href="/xiaojiang/tags/spring源码/" style="font-size: 10px;">spring源码</a> <a href="/xiaojiang/tags/分销/" style="font-size: 10px;">分销</a>
+      <a href="/xiaojiang/tags/python/" style="font-size: 10px;">python</a> <a href="/xiaojiang/tags/spring源码/" style="font-size: 10px;">spring源码</a> <a href="/xiaojiang/tags/分销/" style="font-size: 10px;">分销</a>
     </div>
   </div>
 
@@ -208,7 +227,7 @@
   <div class="widget-wrap">
     <h3 class="widget-title">Archives</h3>
     <div class="widget">
-      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/xiaojiang/archives/2018/07/">July 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/xiaojiang/archives/2018/05/">May 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/xiaojiang/archives/2018/04/">April 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/xiaojiang/archives/2018/03/">March 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/xiaojiang/archives/2018/02/">February 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/xiaojiang/archives/2018/01/">January 2018</a></li></ul>
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/xiaojiang/archives/2019/09/">September 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/xiaojiang/archives/2019/02/">February 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/xiaojiang/archives/2019/01/">January 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/xiaojiang/archives/2018/07/">July 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/xiaojiang/archives/2018/05/">May 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/xiaojiang/archives/2018/04/">April 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/xiaojiang/archives/2018/03/">March 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/xiaojiang/archives/2018/02/">February 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/xiaojiang/archives/2018/01/">January 2018</a></li></ul>
     </div>
   </div>
 
@@ -221,23 +240,23 @@
       <ul>
         
           <li>
-            <a href="/xiaojiang/2018/07/19/分销管理总览/">(no title)</a>
+            <a href="/xiaojiang/2019/09/05/spring-boot/">(no title)</a>
           </li>
         
           <li>
-            <a href="/xiaojiang/2018/05/02/操作技巧/">操作技巧</a>
+            <a href="/xiaojiang/2019/02/27/正则表达式/">正则表达式</a>
           </li>
         
           <li>
-            <a href="/xiaojiang/2018/04/23/spring源码阅读/">spring源码阅读</a>
+            <a href="/xiaojiang/2019/02/22/并发编程/">并发编程</a>
           </li>
         
           <li>
-            <a href="/xiaojiang/2018/04/20/tomcat/">tomcat</a>
+            <a href="/xiaojiang/2019/01/24/mybatis/">mybatis</a>
           </li>
         
           <li>
-            <a href="/xiaojiang/2018/04/20/分销管理/">分销管理</a>
+            <a href="/xiaojiang/2019/01/18/java面试题/">java面试题</a>
           </li>
         
       </ul>
@@ -252,7 +271,7 @@
   
   <div class="outer">
     <div id="footer-info" class="inner">
-      &copy; 2018 小江<br>
+      &copy; 2020 小江<br>
       Powered by <a href="http://hexo.io/" target="_blank">Hexo</a>
     </div>
   </div>

@@ -62,6 +62,517 @@
       <div class="outer">
         <section id="main">
   
+    <article id="post-spring-boot" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/xiaojiang/2019/09/05/spring-boot/" class="article-date">
+  <time datetime="2019-09-05T02:33:49.829Z" itemprop="datePublished">2019-09-05</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="https://huangpu311.github.io/xiaojiang/2019/09/05/spring-boot/" data-id="ck8h6wq5r0000ecva86s8zvtt" class="article-share-link">Share</a>
+      
+      
+    </footer>
+  </div>
+  
+</article>
+
+
+  
+    <article id="post-正则表达式" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/xiaojiang/2019/02/27/正则表达式/" class="article-date">
+  <time datetime="2019-02-27T06:01:43.000Z" itemprop="datePublished">2019-02-27</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/xiaojiang/2019/02/27/正则表达式/">正则表达式</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="https://huangpu311.github.io/xiaojiang/2019/02/27/正则表达式/" data-id="ck8h6wq84000wecvas81vd4sq" class="article-share-link">Share</a>
+      
+      
+    </footer>
+  </div>
+  
+</article>
+
+
+  
+    <article id="post-并发编程" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/xiaojiang/2019/02/22/并发编程/" class="article-date">
+  <time datetime="2019-02-22T08:23:29.000Z" itemprop="datePublished">2019-02-22</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/xiaojiang/2019/02/22/并发编程/">并发编程</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h2 id="线程状态"><a href="#线程状态" class="headerlink" title="线程状态"></a>线程状态</h2><p>New,初始状态,线程还未运行的时候(Thead state for a thread which has not yet started)</p>
+<p>READY 就绪状态</p>
+<p>RUNNABLE（运行状态）</p>
+<p>TERMINATED 终止状态,线程完全执行完成</p>
+<p>BLOCKED 阻塞状态   synchronized </p>
+<p>TIMED_WAITING ，线程等待状态,超时等待,sleep,wait lockSupport</p>
+<p>WATING 等待状态</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line">   <span class="keyword">public</span> <span class="keyword">static</span> <span class="class"><span class="keyword">class</span>  <span class="title">BlockedDemo</span> <span class="keyword">extends</span>  <span class="title">Thread</span></span>&#123;</span><br><span class="line">        <span class="function"><span class="keyword">public</span>  <span class="keyword">void</span> <span class="title">run</span> <span class="params">()</span></span>&#123;</span><br><span class="line">           <span class="keyword">synchronized</span> (BlockedDemo.class)&#123;</span><br><span class="line">               <span class="keyword">while</span> (<span class="keyword">true</span>)&#123;</span><br><span class="line">                   <span class="keyword">try</span> &#123;</span><br><span class="line">                       TimeUnit.SECONDS.sleep(<span class="number">100</span>);</span><br><span class="line">                   &#125; <span class="keyword">catch</span> (InterruptedException e) &#123;</span><br><span class="line">                       e.printStackTrace();</span><br><span class="line">                   &#125;</span><br><span class="line">               &#125;</span><br><span class="line">           &#125;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">new</span> Thread(<span class="keyword">new</span> BlockedDemo(),<span class="string">"blocked_0"</span>).start();</span><br><span class="line"></span><br><span class="line"><span class="keyword">new</span> Thread(<span class="keyword">new</span> BlockedDemo(),<span class="string">"blocked_1"</span>).start();</span><br></pre></td></tr></table></figure>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"><span class="string">"blocked_1"</span> #<span class="number">17</span> prio=<span class="number">5</span> os_prio=<span class="number">0</span> tid=<span class="number">0x000000001ae19800</span> nid=<span class="number">0x6318</span> waiting <span class="keyword">for</span> monitor entry [<span class="number">0x000000001bcbe000</span>]</span><br><span class="line">   java.lang.Thread.State: BLOCKED (on object monitor)</span><br><span class="line">        at com.xiaojiang.test.thread.ThreadStateDemo$BlockedDemo.run(ThreadStateDemo.java:<span class="number">49</span>)</span><br><span class="line">        - waiting to lock &lt;<span class="number">0x00000000d6331f58</span>&gt; (a java.lang.Class <span class="keyword">for</span> com.xiaojiang.test.thread.ThreadStateDemo$BlockedDemo)</span><br><span class="line">        at java.lang.Thread.run(Thread.java:<span class="number">748</span>)</span><br><span class="line"></span><br><span class="line"><span class="string">"blocked_0"</span> #<span class="number">15</span> prio=<span class="number">5</span> os_prio=<span class="number">0</span> tid=<span class="number">0x000000001ae18800</span> nid=<span class="number">0x5b80</span> waiting on condition [<span class="number">0x000000001bbbf000</span>]</span><br><span class="line">   java.lang.Thread.State: TIMED_WAITING (sleeping)</span><br><span class="line">        at java.lang.Thread.sleep(Native Method)</span><br><span class="line">        at java.lang.Thread.sleep(Thread.java:<span class="number">340</span>)</span><br><span class="line">        at java.util.concurrent.TimeUnit.sleep(TimeUnit.java:<span class="number">386</span>)</span><br><span class="line">        at com.xiaojiang.test.thread.ThreadStateDemo$BlockedDemo.run(ThreadStateDemo.java:<span class="number">49</span>)</span><br><span class="line">        - locked &lt;<span class="number">0x00000000d6331f58</span>&gt; (a java.lang.Class <span class="keyword">for</span> com.xiaojiang.test.thread.ThreadStateDemo$BlockedDemo)</span><br><span class="line">        at java.lang.Thread.run(Thread.java:<span class="number">748</span>)</span><br></pre></td></tr></table></figure>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">new</span> Thread(()-&gt;&#123;</span><br><span class="line">          <span class="keyword">while</span> (<span class="keyword">true</span>)&#123;</span><br><span class="line">              <span class="keyword">try</span> &#123;</span><br><span class="line">                  TimeUnit.SECONDS.sleep(<span class="number">100</span>);</span><br><span class="line">              &#125; <span class="keyword">catch</span> (InterruptedException e) &#123;</span><br><span class="line">                  e.printStackTrace();</span><br><span class="line">              &#125;</span><br><span class="line">          &#125;</span><br><span class="line">      &#125;,<span class="string">"timewaiting"</span>).start();</span><br></pre></td></tr></table></figure>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="string">"timewaiting"</span> #<span class="number">12</span> prio=<span class="number">5</span> os_prio=<span class="number">0</span> tid=<span class="number">0x000000001acdf800</span> nid=<span class="number">0x4c44</span> waiting on condition [<span class="number">0x000000001babe000</span>]</span><br><span class="line">   java.lang.Thread.State: TIMED_WAITING (sleeping)</span><br><span class="line">        at java.lang.Thread.sleep(Native Method)</span><br><span class="line">        at java.lang.Thread.sleep(Thread.java:<span class="number">340</span>)</span><br><span class="line">        at java.util.concurrent.TimeUnit.sleep(TimeUnit.java:<span class="number">386</span>)</span><br><span class="line">        at com.xiaojiang.test.thread.ThreadStateDemo.lambda$main$<span class="number">0</span>(ThreadStateDemo.java:<span class="number">16</span>)</span><br><span class="line">        at com.xiaojiang.test.thread.ThreadStateDemo$$Lambda$<span class="number">1</span>/<span class="number">1029991479.</span>run(Unknown Source)</span><br><span class="line">        at java.lang.Thread.run(Thread.java:<span class="number">748</span>)</span><br></pre></td></tr></table></figure>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">new</span> Thread(()-&gt;&#123;</span><br><span class="line">         <span class="keyword">while</span> (<span class="keyword">true</span>)&#123;</span><br><span class="line">             <span class="keyword">synchronized</span> (ThreadStateDemo.class)&#123;</span><br><span class="line">                 <span class="keyword">try</span> &#123;</span><br><span class="line">                     ThreadStateDemo.class.wait();</span><br><span class="line">                 &#125; <span class="keyword">catch</span> (InterruptedException e) &#123;</span><br><span class="line">                     e.printStackTrace();</span><br><span class="line">                 &#125;</span><br><span class="line">             &#125;</span><br><span class="line">         &#125;</span><br><span class="line">     &#125;,<span class="string">"waiting"</span>).start();</span><br></pre></td></tr></table></figure>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="string">"waiting"</span> #<span class="number">13</span> prio=<span class="number">5</span> os_prio=<span class="number">0</span> tid=<span class="number">0x000000001a7f9000</span> nid=<span class="number">0x46d8</span> in Object.wait() [<span class="number">0x000000001b5ce000</span>]</span><br><span class="line">   java.lang.Thread.State: WAITING (on object monitor)</span><br><span class="line">        at java.lang.Object.wait(Native Method)</span><br><span class="line">        - waiting on &lt;<span class="number">0x00000000d6006018</span>&gt; (a java.lang.Class <span class="keyword">for</span> com.xiaojiang.test.thread.ThreadStateDemo)</span><br><span class="line">        at java.lang.Object.wait(Object.java:<span class="number">502</span>)</span><br><span class="line">        at com.xiaojiang.test.thread.ThreadStateDemo.lambda$main$<span class="number">1</span>(ThreadStateDemo.java:<span class="number">28</span>)</span><br><span class="line">        - locked &lt;<span class="number">0x00000000d6006018</span>&gt; (a java.lang.Class <span class="keyword">for</span> com.xiaojiang.test.thread.ThreadStateDemo)</span><br><span class="line">        at com.xiaojiang.test.thread.ThreadStateDemo$$Lambda$<span class="number">2</span>/<span class="number">787604730.</span>run(Unknown Source)</span><br><span class="line">        at java.lang.Thread.run(Thread.java:<span class="number">748</span>)</span><br></pre></td></tr></table></figure>
+<h2 id="线程中止"><a href="#线程中止" class="headerlink" title="线程中止"></a>线程中止</h2><p>stop不建议使用</p>
+<p>优雅的关闭线程</p>
+<p>interrupt </p>
+<p>volatile </p>
+<p>##学习地址</p>
+<p><a href="https://blog.csdn.net/sinat_33087001/column/info/18048" target="_blank" rel="noopener">https://blog.csdn.net/sinat_33087001/column/info/18048</a></p>
+<p><a href="https://blog.csdn.net/sinat_33087001/article/details/77621118" target="_blank" rel="noopener">https://blog.csdn.net/sinat_33087001/article/details/77621118</a></p>
+<p><a href="https://blog.csdn.net/nalanmingdian/article/details/77800355" target="_blank" rel="noopener">https://blog.csdn.net/nalanmingdian/article/details/77800355</a></p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="https://huangpu311.github.io/xiaojiang/2019/02/22/并发编程/" data-id="ck8h6wq9h0012ecvaj57r8tou" class="article-share-link">Share</a>
+      
+      
+    </footer>
+  </div>
+  
+</article>
+
+
+  
+    <article id="post-mybatis" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/xiaojiang/2019/01/24/mybatis/" class="article-date">
+  <time datetime="2019-01-24T04:27:23.000Z" itemprop="datePublished">2019-01-24</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/xiaojiang/2019/01/24/mybatis/">mybatis</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="https://huangpu311.github.io/xiaojiang/2019/01/24/mybatis/" data-id="ck8h6wq73000cecva01i17lxd" class="article-share-link">Share</a>
+      
+      
+    </footer>
+  </div>
+  
+</article>
+
+
+  
+    <article id="post-java面试题" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/xiaojiang/2019/01/18/java面试题/" class="article-date">
+  <time datetime="2019-01-18T13:24:03.000Z" itemprop="datePublished">2019-01-18</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/xiaojiang/2019/01/18/java面试题/">java面试题</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <ol>
+<li><p>Thread 的run 和start 方法的区别</p>
+<p> start :无需等待代码执行完毕直接执行下面的代码，此时线程处于就绪状态，并没有运行，一旦得到cpu时间片，才开始执行</p>
+<p>run:线程要等到run方法执行完成之后才行，本质上还是一个线程</p>
+</li>
+<li><p>Nginx 配置文件</p>
+<p><a href="http://www.cnblogs.com/xiaogangqq123/archive/2011/03/02/1969006.html" target="_blank" rel="noopener">http://www.cnblogs.com/xiaogangqq123/archive/2011/03/02/1969006.html</a></p>
+<figure class="highlight nginx"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 运行用户</span></span><br><span class="line"><span class="attribute">user</span> www-data</span><br><span class="line"><span class="comment"># 启动进程，通常设置成和cpu的数量相等</span></span><br><span class="line">worker_processes <span class="number">1</span>;</span><br><span class="line"><span class="comment"># 全局错误日志及pid文件</span></span><br><span class="line"><span class="attribute">error_log</span> /var/log/nginx/error.log;</span><br><span class="line"><span class="attribute">pid</span> /var/run/nginx.pid;</span><br><span class="line"><span class="comment"># 工作模式及连接上线</span></span><br><span class="line">events&#123;</span><br><span class="line">    <span class="comment"># epoll 是多路复用IO的一种方式</span></span><br><span class="line">    <span class="attribute">use</span> <span class="literal">epoll</span>;</span><br><span class="line">    <span class="comment"># 单个后台worker porcess 进程最大并发连接数</span></span><br><span class="line">    <span class="attribute">worker_connections</span> <span class="number">1024</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+</li>
+</ol>
+<p><a href="https://bbs.csdn.net/topics/391909962" target="_blank" rel="noopener">https://bbs.csdn.net/topics/391909962</a></p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="https://huangpu311.github.io/xiaojiang/2019/01/18/java面试题/" data-id="ck8h6wq7n000lecvawfhd7x41" class="article-share-link">Share</a>
+      
+      
+    </footer>
+  </div>
+  
+</article>
+
+
+  
+    <article id="post-spring-batch" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/xiaojiang/2019/01/15/spring-batch/" class="article-date">
+  <time datetime="2019-01-15T06:21:57.000Z" itemprop="datePublished">2019-01-15</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/xiaojiang/2019/01/15/spring-batch/">spring-batch</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h2 id="spring-batch-结构"><a href="#spring-batch-结构" class="headerlink" title="spring batch 结构"></a>spring batch 结构</h2><p>spring batch 运行的基本单位是一个job，一个job就做一件批处理的事情，一个job包含很多step，step就是每个job要执行的单个步骤</p>
+<p>step里面会有tasklet，tasklet是一个任务单元，他是属于可以重复利用的东西，然后是chunk，chunk就是数据块，你需要定义多大数据量是一个chunk。</p>
+<p>chunk里面就是不断循环一个流程，读数据，处理数据，然后写数据，spring batch  会不断的循环这个流程，直到批处理数据完成。</p>
+<h2 id="文档翻译"><a href="#文档翻译" class="headerlink" title="文档翻译"></a>文档翻译</h2><h3 id="1、Spring-Batch-Introduction-spring-batch-介绍"><a href="#1、Spring-Batch-Introduction-spring-batch-介绍" class="headerlink" title="1、Spring  Batch Introduction (spring  batch 介绍)"></a>1、Spring  Batch Introduction (spring  batch 介绍)</h3><p>Many applications within the enterprise domain require bulk（容量） processing to perform(执行)  business operations in mission critical(关键的) environments.These business operations include:</p>
+<p>许多企业应用需要执行重要的批量任务，这些任务包括：</p>
+<p>Automated （自动的）,complex processiong of large volumes(体积、容量) of information that is most efficiently(高效的) processed（加工过的） without user interaction（互动）.</p>
+<p>用户不需要操作，就可以高效的、自动的执行大量的数据</p>
+<p>These operations typically(代表性的) include time-based event(such as month-end calculations,notices,or correspondence（通信）)</p>
+<p>这些操作包括基于时间的事件（比如整月的计算、通知、通信）</p>
+<p>Periodic(定期的) application of complex(复杂的) business rules processed repetitively （重复地）acrossvery large data sets (for example ,insurance(保险费) benefit（好处） determination(确定，决心) or rate adjustments)</p>
+<p>应用定期的扫描重复的数据集合（比如，保险费的处理或者利率的调整）</p>
+<p>Integration(整合) of information that is received from internal(本质) and external(表面的，外部的) systems that typically requires formatting,validation ,and processing in a transactional manner into the system of record .Batch processing is used to process billions of transactions（处理） every day for enterprises（企业）.</p>
+<p>从系统内部和外部在事物中整合验证。批量程序每天为企业处理数十亿·的数据.</p>
+<p>Spring batch  is a light weight ,comprehensive(综合的，广泛的) batch framework designed to enable the development of robust（强健的，健壮） batch applications vital（至关重要的） for the daily （日常的）operations of enterprise systems.Spring Batch builds upon(根据，在..之上) the characteristics（特性，特征） of the Spring Framework that people have come to expect (期望)(productivity,POJO-based development approach （方法）,and general ease of use),while making it easy for developers to access(使用) and leverage(杠杆） more advance enterprise services where necessary.Spring Batch is not a scheduling framework.There are many good enterprise schedulers (such as Quartz ,Tivoli,Control-M,etc) available in both the commercial（商业的） and open source spaces ,It is intended （故意的）to work in conjunction(结合) with a scheduler ,not replace as a scheduler.</p>
+<p>spring batch 是 个轻量级的软件，批量设计被用于企业的日常操作系统中，spring batch  建立在大家都用的spring框架之上（多产的、基于POJO方法的、并且适合易用的），它让需要的企业使用起来更加容易，spring batch 不是一个调度框架，有很多好的调度器 可用（如…）他们当中有商业的也有开源的，他被有意的设计成和一个调度器结合使用，并不是替代一个调度器。</p>
+<hr>
+<p>Spring batch  provides(规定) reusable (可再用的)functions （功能）that are essential(基本的，必要的) in processing（对..处理） large volumes of records ,including logging/tracing ,transaction management,job processing statistics,job  restart,skip , and resource management.It also provides more advanced technical services and features that enable extremely . high-volume and high performance(性能) batch  jobs though optimization(优化) and partitioning techniques .Spring Batch can be used in both simple use cases (such as reading a file into a database or running a stored procedure ) as well as complex（复杂的） ,high volume use cases (such as moving high volumes of data between databases ,transforming（转换，改造） it ,and so on ).High-volume batch jobs can leverage the framework in a highly scalable(可扩展的) manner（方式） to process significant （重大的，有效的）volumes of informatiion.</p>
+<p>spring batch  规定对处理大量的数据是可重复使用的，包括  记录/跟踪，事物管理，job统计处理，job重启，跳过和资源管理，</p>
+<p>他当然规定了更高级的技术服务和特点，大容量和高性能批量处理通过优化和分区技术。</p>
+<p>spring batch 可以使用在简单的用例（比如读一个文件到一个数据库或者存储数据），或者复杂的，大容量的用例（比如移动大量的数据，转换它等等）</p>
+<p>大容量批处理可以是框架用以可扩展的方式处理重要的数据。</p>
+<hr>
+<h4 id="1-1-Background-（背景介绍）"><a href="#1-1-Background-（背景介绍）" class="headerlink" title="1.1 Background （背景介绍）"></a>1.1 Background （背景介绍）</h4><p> While open source softwore  projects and associated(交往) communities(社团) have focused greater attention(注意力，关心) on web-based and microservices-based architecture(架构) frameworks, there has been a notable(值得注意的) lack（缺乏，不足） of focus on reusable（可再用的） architecture frameworks  to accommodate(容纳，适应) Java-based batch processing needs ,despite（尽管） continued needs to handle such processing within enterprise IT environments.The lack of a standard ,reusable batch architecture has resulted in the proliferation(扩散) of many one-off,in-house solutions (解决方案) developed within client enterprise IT functions.</p>
+<p>当开源软件和社区将注意力放在基于web和微服务的架构，值得注意的是可在用架构去适应基于java批量应用一直不足，尽管企业需要处理一些批量应用，没有标准，可用的批量架构一般都是一次性的，内部的接近方案。</p>
+<hr>
+<p>SpringSource(now Pivotal(关键的) ) and Accenture collaborated(合作) to change this.Accenture’s hands-on(亲身实践的) industry（产业） and technical experience(经验) in implementing(即时通讯) batch architectures,SpringSource’s  depth (深度)of technical experience ,and  Spring’s  proven（证明） programming model together made a natural and powerful(强大的) partnership(部分) to create high-quality(高质量),market-relevant （市场）software aimed(目的) at filling（填充） and important gap(分歧，间隙) in enterprise Java . Both companies worked with a number of clients who were solving(解决) similar (相似的)problems by developing Spring-based batch architecture solutions .This provided some useful additional(附件的、额外的) detail and real-life(现实) constraints(约束) that helped to ensure(保证) the solution can ben applied to the real-world problems posed by clients.</p>
+<hr>
+<p>Accenturn contributed(贡献) previously(以前) proprietary(专利的，所有权) batch processing architecture frameworks to the Spring Batch project ,along with committer（提交者） resources to drive support ,enhancements(增强的),and the existing feature set ,Accenture’s contribution was based upon(根据，在..之上) decades(数十年) of experience in building batch architectures with the last several(各自的) generation of platforms :COBOL/Mainframe ,C++ /Unix ,and now Java/anywhere</p>
+<hr>
+<p>The collaborative(合作的) effort(努力) between Accenture and SpringSource aimed(目的) to promote（促进） the standardization（标准化） of software processing approaches (处理，办法),frameworks ,and tools that can be consistently（一贯的） leveraged(杠杆) by enterprise users when creating batch applications . Companies and government agencies （经济公司）desiring（想要） to deliver(发表) standard ,proven（证明） solutions(解决方案) to their enterprise IT environments can benefit(有益的) from Spring Batch .</p>
+<hr>
+<h4 id="1-2-Usage-Scenarios-使用场景"><a href="#1-2-Usage-Scenarios-使用场景" class="headerlink" title="1.2 Usage Scenarios(使用场景)"></a>1.2 Usage Scenarios(使用场景)</h4><p>A typical batch program generally :</p>
+<ul>
+<li>Reads a large number of records from a database ,file or queue </li>
+<li>Processes the data in some fasion (潮流)</li>
+<li>Write  back data in a modified form </li>
+</ul>
+<p>Spring Batch automates(自动化的） this basic iteration（重复） ,providing the capability（性能） to process similar（相似的） transactions as a set ,typically in an offline（脱机的） environment without any user interaction(互动). Batch jobs are part of most IT project,and Spring Batch is the only open source framework that provides a robust （强健的）,enterprise-scale solution.</p>
+<hr>
+<p>Bussiness Scenarios (业务场景</p>
+<ul>
+<li>Commit batch process periodically(定期的)</li>
+<li>Concurrent(并发的) batch processing :parallel（平行） processing of a job </li>
+<li>Staged（分期的） ,enterprise message-driven processing </li>
+<li>Massively(大量地) parallel batch processing </li>
+<li>Manual(手工的) or scheduled restart after failure </li>
+<li>Sequential(连续的) processing of dependent（依赖的） steps (with extensions toworkflow-driven batches )</li>
+<li>Partial(局部的) processing:skip records (for example on rollback)</li>
+<li>Whole-batch transaction,for  cases with a small batch size or exsting stored procedures/scripts</li>
+</ul>
+<p>Technical Objectives (技术目标)</p>
+<ul>
+<li>Batch developers use the Spring programming model: Concentrate(集中) on business logic(逻辑) and let the framework take care of infrastructure(基本建设).</li>
+<li>Clear separation(分开) of concerns(关注) between the infrastructure ,the batch execution(执行) environment ,and the batch application.</li>
+<li>Provide(规定) common ,core execution services as interfaces that all projects can implement </li>
+<li>Provide simple and default implementations(实现) of the core execution interfaces that can be used  ‘out of the box’</li>
+<li>Easy to configure ,customize(习惯),and extend services ,by leveraging(杠杆作用) the spring framework in all layers.</li>
+<li>Provide a simple deployment model ,with the architecture(架构) JARs completely separate(分开) from the application ,built(建造) using Maven.</li>
+</ul>
+<hr>
+<h4 id="1-3-Spring-Batch-Architecture（spring-batch-架构）"><a href="#1-3-Spring-Batch-Architecture（spring-batch-架构）" class="headerlink" title="1.3 Spring Batch Architecture（spring  batch 架构）"></a>1.3 Spring Batch Architecture（spring  batch 架构）</h4><p><img src="/xiaojiang/2019/01/15/spring-batch/../_posts\spring-batch\spring-batch-layers.png" alt="spring-batch-layers"></p>
+<p>This layered architecture highlights(强调)  three major（主要的） high-level(高级的) components: Application ,Core and Infrastructure .The application contains all batch jobs and custom code written by developers using Spring Batch . The Batch Core contains the core runtime classes necessary to launch(发射，下水) and control a batch job .It includes implementations for <code>JobLauncher</code>,<code>Job</code> and <code>Step</code>. Both Application and Core are built on top of common infrastructure .This infrastructure contains common readers and writers and services (such as the <code>RetryTemplate</code>), which are used both by application deveplopers (readers and writers ,such as <code>ItemReader</code> and  <code>ItemWriter</code> ) and the core framework ifself (retry ,which its own library).</p>
+<hr>
+<h4 id="1-4General-Batch-Principles-and-Guidelines-一般批量原则和方针"><a href="#1-4General-Batch-Principles-and-Guidelines-一般批量原则和方针" class="headerlink" title="1.4General Batch Principles and Guidelines(一般批量原则和方针)"></a>1.4General Batch Principles and Guidelines(一般批量原则和方针)</h4><p>The following key principles,guidelines ,and general considerations(考虑) should be considered when building a batch solution（解决方案）.</p>
+<ul>
+<li><p>Remember that a batch architecture typically affects on-line architecture and vice(缺点) versa (反的) (反之亦然).Design with both architectures and environments in mind using common building blocks when possible.</p>
+</li>
+<li><p>Simplify as much as  possible and avoid(避免) building complex(复杂的) logical structures(业务方式) in single batch applications.</p>
+</li>
+<li><p>Keep the processing and storage of data physically close together (in other workds, keep your data where your processing occurs(重现，出现发生)).</p>
+</li>
+<li><p>Minimize system resource use,ecpecially I/O.Perform(执行) as many operations as possible in internal (内部的，本质的)memory .</p>
+</li>
+<li><p>Review application I/O (analyze(分解) SQL statements) to ensure(保证) that unnecessary physical I/O  is avoided(避免) .In particular(特别的) ,the following four common flaws(缺陷) need to be looke for:</p>
+<blockquote>
+<ul>
+<li>Reading  data for every transaction when the data could be read once and cached or kept in the working storage .</li>
+<li>Rereading data for a transaction where the data was read earlier in the same transation.</li>
+<li>Causing unnecessary table or index scans.</li>
+<li>Not specifying(说明,指定) key values in the WHERE clause of an SQL statement.</li>
+</ul>
+</blockquote>
+</li>
+<li><p>Do not do things twice in a batch run .For instance ,if you need data summarization(摘要) for reporting purposes(目的),you should (if possible) increment stored totals when data is being initially(最初，首先) processed,so your reporting application does not have to reprocess(再加工) the same data .</p>
+</li>
+<li><p>Allocate(分配)  enough memory at the beginning of a batch application to avoid(避免)  time-consuming（耗时） reallocation(再分配) during the process.</p>
+</li>
+<li><p>Always assume(假定) the worst(最差的) with regard（注意） to data integrity(完整) ,Insert adequate（充足的） checks and record validation to maintain（维持） data integrity.</p>
+</li>
+<li><p>Implement checksums（校验码） for internal(本质) validation where possible .For example ,flat(平的，单调的) files should have a trailer record （尾部记录） telling the total of records in the file and an aggregate（集合） of the key fileds.</p>
+</li>
+<li><p>Plan and execute stress(压力) tests as early as possible in a production-like environment with realistic（现实的，逼真的） data volumes.</p>
+</li>
+<li><p>In large batch systems ,backups can ben chanllenging (挑战的),especially(特别是) if the system is running concurrent with on-line a 24-7 basis .Database backups are typically well taken care of in the on-line design ,but file backups should be considered to be just as important.If the system depends on flat files,file backup procedures should not only be in place and documented but be regularly（定期的，有规律的） tested as well.</p>
+</li>
+</ul>
+<h4 id="1-5-Batch-Processing-Strategies-策略"><a href="#1-5-Batch-Processing-Strategies-策略" class="headerlink" title="1.5 Batch Processing Strategies(策略)"></a>1.5 Batch Processing Strategies(策略)</h4><p> To help design and implement batch systems ,basic batch application building blocks and patterns should be provided to the designers and programmers in the form of sample structure(建造，组织) chats and code shells .When starting to design a batch job,the business logic should be decomposed(已分解的) into a series(系列) of steps that can be implemented using the folowing standard building blocks:</p>
+<ul>
+<li>Conversion (转换)Applications:For each type of file supplied(提供) by or generated to  an external system ,a conversion application must be created to convert the transaction records supplied into a standard format required for processing.This type of batch application can partly or entirely（完全地） consist(在于，由..组成) of translation utility (实用)modules (see Basic Batch Services)</li>
+<li>Validation Applications: Validation applications ensure that all input/output records are correct(改正，正确的) and consistent(一致的) .Validation is typically based on file headers and trailers,checksums(总和检查) and validation algorithms(算法) ,and record level cross-checks.</li>
+<li>Extract Applications:An application that reads a set of records from a database or input file ,selects records based on predefined rules,and writes the records to an output file.</li>
+<li>Extract/Update Application :An application that reads records from a database or an input file and makes changes to a database or an output file driven by the data found in each input record.</li>
+<li>Processing and Updating Applications:An application that performs(执行) processing on input transactions from an extract or a valication application.The processing usually involves(包含) reading a database to obtain(获得) data required for processing ,potentially(可能的) updating the database and creating records for output processing.</li>
+<li>Output/Format Applications:Applications that read an input file,restructure(重构) data from this record according to a standard format,and produce(生产，引起) an output file for printing or transmission to another program or system.</li>
+</ul>
+<p>Additionally（另外） ,a basic application shell should be provided for business logic that connot be built using the previously(先前) mentioned(提及) building blocks.</p>
+<hr>
+<p>In addition to the main building blocks ,each application many use one or more of standard utility steps ,such as:</p>
+<ul>
+<li>Sort: A program that reads an input file and produces an output file where records have been re-sequenced according to a sort key field in the records.Sorts are usually performed by standard system utilities.</li>
+<li>Split: A program that reads a single input file and writes each record  to one of several (几个的，各自的)output files based on a field value.Splits can be tailored(定做的) or performed .</li>
+<li>Merge: A program that reads records from multiple input files and produces on output file with combined(联合) data from the input files.Merges can be tailored or performed by parameter-driven standard system utilties.</li>
+</ul>
+<hr>
+<p>Batch application can additionally be categorized by heir input source:</p>
+<ul>
+<li>Database-driven applications are driven by rows or values retrieved(恢复) from the database.</li>
+<li>File-driven applications are driven by records or values retrieved from a file.</li>
+<li>Message-driven applications are driven by messages retrieved from a message queue.</li>
+</ul>
+<p>The foundation of any batch system is the processing strategy .Factors affecting the selection of the strategy include:estimated batch system volume ,concurrency with on-line systems or with other batch sytems,available batch windows .(Note that ,with more enterprises wanting to be up and running 24*7,clear batch windows are disappering).</p>
+<p>Typical processing options for batch are (in increasing order of implementation complexity):</p>
+<ul>
+<li>Normal processing during a batch window in off-lne mode</li>
+<li>Concurrent batch or on-line processing </li>
+<li>Parallel processing of many different batch runs or jobs at the sam time .</li>
+<li>Parttioning (processing of many instances of the same job at the same time).</li>
+<li>a combination of the preceding options.</li>
+</ul>
+<p>Some or all of these options may be supported by a commercial scheduler.</p>
+<p>The following section discusses these processing options in more detail.It is important to notice that, as a rule of thumb ,the commit and locking strategy adopted by batch processed depends on the type processing performed and that the on-line locking strategy should also use the same principles.Therefore ,the batch architecture cannot be simply an afterthought when designing an overrall architecture.</p>
+<p>The locking strategy can be use only normal database licks or to implement an additional custom locking service in the archtecture.The locking service would track database locking (for example ,by storing the necessary information in a dedicated db-table) and give or deny permissions to the application programs requesting a db operation.Retry logic could also be implemented by this architecture to avoid aborting a batch job in case of lock situation.</p>
+<ol>
+<li><p>Normal processing in a batch window For simple batch processes running in a separate batch window where the data being updated is not required by on-line users or other batch processes ,concurrency is not an issue and a single commit can be done at the edn of the batch run.</p>
+<p>In most cases ,a more robust approach is more appropriate .Keep in mind that batch systems hav a tendecy to grow as time goes by ,both in terms of complexity and the data volumes they handle.if no locking strategy is in place and the system still relies on wihtd the simples batch systems,consider the need for commit logic for restart reovery options as well as the information concerning the more comple cases described later in this section.</p>
+<p>2.Concurrent batch or on-line processing Batch applications processing data theat can be simultaneously updated by on-line users should not lock any data(either in the database or in files) which cold be required by on-lne users for more than a few seconds .Also ,updates should be committed to the database at the end of erver few transactions .This  minimizes the of data that is unavaiable to other processes and the elapsed time the data is unavaliable.</p>
+</li>
+</ol>
+<p>Another option to minimize physical locking is to have logical row-level loakcing implemented with either an Optimistic  Locking Pattern or a Pessimistic Locking Pattern.</p>
+<ul>
+<li>Optimistic locking assumes a low likelihood of record contention.It typically means inserting a timestamp column in each database tablee used concurrently by both batch and on-line processing .When an application fetches a row for processing ,it also fetches the timestamp.As the application then tries to update the processed row ,the update uses the original timestamp in the WHERE clause .If the timestamp matches,the data and the timestamp are updated .If the timestamp does not match ,this indicates that another application has updated them same row between the fetch and the update attempt ,Thereform,the update connot be performed.</li>
+<li>Pessimistic locking is any locking strategy theat assumes there is a hgh likelihood of record contention and therefore either a physical or logical lock needs a dedicated lock-column in the database table .When an application retrieves the row for update,it set a flag in the lock column.With the flag in place ,other applications attempting to retrieved by toher applications.Please note that the integrity of data must be maintained also between the intial fetch and the inital fetch and the setting of the flag ,for example by using db locks (such as select for update).Note also that this method suffers from the same downside as physical locking except that it is somewhat easier to manage building a time-out mechanism that gets the lock released if the user goes to lunch while the record is locked.</li>
+</ul>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="https://huangpu311.github.io/xiaojiang/2019/01/15/spring-batch/" data-id="ck8h6wq79000gecvabyfb724s" class="article-share-link">Share</a>
+      
+      
+    </footer>
+  </div>
+  
+</article>
+
+
+  
+    <article id="post-用户粘合度" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/xiaojiang/2019/01/13/用户粘合度/" class="article-date">
+  <time datetime="2019-01-13T05:24:22.000Z" itemprop="datePublished">2019-01-13</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/xiaojiang/2019/01/13/用户粘合度/">用户粘合度</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h2 id="背景"><a href="#背景" class="headerlink" title="背景"></a>背景</h2><p>  在互联网的大背景下，产品的设计都是以用户为导向，很多产品的设计都提出了用户的粘合性，但是对于怎么验证用户的粘合性以及即将没有用户粘合性的数据并没有统一的标准。</p>
+<h2 id="相关资料"><a href="#相关资料" class="headerlink" title="相关资料"></a>相关资料</h2><p>DAU、WAU、MAU 相关概念的提出，即按照日，周，月根据用户的访问量来计算用户的粘合性。</p>
+<p>除了这个维度之外，我认为应该从产品、网站整理、以及个人等方面的因素来对网站进行公证的评论。</p>
+<p><a href="https://blog.csdn.net/caodongfang126/article/details/78282086" target="_blank" rel="noopener">https://blog.csdn.net/caodongfang126/article/details/78282086</a></p>
+<h2 id="功能展望"><a href="#功能展望" class="headerlink" title="功能展望"></a>功能展望</h2><ol>
+<li>根据业务不同，统计的层面即不同， 可以根据业务分配日、周、月相关数据</li>
+<li>根据产品不同  设计不同用户产品的粘合度</li>
+<li>根据用户角度设计用户粘合度曲线，以及用户粘合度预警机制</li>
+<li>根据产品的访问量，设计产品的粘合度预警机制</li>
+<li>根据网站总量访问，对整个网站进行粘合度预警机制</li>
+</ol>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="https://huangpu311.github.io/xiaojiang/2019/01/13/用户粘合度/" data-id="ck8h6wq86000yecvai83aded1" class="article-share-link">Share</a>
+      
+      
+    </footer>
+  </div>
+  
+</article>
+
+
+  
+    <article id="post-python" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/xiaojiang/2019/01/02/python/" class="article-date">
+  <time datetime="2019-01-02T02:09:30.000Z" itemprop="datePublished">2019-01-02</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/xiaojiang/2019/01/02/python/">python</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h2 id="安装"><a href="#安装" class="headerlink" title="安装"></a>安装</h2><p>下载地址</p>
+<p><a href="https://www.python.org/downloads/release/python-372/" target="_blank" rel="noopener">https://www.python.org/downloads/release/python-372/</a></p>
+<h2 id="基础语法"><a href="#基础语法" class="headerlink" title="基础语法"></a>基础语法</h2><h4 id="编码格式"><a href="#编码格式" class="headerlink" title="编码格式"></a>编码格式</h4><p>python中默认的编码格式是ASCII格式，在没修改编码格式时无法正确打印汉子，所以在读取中文时会报错，解决办法为在文件开头加上# -<em>- coding: UTF-8 -</em>- 或者 #coding=utf-8 就行了 即可</p>
+<h4 id="行和缩进"><a href="#行和缩进" class="headerlink" title="行和缩进"></a>行和缩进</h4><p>Python 的代码块不使用{}来控制，python用缩进来写模块。</p>
+<p>缩进的空白数量是可变的，但是所有代码块必须包含相同的缩进空白数量</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">if</span> <span class="keyword">True</span> </span><br><span class="line">	<span class="keyword">print</span> <span class="string">"true"</span></span><br><span class="line"><span class="keyword">else</span></span><br><span class="line">	<span class="keyword">print</span> <span class="string">"false"</span></span><br></pre></td></tr></table></figure>
+<h4 id="多行语句"><a href="#多行语句" class="headerlink" title="多行语句"></a>多行语句</h4><p>python 可以使用写钢笔 （\）将一行的语句分为多行显示</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">total = one + \</span><br><span class="line">	    two + \</span><br><span class="line">        three</span><br></pre></td></tr></table></figure>
+<p>语句中包换[] ,{} , () 就不需要使用多行连接符</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">days = [<span class="string">'monday'</span>,<span class="string">'tuesday'</span>,<span class="string">'wednesday'</span></span><br><span class="line">       <span class="string">'thursdays'</span>,<span class="string">'friday'</span>]</span><br></pre></td></tr></table></figure>
+<h4 id="python-引号"><a href="#python-引号" class="headerlink" title="python 引号"></a>python 引号</h4><p>单行注释使用# 开头</p>
+<p>多行注释使用三个单引号或者三个双引号</p>
+<h4 id="等待用户输入"><a href="#等待用户输入" class="headerlink" title="等待用户输入"></a>等待用户输入</h4><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">raw_input(<span class="string">"按下enter键退出，其他任意键显示... \n"</span>)</span><br></pre></td></tr></table></figure>
+<h4 id="同一行显示多条语句"><a href="#同一行显示多条语句" class="headerlink" title="同一行显示多条语句"></a>同一行显示多条语句</h4><p>使用分号</p>
+<h4 id="print-输出"><a href="#print-输出" class="headerlink" title="print 输出"></a>print 输出</h4><p>print 输出默认是换行的，如果要实现不换行需要在变量末尾加上逗号</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">x=<span class="string">'a'</span></span><br><span class="line">y=<span class="string">'b'</span></span><br><span class="line"><span class="comment">#换行输出</span></span><br><span class="line"><span class="keyword">print</span> x</span><br><span class="line"><span class="keyword">print</span> y</span><br><span class="line"><span class="comment">#不换行输出</span></span><br><span class="line"><span class="keyword">print</span> x,</span><br><span class="line"><span class="keyword">print</span> y</span><br><span class="line"></span><br><span class="line"><span class="comment"># 不换行输出</span></span><br><span class="line"><span class="keyword">print</span> x,y</span><br></pre></td></tr></table></figure>
+<h4 id="多个语句构成代码组"><a href="#多个语句构成代码组" class="headerlink" title="多个语句构成代码组"></a>多个语句构成代码组</h4><p>缩进相同的一组语句构成一个代码块，我们称之为代码组。</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">if</span> expression ：</span><br><span class="line">	suite</span><br><span class="line"><span class="keyword">elif</span> expression</span><br><span class="line">	suite</span><br><span class="line"><span class="keyword">else</span></span><br><span class="line">	suite</span><br></pre></td></tr></table></figure>
+<h4 id="帮助"><a href="#帮助" class="headerlink" title="帮助"></a>帮助</h4><p>python -h</p>
+<h2 id="变量类型"><a href="#变量类型" class="headerlink" title="变量类型"></a>变量类型</h2><h4 id="变量赋值"><a href="#变量赋值" class="headerlink" title="变量赋值"></a>变量赋值</h4><p>变量用等号赋值，python允许同时为多个变量赋值</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">a = b =c =<span class="number">1</span>;</span><br><span class="line">a,b,c =<span class="number">1</span>,<span class="number">2</span>,<span class="string">"john"</span></span><br></pre></td></tr></table></figure>
+<h4 id="标准数据类型"><a href="#标准数据类型" class="headerlink" title="标准数据类型"></a>标准数据类型</h4><p>python有五个标准的数据类型</p>
+<ul>
+<li>Number (数字)</li>
+<li>String （字符串）</li>
+<li>List （列表）</li>
+<li>Tuple (元组)</li>
+<li>Dictionary (字典)</li>
+</ul>
+<h5 id="python数字"><a href="#python数字" class="headerlink" title="python数字"></a>python数字</h5><p>python支持 四中不同的数字类型，分别为int(有符号整型)，long(长整型)，float（浮点型）,complex（复数）</p>
+<h5 id="python字符串"><a href="#python字符串" class="headerlink" title="python字符串"></a>python字符串</h5><p>字符串是由数字、字母、下划线组成的一串字符.</p>
+<p>python的字符串列表有2种取值顺序：</p>
+<ul>
+<li>从左到右默认是从0开始的，最大范围是字符串长度少1</li>
+<li>从右到左默认是-1开始的，最大范围是字符串开头</li>
+</ul>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 取bcde，取值为[投下标:尾下标]</span></span><br><span class="line">s =<span class="string">'abcdef'</span>;</span><br><span class="line">s[<span class="number">1</span>:<span class="number">5</span>]</span><br><span class="line"></span><br><span class="line">str = <span class="string">'hello world!'</span></span><br><span class="line"><span class="keyword">print</span> str <span class="comment"># 输出完整字符串</span></span><br><span class="line"><span class="keyword">print</span> str[<span class="number">0</span>] <span class="comment"># 输出字符串中的第一个字符串</span></span><br><span class="line"><span class="keyword">print</span> str[<span class="number">2</span>:<span class="number">5</span>] <span class="comment"># 输出字符串中第三个到第五个之间的字符串</span></span><br><span class="line"><span class="keyword">print</span> str[<span class="number">2</span>:] <span class="comment">#输出第三个字符串开始的字符串</span></span><br><span class="line"><span class="keyword">print</span> str * <span class="number">2</span> <span class="comment">#输出字符串两次</span></span><br><span class="line"><span class="keyword">print</span> str +<span class="string">"TEST"</span> <span class="comment">#输出连接的字符串</span></span><br></pre></td></tr></table></figure>
+<h5 id="python列表"><a href="#python列表" class="headerlink" title="python列表"></a>python列表</h5><p>列表用[]标示，是python最通用的符合数据类型。</p>
+<p>加号是列表连接运算符，星号是重复操作</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">list = [<span class="string">'runoob'</span>,<span class="number">789</span>,<span class="number">2.23</span>,<span class="string">'john'</span>,<span class="number">70.2</span>]</span><br><span class="line">tinylist =[<span class="number">123</span>,<span class="string">'john'</span>]</span><br><span class="line"><span class="keyword">print</span> list <span class="comment"># 输出完整列表</span></span><br><span class="line"><span class="keyword">print</span> list[<span class="number">0</span>] <span class="comment"># 输出列表的第一个元素</span></span><br><span class="line"><span class="keyword">print</span> list[<span class="number">1</span>:<span class="number">3</span>]<span class="comment">#输出第二个到第三个元素</span></span><br><span class="line"><span class="keyword">print</span> list[<span class="number">2</span>:] <span class="comment">#输出第三个开始至列表末尾的所有元素</span></span><br><span class="line"><span class="keyword">print</span> tinylist * <span class="number">2</span> <span class="comment"># 输出列表2次</span></span><br><span class="line"><span class="keyword">print</span> list + tinylist <span class="comment">#打印组合的列表</span></span><br></pre></td></tr></table></figure>
+<h5 id="python元组"><a href="#python元组" class="headerlink" title="python元组"></a>python元组</h5><p>元组是另一个数据类型，类似于list，元组用(),标示，内部用逗号隔开，但是元组不能二次赋值，相当于只读列表。</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">tuple = (<span class="string">'runoob'</span>,<span class="number">786</span>,<span class="number">2.23</span>,<span class="string">'john'</span>,<span class="number">70.2</span>)</span><br><span class="line">tinytuple = (<span class="number">123</span>,<span class="string">'john'</span>)</span><br><span class="line"><span class="keyword">print</span> tuple <span class="comment"># 输出完整元组</span></span><br><span class="line"><span class="keyword">print</span> tuple[<span class="number">0</span>] <span class="comment"># 输出元组的第一个元素</span></span><br><span class="line"><span class="keyword">print</span> tuple[<span class="number">1</span>:<span class="number">3</span>] <span class="comment">#输出第二个至第三个的元素</span></span><br><span class="line"><span class="keyword">print</span> tuple[<span class="number">2</span>:] <span class="comment">#输出从第三个开始至列表末尾的所有元素</span></span><br><span class="line"><span class="keyword">print</span> tinytuple* <span class="number">2</span> <span class="comment">#输出元组两次</span></span><br><span class="line">pring tuple + tinytuple <span class="comment"># 打印组合的元组</span></span><br></pre></td></tr></table></figure>
+<h5 id="python-字典"><a href="#python-字典" class="headerlink" title="python 字典"></a>python 字典</h5><p>列表是有序的对象集合，字典是无需的对象集合，两者之间的区别在于：字典当中的元素通过键来存取的，而不是通过偏移存取的</p>
+<p>字典用{}标示，字典由索引key，和它对应的值value组成。</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">dict = &#123;&#125;</span><br><span class="line">dict [<span class="string">'one'</span>] =<span class="string">"thiw is one"</span>;</span><br><span class="line">dict [<span class="number">2</span>] = <span class="string">"this is two"</span>;</span><br><span class="line">tinydict =&#123;<span class="string">'name'</span>:<span class="string">'john'</span>,<span class="string">'code'</span>:<span class="number">6374</span>,<span class="string">'dept'</span>:<span class="string">'sales'</span>&#125;</span><br><span class="line"><span class="keyword">print</span> dict[<span class="string">'one'</span>] <span class="comment"># 输出键为one的值</span></span><br><span class="line"><span class="keyword">print</span> dict[<span class="number">2</span>] <span class="comment"># 输出键为2的值</span></span><br><span class="line"><span class="keyword">print</span>  tinydict <span class="comment"># 输出完整的字典</span></span><br><span class="line"><span class="keyword">print</span> tinydict.keys()<span class="comment"># 输出所有的键</span></span><br><span class="line"><span class="keyword">print</span> tinydict.values()<span class="comment"># 输出所有的值</span></span><br></pre></td></tr></table></figure>
+<h4 id="条件语句"><a href="#条件语句" class="headerlink" title="条件语句"></a>条件语句</h4>
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="https://huangpu311.github.io/xiaojiang/2019/01/02/python/" data-id="ck8h6wq7d000iecvayxwedvrr" class="article-share-link">Share</a>
+      
+      
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/xiaojiang/tags/python/">python</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+
+  
     <article id="post-分销管理总览" class="article article-type-post" itemscope itemprop="blogPost">
   <div class="article-meta">
     <a href="/xiaojiang/2018/07/19/分销管理总览/" class="article-date">
@@ -80,7 +591,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://huangpu311.github.io/xiaojiang/2018/07/19/分销管理总览/" data-id="cjnblvxxt000ppovawewee4yu" class="article-share-link">Share</a>
+      <a data-url="https://huangpu311.github.io/xiaojiang/2018/07/19/分销管理总览/" data-id="ck8h6wq890010ecvagz46h0gw" class="article-share-link">Share</a>
       
       
     </footer>
@@ -116,532 +627,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://huangpu311.github.io/xiaojiang/2018/05/02/操作技巧/" data-id="cjnblvxxs000opovaumlt3192" class="article-share-link">Share</a>
-      
-      
-    </footer>
-  </div>
-  
-</article>
-
-
-  
-    <article id="post-spring源码阅读" class="article article-type-post" itemscope itemprop="blogPost">
-  <div class="article-meta">
-    <a href="/xiaojiang/2018/04/23/spring源码阅读/" class="article-date">
-  <time datetime="2018-04-23T01:11:25.000Z" itemprop="datePublished">2018-04-23</time>
-</a>
-    
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/xiaojiang/2018/04/23/spring源码阅读/">spring源码阅读</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h2 id="整体思路"><a href="#整体思路" class="headerlink" title="整体思路"></a>整体思路</h2><h4 id="1、spring的出现时为了解决什么问题"><a href="#1、spring的出现时为了解决什么问题" class="headerlink" title="1、spring的出现时为了解决什么问题"></a>1、spring的出现时为了解决什么问题</h4><p>在没有框架的时候，代码的开发是通过servlet开发，并且没有相应的规则，项目完成之后代码比较乱，并且代码不能够符合”高内聚，松耦合”的原则，spring 的出现就是为了解决代码开发效率低，并且规范化开发的目的。</p>
-<h4 id="2、spring-的设计策略"><a href="#2、spring-的设计策略" class="headerlink" title="2、spring 的设计策略"></a>2、spring 的设计策略</h4><p>   a、基于POJO轻量级和最小侵入式原则</p>
-<p>   b、 通过依赖注入和面向接口实现松耦合的原则</p>
-<p>   c、基于切面和惯性进行声明式编程</p>
-<p>   d、通过切面和模板减少样板式代码</p>
-<h4 id="3、spring-中的关键技术"><a href="#3、spring-中的关键技术" class="headerlink" title="3、spring 中的关键技术"></a>3、spring 中的关键技术</h4><p>BOP: 即面向bean编程</p>
-<p>DI/IOC：依赖注入/控制反转</p>
-<p>AOP:面向切面编程</p>
-<h4 id="4、设计模式"><a href="#4、设计模式" class="headerlink" title="4、设计模式"></a>4、设计模式</h4><p>代理模式、工厂模式、单列模式、委派模式、策略模式、模板模式</p>
-<h4 id="5、模块"><a href="#5、模块" class="headerlink" title="5、模块"></a>5、模块</h4><h5 id="spring-core"><a href="#spring-core" class="headerlink" title="spring core"></a>spring core</h5><p>核心模块</p>
-<h5 id="spring-beans"><a href="#spring-beans" class="headerlink" title="spring  beans"></a>spring  beans</h5><p>核心模块</p>
-<h5 id="spring-context"><a href="#spring-context" class="headerlink" title="spring  context"></a>spring  context</h5><p>扩展了BeanFactory，添加了Bean的生命周期控制，框架事件体系以及资源加载透明化等功能。此外该模块还提供了许多企业级支持，如邮件访问、远程访问、任务调度等。ApplicationContext是该类的核心接口。</p>
-<h5 id="spring-expression"><a href="#spring-expression" class="headerlink" title="spring expression"></a>spring expression</h5><p>统一表达式(EL)的扩展模块，可以查询、管理运行中的对象，同时也方便可以调用对象方法、操作数组、集合等。</p>
-<h5 id="spring-aop"><a href="#spring-aop" class="headerlink" title="spring aop"></a>spring aop</h5><p>切面</p>
-<h5 id="spring-aspects"><a href="#spring-aspects" class="headerlink" title="spring aspects"></a>spring aspects</h5><p>它集成自AspectJ框架，主要是为了spring aop提供多种aop实现</p>
-<h5 id="spring-instrument"><a href="#spring-instrument" class="headerlink" title="spring instrument"></a>spring instrument</h5><p>基于java se中的“java.lang.instrument”进行设计的，算是aop的一个支援模块，主要作用是在jvm启用时，生成一个代理类，通过在代理类运行时修改类的字节，从而改变一个类的功能，实现aop的功能。</p>
-<h5 id="spring-jdbc"><a href="#spring-jdbc" class="headerlink" title="spring jdbc"></a>spring jdbc</h5><p>spring-jdbc模块是spring 提供的JDBC    抽象框架的主要实现模块，用于简化spring JDBC,主要是提供JDBC模板方式、关系数据库对象化方式、SimpleJdbc方式、事物管理来简化JDBC    编程。</p>
-<h5 id="spring-tx"><a href="#spring-tx" class="headerlink" title="spring tx"></a>spring tx</h5><p>该模块是spring jdbc事物实现模块。</p>
-<h5 id="spring-orm"><a href="#spring-orm" class="headerlink" title="spring orm"></a>spring orm</h5><p>该模块是orm框架支持的模块，主要集成Hibername,java Persisitence API(JPA)和java Data objects(JDO)用于资源管理、数据访问对象的实现和事物策略。</p>
-<h5 id="spring-web"><a href="#spring-web" class="headerlink" title="spring web"></a>spring web</h5><p>用于web基础模块</p>
-<h5 id="spring-webmvc"><a href="#spring-webmvc" class="headerlink" title="spring webmvc"></a>spring webmvc</h5><p>实现了spring MVC的 web应用</p>
-<h5 id="spring-websocket"><a href="#spring-websocket" class="headerlink" title="spring websocket"></a>spring websocket</h5><p>用于web前端的全双工通信</p>
-<h5 id="spring-webflux"><a href="#spring-webflux" class="headerlink" title="spring webflux"></a>spring webflux</h5><p>异步编程</p>
-<h5 id="spring-messaging"><a href="#spring-messaging" class="headerlink" title="spring messaging"></a>spring messaging</h5><p>4.0之后新增模块，用于基础报文传送应用</p>
-<h5 id="spring-test"><a href="#spring-test" class="headerlink" title="spring test"></a>spring test</h5><p>测试类</p>
-<h4 id="IOC-DI"><a href="#IOC-DI" class="headerlink" title="IOC/DI"></a>IOC/DI</h4><p>IOC（Inversion of control）即控制反转，就是 原来需要在代码实现的对象的创建和依赖交给容器，具体表现方式为可配置文件。</p>
-<p>DI(Dependeny Injection)依赖注入，对象依赖的类不会主动寻找，即容器实例化的时候主动将类注入给它。</p>
-<p>总结上面两点，DI为IOC的具体实现</p>
-<h5 id="IOC容器的初始化"><a href="#IOC容器的初始化" class="headerlink" title="IOC容器的初始化"></a>IOC容器的初始化</h5><p>IOC容器包括BeanDefinition的Resource的定位、注册和载入三个基本过程</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ClassPathXmlApplicationContext -&gt;AbstractXmlApplicationContext-&gt;AbstractRefreshableConfigApplicationContext-&gt;AbstractRefreshableApplicationContext-&gt;ResourcePatternResolver</span><br></pre></td></tr></table></figure>
-
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="https://huangpu311.github.io/xiaojiang/2018/04/23/spring源码阅读/" data-id="cjnblvxxc000fpovatwhno0ov" class="article-share-link">Share</a>
-      
-      
-  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/xiaojiang/tags/spring源码/">spring源码</a></li></ul>
-
-    </footer>
-  </div>
-  
-</article>
-
-
-  
-    <article id="post-tomcat" class="article article-type-post" itemscope itemprop="blogPost">
-  <div class="article-meta">
-    <a href="/xiaojiang/2018/04/20/tomcat/" class="article-date">
-  <time datetime="2018-04-20T04:49:03.000Z" itemprop="datePublished">2018-04-20</time>
-</a>
-    
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/xiaojiang/2018/04/20/tomcat/">tomcat</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h1 id="tomcat-架构"><a href="#tomcat-架构" class="headerlink" title="tomcat 架构"></a>tomcat 架构</h1><h2 id="目录结构"><a href="#目录结构" class="headerlink" title="目录结构"></a>目录结构</h2><p>  conf  </p>
-<p>   catalina.policy    安全策略文件，控制jvm相关权限 ,参考java.security.Perission</p>
-<p>catalina.properties  Tomcat  catalina 行为控制配置文件，比如common classLoader</p>
-<p>logging.properties  Tomcat 日志配置文件，jdk logger</p>
-<p>server.xml :   Tomcat Server 的配置文件</p>
-<p>tomcat-users.xml  :Tomcat 角色配置文件，（Realm文件实现方式）</p>
-<p>context.xml  :全局的context配置文件</p>
-<p>web.xml sevlet标准的web.xml部署文件</p>
-<p>ETag 是Entity Tag的缩写，实体标签</p>
-<p>当浏览器请求服务器的某项资源时，服务器根据A算出一个哈希值  （xxx），并通过ETag返回给浏览器，浏览器吧”xxxx”哈希值和A同时换成在本地，当下次再次向服务器请求A时，如果A发生变换就把A返回给浏览器(200)，如果发现A没有变化就给浏览器返回一个304未修改。这样通过浏览器端的换成，可以节省服务器的带宽。</p>
-<p>lib目录</p>
-<p>存放公用的类库</p>
-<p>logs 目录</p>
-<p>localhost +日期  ：当tomcat应用起不来的时候，看此文件</p>
-<p>catalina.log   控制台输出，System.out 可以外置</p>
-<p>webapps目录:</p>
-<p>简化web部署</p>
-<p>方法一 ：放置在webapps目录下</p>
-<p>方法二：修改server.xml   在host下增加context</p>
-<p>  docBase  配置路径</p>
-<p>方法三：独立的context xml配置文件</p>
-<p>conf\Catalina\localhost   路径下  名称为contextPath ，内容配置context内</p>
-
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="https://huangpu311.github.io/xiaojiang/2018/04/20/tomcat/" data-id="cjnblvxxb000epovajxewk8ge" class="article-share-link">Share</a>
-      
-      
-    </footer>
-  </div>
-  
-</article>
-
-
-  
-    <article id="post-分销管理" class="article article-type-post" itemscope itemprop="blogPost">
-  <div class="article-meta">
-    <a href="/xiaojiang/2018/04/20/分销管理/" class="article-date">
-  <time datetime="2018-04-20T04:14:26.000Z" itemprop="datePublished">2018-04-20</time>
-</a>
-    
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/xiaojiang/2018/04/20/分销管理/">分销管理</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h2 id="定义"><a href="#定义" class="headerlink" title="定义"></a>定义</h2><p>分销本质上是一种销售模式，分销是指产品由生产地点到销售地点的运动过程。</p>
-<p>分销模式是流通模式的一种：即制造商通过分销商 (代理/经销商)将产品辐射至各零售网点。它体现了厂商专业化分工的特征。</p>
-<p>与直营相比，分销模式投入较少、效率较高，对制造商自身人力资源及管理能力的要求较低，因此更具适用性和普遍性。国内家电、手机、快速消费品等产业领域的厂家，真正做直营的并不多，大部分采取了“直营+分销”的模式，而且其中分销所占的比例较大。</p>
-<h2 id="三级分销"><a href="#三级分销" class="headerlink" title="三级分销"></a>三级分销</h2><p> 三级分销是分销模式的一种，是当前互联网环境下产生的新生事物，即产品借助互联网平台进行推广，他的范围不仅仅是一个地区，可以扩展到全国。那么我们来看看他有哪些优势呢。</p>
-<h4 id="多级裂变分销"><a href="#多级裂变分销" class="headerlink" title="多级裂变分销"></a>多级裂变分销</h4><p>让发展的客户成为业务员或者代理，自动发展下级，快速实现提高用户量。</p>
-<h4 id="打通线上线下"><a href="#打通线上线下" class="headerlink" title="打通线上线下"></a>打通线上线下</h4><p>可以通过线上产品宣传，线下产品整合，让自己的产品迅速的扩散。</p>
-<h4 id="打通重点客户，理清客户关系"><a href="#打通重点客户，理清客户关系" class="headerlink" title="打通重点客户，理清客户关系"></a>打通重点客户，理清客户关系</h4><p>可以根据客户关系，培养重点客户，用最少的成本让客户少流失。</p>
-<h4 id="多重奖励增加用户粘性"><a href="#多重奖励增加用户粘性" class="headerlink" title="多重奖励增加用户粘性"></a>多重奖励增加用户粘性</h4><p>可以通过推荐奖励、交易奖励等方式增加用户粘性。</p>
-
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="https://huangpu311.github.io/xiaojiang/2018/04/20/分销管理/" data-id="cjnblvxxo000kpova9d85atjv" class="article-share-link">Share</a>
-      
-      
-  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/xiaojiang/tags/分销/">分销</a></li></ul>
-
-    </footer>
-  </div>
-  
-</article>
-
-
-  
-    <article id="post-kettle" class="article article-type-post" itemscope itemprop="blogPost">
-  <div class="article-meta">
-    <a href="/xiaojiang/2018/03/29/kettle/" class="article-date">
-  <time datetime="2018-03-29T13:10:58.446Z" itemprop="datePublished">2018-03-29</time>
-</a>
-    
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/xiaojiang/2018/03/29/kettle/">kettle</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p>kettle是一个独立的产品，但它包括了在ETL开发和部署阶段用到的多个程序，有独立的功能，也或多或少的依赖其他程序。</p>
-<p>###主要功能：</p>
-<p>1、spoon :集成开发环境，提供了一个图形用户界面，用于创建、编辑作业或也可以用于执行/调试作业或转换，它也有性能监控的功能。</p>
-<p>2、kitchen:作业的命令运行程序，可以通过shell脚本来调用</p>
-<p>3、pan：转换的命令运行程序，和kitchen一样通过shell脚本调用。执行作业</p>
-<p>4、Carte：轻量级HTTP服务器（基于jetty），后台运行，监听HTTP请求来运行一个作业。用于kettle集群</p>
-<p>下载地址</p>
-<p><a href="https://sourceforge.net/projects/pentaho/files/" target="_blank" rel="noopener">https://sourceforge.net/projects/pentaho/files/</a></p>
-<p>###文件格式：</p>
-<p>归档文件的命名格式按照pdi-ce-version.extension格式，</p>
-<p>pid代表Pentaho Data Integration</p>
-<p>ce 代表了Community Edition</p>
-<h3 id="ETL-34种子系统"><a href="#ETL-34种子系统" class="headerlink" title="ETL 34种子系统"></a>ETL 34种子系统</h3><h4 id="子系统1-3-：数据剖析，增量数据捕获-抽取"><a href="#子系统1-3-：数据剖析，增量数据捕获-抽取" class="headerlink" title="子系统1~3 ：数据剖析，增量数据捕获 抽取"></a>子系统1~3 ：数据剖析，增量数据捕获 抽取</h4><h5 id="子系统1：数据剖析系统"><a href="#子系统1：数据剖析系统" class="headerlink" title="子系统1：数据剖析系统"></a>子系统1：数据剖析系统</h5><p>这个子系统的目标是分析不同数据源的结构和内容。</p>
-<p>数据剖析提供了类似行统计NULL值个数统计等简单的统计项。</p>
-<p>kettle提供有限的剖析功能</p>
-<p>#####子系统2：增量捕获系统</p>
-<p>该子系统的目标是捕获源系统里数据的变化。</p>
-<p>当前kettl里没有特别的工具可以完成这一功能，但kettle里的一些步骤可以通过时间戳，快照方式获得变化的数据。</p>
-<h5 id="子系统3：抽取系统"><a href="#子系统3：抽取系统" class="headerlink" title="子系统3：抽取系统"></a>子系统3：抽取系统</h5><p>该子系统是要从不同的数据源抽取数据，并输入到ETL流程里。</p>
-<p>kimball明确区分了基于文件的和基于流的两种抽取。</p>
-<p>kettle认为抽取的主要区别不是文件或流，而是静态或者动态。</p>
-<h4 id="清洗和更正数据"><a href="#清洗和更正数据" class="headerlink" title="清洗和更正数据"></a>清洗和更正数据</h4><h5 id="子系统4：数据清洗和质量处理系统"><a href="#子系统4：数据清洗和质量处理系统" class="headerlink" title="子系统4：数据清洗和质量处理系统"></a>子系统4：数据清洗和质量处理系统</h5><p>数据清洗是指修改或整理进入到ETL流程中的脏数据。</p>
-<h5 id="子系统5：错误事件处理"><a href="#子系统5：错误事件处理" class="headerlink" title="子系统5：错误事件处理"></a>子系统5：错误事件处理</h5><p>错误事件处理的目的是记录下ETL过程中的每一个错误。</p>
-<h5 id="子系统6：审计维度"><a href="#子系统6：审计维度" class="headerlink" title="子系统6：审计维度"></a>子系统6：审计维度</h5><p>审计维度表示一类特殊的维度表，数据仓库里的所有事实都和设计维度表关联，设计维度表包含了对事实表变更的元数据，如加载数据的日期和时间、数据的质量指标等。</p>
-<h5 id="子系统7：排除重复记录系统"><a href="#子系统7：排除重复记录系统" class="headerlink" title="子系统7：排除重复记录系统"></a>子系统7：排除重复记录系统</h5><p>kettle未能很好的实现</p>
-<h5 id="子系统8：数据一致性"><a href="#子系统8：数据一致性" class="headerlink" title="子系统8：数据一致性"></a>子系统8：数据一致性</h5><h4 id="数据发布"><a href="#数据发布" class="headerlink" title="数据发布"></a>数据发布</h4><h5 id="子系统9：缓慢变更维度处理"><a href="#子系统9：缓慢变更维度处理" class="headerlink" title="子系统9：缓慢变更维度处理"></a>子系统9：缓慢变更维度处理</h5><p>缓慢变更维度（SCDs）是多维数据仓库或者总线架构的基础。</p>
-<p>覆盖：直接用新值代替旧值</p>
-<p>增加新行：把当前行标记为old，并设置一个结束时间戳，同时创建一个新行，标记为”current”,并设置一个新的开始时间。</p>
-<p>增加新列：给表一个新列存储新值，同时保留原来的值不变</p>
-<p>增加一个小维度</p>
-<p>分离历史表</p>
-<p>混合型</p>
-<h5 id="子系统10：代理键生成系统"><a href="#子系统10：代理键生成系统" class="headerlink" title="子系统10：代理键生成系统"></a>子系统10：代理键生成系统</h5><h5 id="子系统11：层次维度构建"><a href="#子系统11：层次维度构建" class="headerlink" title="子系统11：层次维度构建"></a>子系统11：层次维度构建</h5><p>层次可以让用户分析查看维度不同级别上的数据。最简单的层次概念是时间维度的层次。在现实中，时间维度需要至少一个以上的层次，如年-季-月-日</p>
-<h5 id="子系统12：特殊维度生成系统"><a href="#子系统12：特殊维度生成系统" class="headerlink" title="子系统12：特殊维度生成系统"></a>子系统12：特殊维度生成系统</h5><h5 id="子系统13：事实表加载"><a href="#子系统13：事实表加载" class="headerlink" title="子系统13：事实表加载"></a>子系统13：事实表加载</h5><h2 id="数据抽取"><a href="#数据抽取" class="headerlink" title="数据抽取"></a>数据抽取</h2>
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="https://huangpu311.github.io/xiaojiang/2018/03/29/kettle/" data-id="cjnblvxx8000cpovakb63c4eg" class="article-share-link">Share</a>
-      
-      
-    </footer>
-  </div>
-  
-</article>
-
-
-  
-    <article id="post-分布式" class="article article-type-post" itemscope itemprop="blogPost">
-  <div class="article-meta">
-    <a href="/xiaojiang/2018/03/29/分布式/" class="article-date">
-  <time datetime="2018-03-29T13:10:58.446Z" itemprop="datePublished">2018-03-29</time>
-</a>
-    
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/xiaojiang/2018/03/29/分布式/">分布式</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h2 id="什么是分布式"><a href="#什么是分布式" class="headerlink" title="什么是分布式"></a>什么是分布式</h2><p>本身单个节点分部成多台主机进行处理</p>
-<p>1、任务分解</p>
-<p>2、节点通信</p>
-<h2 id="分布式和集群的关系"><a href="#分布式和集群的关系" class="headerlink" title="分布式和集群的关系"></a>分布式和集群的关系</h2><p>分布式是一个业务拆分成多个子业务，部署在不同的服务器上 （解决高可用问题）</p>
-<p>集群：同一个业务部署在多个服务器上（解决高并发问题，负载均衡）</p>
-<p>电商平台：用户、商品、订单、交易</p>
-<p>缓存、限流、降级</p>
-<p>###session跨域共享问题</p>
-<p>1、session sticky</p>
-<p>2、session replication  </p>
-<p>3、session集中存储(db,缓存服务器，redis)</p>
-<p>4、cookie(主流)</p>
-<h2 id="网络通信"><a href="#网络通信" class="headerlink" title="网络通信"></a>网络通信</h2><p>网络通信是分布式的基础</p>
-<p>网络协议：TCP/IP和UDP/IP</p>
-<p>IO:BIO,NIO,AIO</p>
-<p> TCP 5层：应用层，传输层，网络层，链路层，物理传输层</p>
-<p>OSI模型：应用层，传输 层，网络层，链路层，物理传输层 ，表达层，会话层</p>
-<p>3次握手协议、4次挥手协议（TCP是全双工的）</p>
-<h2 id="Multicast（组播）"><a href="#Multicast（组播）" class="headerlink" title="Multicast（组播）"></a>Multicast（组播）</h2><p>单播</p>
-<p>点对点通讯，每次只有2个实体相互通信</p>
-<p>广播</p>
-<p>一对多通讯</p>
-<p>组播</p>
-<h2 id="序列化"><a href="#序列化" class="headerlink" title="序列化"></a>序列化</h2><p>把对象转化为字节序列的过程称之为对象的序列化反之称之为反序列化</p>
-<p>java本身序列化存在的问题</p>
-<p>1、序列化数据结果比较大、传输效率比较低</p>
-<p>2、不能跨语言对接</p>
-<p>XML编码格式的对象序列化机制成为了主流</p>
-<p>恰当的序列化协议不仅可以提高系统的通用性、强壮性、安全性、优化性能，同时还能让系统更加容易调试和扩展。</p>
-<p>实现序列化步骤 1、集成Serializable，2、生成一个seriaVersionUID</p>
-<p>seriaVersionUID的作用</p>
-<p>能够保证反序列化对象和反序列化以后的对象是同一个</p>
-<p><strong>序列化并不报错静态变量的状态</strong></p>
-<p>transient不参与序列化 </p>
-<h2 id="通讯协议"><a href="#通讯协议" class="headerlink" title="通讯协议"></a>通讯协议</h2><p>###URI和URL</p>
-<p>URI:web服务器资源的名字， index.html</p>
-<p><a href="http://www.baidu.com:80/java/index.html" target="_blank" rel="noopener">http://www.baidu.com:80/java/index.html</a></p>
-<p>schema:http/https/ftp</p>
-<p>host:web服务器的ip地址或者域名</p>
-<p>port:服务端端口</p>
-<p>path:资源访问路径</p>
-<p>query-string:查询参数</p>
-<h3 id="状态码"><a href="#状态码" class="headerlink" title="状态码"></a>状态码</h3><p> htpps 1.1 版本协议定义了五种类型的状态码</p>
-<p>1xx 提示信息</p>
-<p>2xx 成功</p>
-<p>3xxx重定向</p>
-<p>4xx客户端错误</p>
-<p>5xx服务端错误</p>
-<p>http协议的特点</p>
-<p>1、无状态：每次请求都是独立的，和下次请求没有关联关系 (cookie +session)</p>
-<p>2、多次请求</p>
-<p>3、基于TCP协议</p>
-<h3 id="HTTPS"><a href="#HTTPS" class="headerlink" title="HTTPS"></a>HTTPS</h3><p>基于SSL/TLS</p>
-<p>HTTPS的工作原理</p>
-<p>1、使用对称加解密</p>
-<p>2、密钥是公开的，所有的客户端都可以拿到密钥</p>
-<p>3、针对不同的客户端使用不同的密钥</p>
-<p>  协商过程是没有加密的，所以还会出现被截断的问题</p>
-<p>4、使用非对称加密</p>
-<p>问题：客户端如何拿到公钥</p>
-<p>服务器端把公钥发给每一个客户端</p>
-<p>服务器端把公钥放在远程服务器，客户端可以请求到</p>
-<p>让浏览器保存所有公钥</p>
-<p>5、<strong>公钥被掉包的问题永远存在</strong>。</p>
-<p>6、使用第三方机构来解决。</p>
-<p>通过第三方机构，使用第三方机构的私钥对我们的 需要传输的公钥进行加密</p>
-<p>7、数字证书包含：公司信息、网站信息，数据公钥</p>
-<h3 id="RESTful的基本概念"><a href="#RESTful的基本概念" class="headerlink" title="RESTful的基本概念"></a>RESTful的基本概念</h3><p>1、在REST中，一切的内容都被认为是一种资源</p>
-<p>2、每个资源都由URI唯一标识</p>
-<p>3、使用同一的接口处理资源请求</p>
-<p>4、无状态</p>
-<h2 id="分布式通信框架-RMI"><a href="#分布式通信框架-RMI" class="headerlink" title="分布式通信框架-RMI"></a>分布式通信框架-RMI</h2><p>什么是RPC， Remote procedure call protocal </p>
-<p>RPC协议是一个规范。dubbo 、Thrif、RMI、Webservice、Hessain</p>
-<p>网络协议和网络IO对于调用端和服务端来说是透明。</p>
-
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="https://huangpu311.github.io/xiaojiang/2018/03/29/分布式/" data-id="cjnblvxxz000spova11wjjcdj" class="article-share-link">Share</a>
-      
-      
-    </footer>
-  </div>
-  
-</article>
-
-
-  
-    <article id="post-vip项目导入" class="article article-type-post" itemscope itemprop="blogPost">
-  <div class="article-meta">
-    <a href="/xiaojiang/2018/03/29/vip项目导入/" class="article-date">
-  <time datetime="2018-03-29T13:10:58.446Z" itemprop="datePublished">2018-03-29</time>
-</a>
-    
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/xiaojiang/2018/03/29/vip项目导入/">vip项目导入遇到的问题</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p>1、通过git clone将代码clone到本地</p>
-<p>2、通过idea打开本地文件（vip-project-space）</p>
-<p>3、然后右键项目，增加Module</p>
-<p><img src="/xiaojiang/2018/03/29/vip项目导入/1.png" alt="&quot;&quot;"></p>
-<p>选择1.8版本</p>
-<p><img src="/xiaojiang/2018/03/29/vip项目导入/2.png" alt="&quot;&quot;"></p>
-<p>选择项目，将对应的模块导入进来</p>
-<p><img src="/xiaojiang/2018/03/29/vip项目导入/3.png" alt="&quot;&quot;"></p>
-<p>4、项目会报找不到对应的类如图</p>
-<p><img src="/xiaojiang/2018/03/29/vip项目导入/4.png" alt=""></p>
-<p>选择file下的Project Structure</p>
-<p><img src="/xiaojiang/2018/03/29/vip项目导入/5.png" alt="&#39;&#39;"></p>
-<p>选择语言特性</p>
-<p><img src="/xiaojiang/2018/03/29/vip项目导入/6.png" alt="“”">  </p>
-<p>设置Sources</p>
-<p><img src="/xiaojiang/2018/03/29/vip项目导入/7.png" alt="&#39;&#39;"></p>
-<p>设置Resources</p>
-<p><img src="/xiaojiang/2018/03/29/vip项目导入/8.png" alt=""></p>
-<p>5、刷新pom文件</p>
-<p><img src="/xiaojiang/2018/03/29/vip项目导入/9.png" alt="&#39;&#39;"></p>
-
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="https://huangpu311.github.io/xiaojiang/2018/03/29/vip项目导入/" data-id="cjnblvxxd000gpovamnx2nlt1" class="article-share-link">Share</a>
-      
-      
-    </footer>
-  </div>
-  
-</article>
-
-
-  
-    <article id="post-jdk" class="article article-type-post" itemscope itemprop="blogPost">
-  <div class="article-meta">
-    <a href="/xiaojiang/2018/03/29/jdk/" class="article-date">
-  <time datetime="2018-03-29T13:10:58.444Z" itemprop="datePublished">2018-03-29</time>
-</a>
-    
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/xiaojiang/2018/03/29/jdk/">centos安装jdk</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p>安装之前先检查一下系统有没有自带open-jdk</p>
-<p>命令：</p>
-<p>rpm -qa |grep java</p>
-<p>rpm -qa |grep jdk</p>
-<p>rpm -qa |grep gcj</p>
-<p>如果没有输入信息表示没有安装。</p>
-<p>如果安装可以使用rpm -qa | grep java | xargs rpm -e –nodeps 批量卸载所有带有Java的文件  这句命令的关键字是java</p>
-<p>首先检索包含java的列表</p>
-<p>yum list java<em><br>检索1.8的列表<br>yum list java-1.8</em><br>安装1.8.0的所有文件<br>yum install java-1.8.0-openjdk* -y<br>使用命令检查是否安装成功<br>java -version<br>到此安装结束了。这样安装有一个好处就是不需要对path进行设置，自动就设置好了</p>
-
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="https://huangpu311.github.io/xiaojiang/2018/03/29/jdk/" data-id="cjnblvxwx0005povaqawtvl9g" class="article-share-link">Share</a>
-      
-      
-    </footer>
-  </div>
-  
-</article>
-
-
-  
-    <article id="post-javap指令集" class="article article-type-post" itemscope itemprop="blogPost">
-  <div class="article-meta">
-    <a href="/xiaojiang/2018/03/29/javap指令集/" class="article-date">
-  <time datetime="2018-03-29T13:10:58.442Z" itemprop="datePublished">2018-03-29</time>
-</a>
-    
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/xiaojiang/2018/03/29/javap指令集/">javap命令</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h2 id="javap定义"><a href="#javap定义" class="headerlink" title="javap定义"></a>javap定义</h2><p>javap是java文件的分解器，即是jdk自带的反汇编器，可以查看java编译器为我们生成的字节码。通过它，我们可以对照源代码和字节码，从而了解很多编译器内部的工作。</p>
-<p>语法：</p>
-<p>javap [命令选项] class ….</p>
-<p>Javap 命令用于解析类文件，其输出取决于所用的选项。若没有使用选项，javap将输出传递给他的类public 域及方法，javap将其输出到标准输出设备上。</p>
-<p>命令选项：</p>
-<p>-help 输出javap的帮助信息</p>
-<p>-l 输出行及局部变量表</p>
-<p>-b 确保与jdk1.1 javap的向后兼容性</p>
-<p>-public 只显示public类及成员</p>
-<p>-protected只显示protected和public 类以及成员</p>
-<p>-package 只显示包、public和protected类以及成员</p>
-<p>-private 显示所有类和成员</p>
-<p>-J[flag] 直接将flag传给运行时系统</p>
-<p>-s输出内部类型签名</p>
-<p>-c输出类中各个方法未解析的代码，即构成java字节码的指令</p>
-<p>-verbose 输出堆栈大小、各方法的locals以及args数，和class文件的编译版本</p>
-<p>-classpath[路径] 指定javap用来查找类 的路径。如果设置了该选项，则他将覆盖缺省值或CLASSPATH环境变量，目录用分号冒号分割</p>
-<h2 id="生成javap文件"><a href="#生成javap文件" class="headerlink" title="生成javap文件"></a>生成javap文件</h2><p>通过javac将类文件生成为class文件，我用的是MyJava.java，生成class文件为MyJava.class</p>
-<p>通过javap将反编译数据导入到txt ：javap MyJava.class &gt; test.class</p>
-<p>源文件为：</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">MyJava</span> </span>&#123;</span><br><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">int</span>  <span class="title">getInfo</span><span class="params">(<span class="keyword">int</span> i)</span></span>&#123;</span><br><span class="line">    <span class="keyword">int</span> j=<span class="number">1</span>;</span><br><span class="line">    <span class="keyword">int</span> f=i+j;</span><br><span class="line">    <span class="keyword">return</span> f;</span><br><span class="line">&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<p>生成的反编译文件为</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line">Compiled from <span class="string">"MyJava.java"</span></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">com</span>.<span class="title">fengyuntec</span>.<span class="title">config</span>.<span class="title">MyJava</span> </span>&#123;</span><br><span class="line">  <span class="keyword">public</span> com.fengyuntec.config.MyJava();</span><br><span class="line">    Code:</span><br><span class="line">       <span class="number">0</span>: aload_0</span><br><span class="line">       1: invokespecial #1                  // Method java/lang/Object."&lt;init&gt;":()V</span><br><span class="line">       <span class="number">4</span>: <span class="keyword">return</span></span><br><span class="line"></span><br><span class="line">  <span class="function"><span class="keyword">public</span> <span class="keyword">int</span> <span class="title">getInfo</span><span class="params">(<span class="keyword">int</span>)</span></span>;</span><br><span class="line">    Code:</span><br><span class="line">       <span class="number">0</span>: iconst_1</span><br><span class="line">       <span class="number">1</span>: istore_2</span><br><span class="line">       <span class="number">2</span>: iload_1</span><br><span class="line">       <span class="number">3</span>: iload_2</span><br><span class="line">       <span class="number">4</span>: iadd</span><br><span class="line">       <span class="number">5</span>: istore_3</span><br><span class="line">       <span class="number">6</span>: iload_3</span><br><span class="line">       <span class="number">7</span>: ireturn</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<h2 id="解析javap文件"><a href="#解析javap文件" class="headerlink" title="解析javap文件"></a>解析javap文件</h2><p>1、从局部变量0中装载引用类型值</p>
-<p>2、根据编译时类型来调用实例方法</p>
-<p>3、将int类型常量1压入栈</p>
-<p>4、将int类型值存入局部变量2</p>
-<p>5、从局部变量1中装载int类型值</p>
-<p>6、从局部变量2中装载int类型值</p>
-<p>7、执行int类型的加法</p>
-<p>8、将int类型值存入局部变量3</p>
-<p>9、从局部变量3中装载int类型值</p>
-<p>10、从方法中返回int类型的数据</p>
-<h2 id="备注栈和局部变量操作"><a href="#备注栈和局部变量操作" class="headerlink" title="备注栈和局部变量操作"></a>备注栈和局部变量操作</h2><p>将常量压入栈的指令<br>aconst_null 将null对象引用压入栈<br>iconst_m1 将int类型常量-1压入栈<br>iconst_0 将int类型常量0压入栈<br>iconst_1 将int类型常量1压入栈<br>iconst_2 将int类型常量2压入栈<br>iconst_3 将int类型常量3压入栈<br>iconst_4 将int类型常量4压入栈<br>iconst_5 将int类型常量5压入栈<br>lconst_0 将long类型常量0压入栈<br>lconst_1 将long类型常量1压入栈<br>fconst_0 将float类型常量0压入栈<br>fconst_1 将float类型常量1压入栈<br>dconst_0 将double类型常量0压入栈<br>dconst_1 将double类型常量1压入栈<br>bipush 将一个8位带符号整数压入栈<br>sipush 将16位带符号整数压入栈<br>ldc 把常量池中的项压入栈<br>ldc_w 把常量池中的项压入栈（使用宽索引）<br>ldc2_w 把常量池中long类型或者double类型的项压入栈（使用宽索引）<br>从栈中的局部变量中装载值的指令<br>iload 从局部变量中装载int类型值<br>lload 从局部变量中装载long类型值<br>fload 从局部变量中装载float类型值<br>dload 从局部变量中装载double类型值<br>aload 从局部变量中装载引用类型值（refernce）<br>iload_0 从局部变量0中装载int类型值<br>iload_1 从局部变量1中装载int类型值<br>iload_2 从局部变量2中装载int类型值<br>iload_3 从局部变量3中装载int类型值<br>lload_0 从局部变量0中装载long类型值<br>lload_1 从局部变量1中装载long类型值<br>lload_2 从局部变量2中装载long类型值<br>lload_3 从局部变量3中装载long类型值<br>fload_0 从局部变量0中装载float类型值<br>fload_1 从局部变量1中装载float类型值<br>fload_2 从局部变量2中装载float类型值<br>fload_3 从局部变量3中装载float类型值<br>dload_0 从局部变量0中装载double类型值<br>dload_1 从局部变量1中装载double类型值<br>dload_2 从局部变量2中装载double类型值<br>dload_3 从局部变量3中装载double类型值<br>aload_0 从局部变量0中装载引用类型值<br>aload_1 从局部变量1中装载引用类型值<br>aload_2 从局部变量2中装载引用类型值<br>aload_3 从局部变量3中装载引用类型值<br>iaload 从数组中装载int类型值<br>laload 从数组中装载long类型值<br>faload 从数组中装载float类型值<br>daload 从数组中装载double类型值<br>aaload 从数组中装载引用类型值<br>baload 从数组中装载byte类型或boolean类型值<br>caload 从数组中装载char类型值<br>saload 从数组中装载short类型值<br>将栈中的值存入局部变量的指令<br>istore 将int类型值存入局部变量<br>lstore 将long类型值存入局部变量<br>fstore 将float类型值存入局部变量<br>dstore 将double类型值存入局部变量<br>astore 将将引用类型或returnAddress类型值存入局部变量<br>istore_0 将int类型值存入局部变量0<br>istore_1 将int类型值存入局部变量1<br>istore_2 将int类型值存入局部变量2<br>istore_3 将int类型值存入局部变量3<br>lstore_0 将long类型值存入局部变量0<br>lstore_1 将long类型值存入局部变量1<br>lstore_2 将long类型值存入局部变量2<br>lstore_3 将long类型值存入局部变量3<br>fstore_0 将float类型值存入局部变量0<br>fstore_1 将float类型值存入局部变量1<br>fstore_2 将float类型值存入局部变量2<br>fstore_3 将float类型值存入局部变量3<br>dstore_0 将double类型值存入局部变量0<br>dstore_1 将double类型值存入局部变量1<br>dstore_2 将double类型值存入局部变量2<br>dstore_3 将double类型值存入局部变量3<br>astore_0 将引用类型或returnAddress类型值存入局部变量0<br>astore_1 将引用类型或returnAddress类型值存入局部变量1<br>astore_2 将引用类型或returnAddress类型值存入局部变量2<br>astore_3 将引用类型或returnAddress类型值存入局部变量3<br>iastore 将int类型值存入数组中<br>lastore 将long类型值存入数组中<br>fastore 将float类型值存入数组中<br>dastore 将double类型值存入数组中<br>aastore 将引用类型值存入数组中<br>bastore 将byte类型或者boolean类型值存入数组中<br>castore 将char类型值存入数组中<br>sastore 将short类型值存入数组中<br>wide指令<br>wide 使用附加字节扩展局部变量索引<br>通用(无类型）栈操作<br>nop 不做任何操作<br>pop 弹出栈顶端一个字长的内容<br>pop2 弹出栈顶端两个字长的内容<br>dup 复制栈顶部一个字长内容<br>dup_x1 复制栈顶部一个字长的内容，然后将复制内容及原来弹出的两个字长的内容压入栈</p>
-<p>dup_x2 复制栈顶部一个字长的内容，然后将复制内容及原来弹出的三个字长的内容压入栈<br>dup2 复制栈顶部两个字长内容<br>dup2_x1 复制栈顶部两个字长的内容，然后将复制内容及原来弹出的三个字长的内容压入栈<br>dup2_x2 复制栈顶部两个字长的内容，然后将复制内容及原来弹出的四个字长的内容压入栈<br>swap 交换栈顶部两个字长内容<br>类型转换<br>i2l 把int类型的数据转化为long类型<br>i2f 把int类型的数据转化为float类型<br>i2d 把int类型的数据转化为double类型<br>l2i 把long类型的数据转化为int类型<br>l2f 把long类型的数据转化为float类型<br>l2d 把long类型的数据转化为double类型<br>f2i 把float类型的数据转化为int类型<br>f2l 把float类型的数据转化为long类型<br>f2d 把float类型的数据转化为double类型<br>d2i 把double类型的数据转化为int类型<br>d2l 把double类型的数据转化为long类型<br>d2f 把double类型的数据转化为float类型<br>i2b 把int类型的数据转化为byte类型<br>i2c 把int类型的数据转化为char类型<br>i2s 把int类型的数据转化为short类型<br>整数运算<br>iadd 执行int类型的加法<br>ladd 执行long类型的加法<br>isub 执行int类型的减法<br>lsub 执行long类型的减法<br>imul 执行int类型的乘法<br>lmul 执行long类型的乘法<br>idiv 执行int类型的除法<br>ldiv 执行long类型的除法<br>irem 计算int类型除法的余数<br>lrem 计算long类型除法的余数<br>ineg 对一个int类型值进行取反操作<br>lneg 对一个long类型值进行取反操作<br>iinc 把一个常量值加到一个int类型的局部变量上<br>逻辑运算<br>移位操作<br>ishl 执行int类型的向左移位操作<br>lshl 执行long类型的向左移位操作<br>ishr 执行int类型的向右移位操作<br>lshr 执行long类型的向右移位操作<br>iushr 执行int类型的向右逻辑移位操作<br>lushr 执行long类型的向右逻辑移位操作<br>按位布尔运算<br>iand 对int类型值进行“逻辑与”操作<br>land 对long类型值进行“逻辑与”操作<br>ior 对int类型值进行“逻辑或”操作<br>lor 对long类型值进行“逻辑或”操作<br>ixor 对int类型值进行“逻辑异或”操作<br>lxor 对long类型值进行“逻辑异或”操作<br>浮点运算<br>fadd 执行float类型的加法<br>dadd 执行double类型的加法<br>fsub 执行float类型的减法<br>dsub 执行double类型的减法<br>fmul 执行float类型的乘法<br>dmul 执行double类型的乘法<br>fdiv 执行float类型的除法<br>ddiv 执行double类型的除法<br>frem 计算float类型除法的余数<br>drem 计算double类型除法的余数<br>fneg 将一个float类型的数值取反<br>dneg 将一个double类型的数值取反<br>对象和数组<br>对象操作指令<br>new 创建一个新对象<br>checkcast 确定对象为所给定的类型<br>getfield 从对象中获取字段<br>putfield 设置对象中字段的值<br>getstatic 从类中获取静态字段<br>putstatic 设置类中静态字段的值<br>instanceof 判断对象是否为给定的类型<br>数组操作指令<br>newarray 分配数据成员类型为基本上数据类型的新数组<br>anewarray 分配数据成员类型为引用类型的新数组<br>arraylength 获取数组长度<br>multianewarray 分配新的多维数组<br>控制流<br>条件分支指令<br>ifeq 如果等于0，则跳转<br>ifne 如果不等于0，则跳转<br>iflt 如果小于0，则跳转<br>ifge 如果大于等于0，则跳转<br>ifgt 如果大于0，则跳转<br>ifle 如果小于等于0，则跳转<br>if_icmpcq 如果两个int值相等，则跳转<br>if_icmpne 如果两个int类型值不相等，则跳转<br>if_icmplt 如果一个int类型值小于另外一个int类型值，则跳转<br>if_icmpge 如果一个int类型值大于或者等于另外一个int类型值，则跳转<br>if_icmpgt 如果一个int类型值大于另外一个int类型值，则跳转<br>if_icmple 如果一个int类型值小于或者等于另外一个int类型值，则跳转<br>ifnull 如果等于null，则跳转<br>ifnonnull 如果不等于null，则跳转<br>if_acmpeq 如果两个对象引用相等，则跳转<br>if_acmpnc 如果两个对象引用不相等，则跳转<br>比较指令<br>lcmp 比较long类型值<br>fcmpl 比较float类型值（当遇到NaN时，返回-1）<br>fcmpg 比较float类型值（当遇到NaN时，返回1）<br>dcmpl 比较double类型值（当遇到NaN时，返回-1）<br>dcmpg 比较double类型值（当遇到NaN时，返回1）<br>无条件转移指令<br>goto 无条件跳转<br>goto_w 无条件跳转（宽索引）<br>表跳转指令<br>tableswitch 通过索引访问跳转表，并跳转<br>lookupswitch 通过键值匹配访问跳转表，并执行跳转操作<br>异常<br>athrow 抛出异常或错误<br>finally子句<br>jsr 跳转到子例程<br>jsr_w 跳转到子例程（宽索引）<br>rct 从子例程返回<br>方法调用与返回<br>方法调用指令<br>invokcvirtual 运行时按照对象的类来调用实例方法<br>invokespecial 根据编译时类型来调用实例方法<br>invokestatic 调用类（静态）方法<br>invokcinterface 调用接口方法<br>方法返回指令<br>ireturn 从方法中返回int类型的数据<br>lreturn 从方法中返回long类型的数据<br>freturn 从方法中返回float类型的数据<br>dreturn 从方法中返回double类型的数据<br>areturn 从方法中返回引用类型的数据<br>return 从方法中返回，返回值为void<br>线程同步<br>montiorenter 进入并获取对象监视器<br>monitorexit 释放并退出对象监视器</p>
-<hr>
-<p>JVM指令助记符<br>变量到操作数栈：iload,iload_,lload,lload_,fload,fload_,dload,dload_,aload,aload_<br>操作数栈到变量：istore,istore_,lstore,lstore_,fstore,fstore_,dstore,dstor_,astore,astore_<br>常数到操作数栈：bipush,sipush,ldc,ldc_w,ldc2_w,aconst_null,iconst_ml,iconst_<em>,lconst_,fconst_,dconst_</em><br><em>加：iadd,ladd,fadd,dadd</em><br><em>减：isub,lsub,fsub,dsub</em><br><em>乘：imul,lmul,fmul,dmul</em><br><em>除：idiv,ldiv,fdiv,ddiv</em><br><em>余数：irem,lrem,frem,drem</em><br><em>取负：ineg,lneg,fneg,dneg</em><br><em>移位：ishl,lshr,iushr,lshl,lshr,lushr</em><br><em>按位或：ior,lor</em><br><em>按位与：iand,land</em><br><em>按位异或：ixor,lxor</em><br><em>类型转换：i2l,i2f,i2d,l2f,l2d,f2d(放宽数值转换)</em><br><em>i2b,i2c,i2s,l2i,f2i,f2l,d2i,d2l,d2f(缩窄数值转换)</em><br><em>创建类实便：new</em><br><em>创建新数组：newarray,anewarray,multianwarray</em><br><em>访问类的域和类实例域：getfield,putfield,getstatic,putstatic</em><br><em>把数据装载到操作数栈：baload,caload,saload,iaload,laload,faload,daload,aaload</em><br><em>从操作数栈存存储到数组：bastore,castore,sastore,iastore,lastore,fastore,dastore,aastore</em><br><em>获取数组长度：arraylength</em><br><em>检相类实例或数组属性：instanceof,checkcast</em><br><em>操作数栈管理：pop,pop2,dup,dup2,dup_xl,dup2_xl,dup_x2,dup2_x2,swap</em><br><em>有条件转移：ifeq,iflt,ifle,ifne,ifgt,ifge,ifnull,ifnonnull,if_icmpeq,if_icmpene,</em><br><em>if_icmplt,if_icmpgt,if_icmple,if_icmpge,if_acmpeq,if_acmpne,lcmp,fcmpl</em><br><em>fcmpg,dcmpl,dcmpg</em><br><em>复合条件转移：tableswitch,lookupswitch</em><br><em>无条件转移：goto,goto_w,jsr,jsr_w,ret</em><br><em>调度对象的实便方法：invokevirtual</em><br><em>调用由接口实现的方法：invokeinterface</em><br><em>调用需要特殊处理的实例方法：invokespecial</em><br><em>调用命名类中的静态方法：invokestatic</em><br><em>方法返回：ireturn,lreturn,freturn,dreturn,areturn,return</em><br><em>异常：athrow</em><br><em>finally关键字的实现使用：jsr,jsr_w,ret</em></p>
-
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="https://huangpu311.github.io/xiaojiang/2018/03/29/javap指令集/" data-id="cjnblvxx20008povagmvklhwf" class="article-share-link">Share</a>
+      <a data-url="https://huangpu311.github.io/xiaojiang/2018/05/02/操作技巧/" data-id="ck8h6wq81000uecva1g6uhq7g" class="article-share-link">Share</a>
       
       
     </footer>
@@ -655,7 +641,7 @@
 
   <nav id="page-nav">
     
-    <span class="page-number current">1</span><a class="page-number" href="/xiaojiang/page/2/">2</a><a class="page-number" href="/xiaojiang/page/3/">3</a><a class="extend next" rel="next" href="/xiaojiang/page/2/">Next &raquo;</a>
+    <span class="page-number current">1</span><a class="page-number" href="/xiaojiang/page/2/">2</a><a class="page-number" href="/xiaojiang/page/3/">3</a><a class="page-number" href="/xiaojiang/page/4/">4</a><a class="extend next" rel="next" href="/xiaojiang/page/2/">Next &raquo;</a>
   </nav>
 
 </section>
@@ -669,7 +655,7 @@
   <div class="widget-wrap">
     <h3 class="widget-title">Tags</h3>
     <div class="widget">
-      <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/xiaojiang/tags/spring源码/">spring源码</a></li><li class="tag-list-item"><a class="tag-list-link" href="/xiaojiang/tags/分销/">分销</a></li></ul>
+      <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/xiaojiang/tags/python/">python</a></li><li class="tag-list-item"><a class="tag-list-link" href="/xiaojiang/tags/spring源码/">spring源码</a></li><li class="tag-list-item"><a class="tag-list-link" href="/xiaojiang/tags/分销/">分销</a></li></ul>
     </div>
   </div>
 
@@ -679,7 +665,7 @@
   <div class="widget-wrap">
     <h3 class="widget-title">Tag Cloud</h3>
     <div class="widget tagcloud">
-      <a href="/xiaojiang/tags/spring源码/" style="font-size: 10px;">spring源码</a> <a href="/xiaojiang/tags/分销/" style="font-size: 10px;">分销</a>
+      <a href="/xiaojiang/tags/python/" style="font-size: 10px;">python</a> <a href="/xiaojiang/tags/spring源码/" style="font-size: 10px;">spring源码</a> <a href="/xiaojiang/tags/分销/" style="font-size: 10px;">分销</a>
     </div>
   </div>
 
@@ -688,7 +674,7 @@
   <div class="widget-wrap">
     <h3 class="widget-title">Archives</h3>
     <div class="widget">
-      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/xiaojiang/archives/2018/07/">July 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/xiaojiang/archives/2018/05/">May 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/xiaojiang/archives/2018/04/">April 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/xiaojiang/archives/2018/03/">March 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/xiaojiang/archives/2018/02/">February 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/xiaojiang/archives/2018/01/">January 2018</a></li></ul>
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/xiaojiang/archives/2019/09/">September 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/xiaojiang/archives/2019/02/">February 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/xiaojiang/archives/2019/01/">January 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/xiaojiang/archives/2018/07/">July 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/xiaojiang/archives/2018/05/">May 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/xiaojiang/archives/2018/04/">April 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/xiaojiang/archives/2018/03/">March 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/xiaojiang/archives/2018/02/">February 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/xiaojiang/archives/2018/01/">January 2018</a></li></ul>
     </div>
   </div>
 
@@ -701,23 +687,23 @@
       <ul>
         
           <li>
-            <a href="/xiaojiang/2018/07/19/分销管理总览/">(no title)</a>
+            <a href="/xiaojiang/2019/09/05/spring-boot/">(no title)</a>
           </li>
         
           <li>
-            <a href="/xiaojiang/2018/05/02/操作技巧/">操作技巧</a>
+            <a href="/xiaojiang/2019/02/27/正则表达式/">正则表达式</a>
           </li>
         
           <li>
-            <a href="/xiaojiang/2018/04/23/spring源码阅读/">spring源码阅读</a>
+            <a href="/xiaojiang/2019/02/22/并发编程/">并发编程</a>
           </li>
         
           <li>
-            <a href="/xiaojiang/2018/04/20/tomcat/">tomcat</a>
+            <a href="/xiaojiang/2019/01/24/mybatis/">mybatis</a>
           </li>
         
           <li>
-            <a href="/xiaojiang/2018/04/20/分销管理/">分销管理</a>
+            <a href="/xiaojiang/2019/01/18/java面试题/">java面试题</a>
           </li>
         
       </ul>
@@ -732,7 +718,7 @@
   
   <div class="outer">
     <div id="footer-info" class="inner">
-      &copy; 2018 小江<br>
+      &copy; 2020 小江<br>
       Powered by <a href="http://hexo.io/" target="_blank">Hexo</a>
     </div>
   </div>

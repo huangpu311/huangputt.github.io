@@ -7,17 +7,17 @@
   
   <title>docker | 小江的个人博客</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="Docker命令docker组成 dockerClient客户端 Docker Daemon守护进程 Docker Image镜像 DockerContainer容器  容器：对象 镜像：类 –name  docker 命名 1、docker  拉取tomcat镜像 docker pull tomcat 2、docker运行tomcat 容器 docker run -d -p 9000:8080">
+  <meta name="description" content="docker 安装参考资料 docker安装 命令 123456# 设置yum源yum-config-manager --add-repo https://download.docker.com/linux/centos/docker-ce.repo# 查看仓库中的所有版本yum list docker-ce --showduplicates | sort -r# 安装docker yum ins">
 <meta property="og:type" content="article">
 <meta property="og:title" content="docker">
 <meta property="og:url" content="https://huangpu311.github.io/xiaojiang/2018/02/27/docker/index.html">
 <meta property="og:site_name" content="小江的个人博客">
-<meta property="og:description" content="Docker命令docker组成 dockerClient客户端 Docker Daemon守护进程 Docker Image镜像 DockerContainer容器  容器：对象 镜像：类 –name  docker 命名 1、docker  拉取tomcat镜像 docker pull tomcat 2、docker运行tomcat 容器 docker run -d -p 9000:8080">
+<meta property="og:description" content="docker 安装参考资料 docker安装 命令 123456# 设置yum源yum-config-manager --add-repo https://download.docker.com/linux/centos/docker-ce.repo# 查看仓库中的所有版本yum list docker-ce --showduplicates | sort -r# 安装docker yum ins">
 <meta property="og:locale" content="default">
-<meta property="og:updated_time" content="2018-09-06T09:50:49.580Z">
+<meta property="og:updated_time" content="2019-11-06T02:43:46.238Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="docker">
-<meta name="twitter:description" content="Docker命令docker组成 dockerClient客户端 Docker Daemon守护进程 Docker Image镜像 DockerContainer容器  容器：对象 镜像：类 –name  docker 命名 1、docker  拉取tomcat镜像 docker pull tomcat 2、docker运行tomcat 容器 docker run -d -p 9000:8080">
+<meta name="twitter:description" content="docker 安装参考资料 docker安装 命令 123456# 设置yum源yum-config-manager --add-repo https://download.docker.com/linux/centos/docker-ce.repo# 查看仓库中的所有版本yum list docker-ce --showduplicates | sort -r# 安装docker yum ins">
   
     <link rel="alternate" href="/xiaojiang/atom.xml" title="小江的个人博客" type="application/atom+xml">
   
@@ -86,7 +86,13 @@
     
     <div class="article-entry" itemprop="articleBody">
       
-        <h2 id="Docker命令"><a href="#Docker命令" class="headerlink" title="Docker命令"></a>Docker命令</h2><h4 id="docker组成"><a href="#docker组成" class="headerlink" title="docker组成"></a>docker组成</h4><ol>
+        <h2 id="docker-安装"><a href="#docker-安装" class="headerlink" title="docker 安装"></a>docker 安装</h2><p>参考资料 <a href="https://www.cnblogs.com/yufeng218/p/8370670.html" target="_blank" rel="noopener">docker安装</a></p>
+<p>命令</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#</span><span class="bash"> 设置yum源</span></span><br><span class="line">yum-config-manager --add-repo https://download.docker.com/linux/centos/docker-ce.repo</span><br><span class="line"><span class="meta">#</span><span class="bash"> 查看仓库中的所有版本</span></span><br><span class="line">yum list docker-ce --showduplicates | sort -r</span><br><span class="line"><span class="meta">#</span><span class="bash"> 安装docker </span></span><br><span class="line">yum install docker-ce</span><br></pre></td></tr></table></figure>
+<p>idea控制docker </p>
+<p><a href="https://my.oschina.net/wuweixiang/blog/2874064" target="_blank" rel="noopener">https://my.oschina.net/wuweixiang/blog/2874064</a></p>
+<p>##Docker命令</p>
+<h4 id="docker组成"><a href="#docker组成" class="headerlink" title="docker组成"></a>docker组成</h4><ol>
 <li>dockerClient客户端</li>
 <li>Docker Daemon守护进程</li>
 <li>Docker Image镜像</li>
@@ -118,6 +124,8 @@
 <p>获取centos镜像到本地</p>
 <p>docker pull centos</p>
 <h3 id="docker安装镜像比较慢"><a href="#docker安装镜像比较慢" class="headerlink" title="docker安装镜像比较慢"></a>docker安装镜像比较慢</h3><p>进入这个网站进行注册 <a href="https://account.daocloud.io/signin，点击加速器进入https://www.daocloud.io/mirror#accelerator-doc，然后复制命令在linux里面运行即可。" target="_blank" rel="noopener">https://account.daocloud.io/signin，点击加速器进入https://www.daocloud.io/mirror#accelerator-doc，然后复制命令在linux里面运行即可。</a></p>
+<p>linux加速器配置</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">curl -sSL https://get.daocloud.io/daotools/set_mirror.sh | sh -s http://f1361db2.m.daocloud.io</span><br></pre></td></tr></table></figure>
 <p>运行后可能会出现docker起不来，这个是因为/etc/docker 下的daemon.json文件不是json格式导致的</p>
 <p>运行后重启docker(service docker restart )</p>
 <p>docker run 命令格式</p>
@@ -134,11 +142,23 @@
 <p>-p ,–publish=[] 指定容器暴露端口</p>
 <p>-h ,–hostname =”” 指定容器主机名</p>
 <p>-v ,–volume=[] 给容器挂载存储卷，挂载到容器的某个目录</p>
+<h2 id="docker-安装第三方软件"><a href="#docker-安装第三方软件" class="headerlink" title="docker 安装第三方软件"></a>docker 安装第三方软件</h2><h3 id="docker-安装mysql"><a href="#docker-安装mysql" class="headerlink" title="docker 安装mysql"></a>docker 安装mysql</h3><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#</span><span class="bash"> 拉取5.7版本的mysql</span></span><br><span class="line">docker pull mysql:5.7</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">docker run --name mysql5.7 -p 3307:3306 -v /hp/mysql/datadir:/var/lib/mysql -v /hp/mysql/conf:/etc/mysql/ -e MYSQL_ROOT_PASSWORD=123456 -d mysql:5.7</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">docker run --name slave -p 3308:3306 -v /hp/mysql/slave/datadir:/var/lib/mysql -v /hp/mysql/slave/conf:/etc/mysql/ -e MYSQL_ROOT_PASSWORD=123456 -d mysql:5.7</span><br></pre></td></tr></table></figure>
+<p>docker 下的mysql数据库主从配置<a href="https://blog.csdn.net/boling_cavalry/article/details/79751085" target="_blank" rel="noopener">链接</a></p>
+<p><a href="https://www.cnblogs.com/ivictor/p/6440429.html" target="_blank" rel="noopener">https://www.cnblogs.com/ivictor/p/6440429.html</a></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line">CREATE USER &apos;rep&apos;@&apos;%&apos; IDENTIFIED BY &apos;888888&apos;;</span><br><span class="line"></span><br><span class="line">GRANT REPLICATION SLAVE ON *.* TO &apos;rep&apos;@&apos;%&apos;;</span><br><span class="line"></span><br><span class="line">FLUSH PRIVILEGES;</span><br><span class="line"></span><br><span class="line">SHOW MASTER STATUS;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"></span><br><span class="line">#172.17.0.2</span><br><span class="line"></span><br><span class="line">CHANGE MASTER TO MASTER_HOST=&apos;188.131.227.43&apos;, \</span><br><span class="line">MASTER_USER=&apos;rep&apos;, \</span><br><span class="line">MASTER_PASSWORD=&apos;888888&apos;, \</span><br><span class="line">MASTER_LOG_FILE=&apos;mysql-master-bin.000001&apos;, \</span><br><span class="line">MASTER_PORT=3307, \</span><br><span class="line">MASTER_LOG_POS=1276;</span><br></pre></td></tr></table></figure>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#</span><span class="bash">!/bin/bash</span></span><br><span class="line"></span><br><span class="line">MASTER_DIR=/var/lib/mysql/master</span><br><span class="line">SLAVE_DIR=/var/lib/mysql/slave</span><br><span class="line"></span><br><span class="line"><span class="meta">#</span><span class="bash"><span class="comment"># First we could rm the existed container</span></span></span><br><span class="line">docker rm -f master</span><br><span class="line">docker rm -f slave</span><br><span class="line"></span><br><span class="line"><span class="meta">#</span><span class="bash"><span class="comment"># Rm the existed directory</span></span></span><br><span class="line">rm -rf $MASTER_DIR</span><br><span class="line">rm -rf $SLAVE_DIR</span><br><span class="line"></span><br><span class="line"><span class="meta">#</span><span class="bash"><span class="comment"># Start instance</span></span></span><br><span class="line">docker run --name master -p 3308:3306  -v /etc/master.cnf:/etc/mysql/my.cnf -v $MASTER_DIR:/var/lib/mysql  --net=host -e MYSQL_ROOT_PASSWORD=123456 -d mysql:5.7</span><br><span class="line">docker run --name slave -p 3309:3306  -v /etc/slave.cnf:/etc/mysql/my.cnf -v $SLAVE_DIR:/var/lib/mysql --net=host -e MYSQL_ROOT_PASSWORD=123456 -d mysql:5.7</span><br><span class="line"><span class="meta">#</span><span class="bash"><span class="comment"># Creating a User for Replication</span></span></span><br><span class="line">docker stop master slave</span><br><span class="line">docker start master slave</span><br><span class="line"></span><br><span class="line">sleep 3</span><br><span class="line"></span><br><span class="line">docker exec -it master mysql -S /var/lib/mysql/mysql.sock -e "CREATE USER 'repl'@'127.0.0.1' IDENTIFIED BY 'repl';GRANT REPLICATION SLAVE ON *.* TO 'repl'@'127.0.0.1';"</span><br><span class="line"></span><br><span class="line"><span class="meta">#</span><span class="bash"><span class="comment"># Obtaining the Replication Master Binary Log Coordinates</span></span></span><br><span class="line">master_status=`docker exec -it master mysql -S /var/lib/mysql/mysql.sock -e "show master status\G"`</span><br><span class="line">master_log_file=`echo "$master_status" | awk  'NR==2&#123;print substr($2,1,length($2)-1)&#125;'`</span><br><span class="line">master_log_pos=`echo "$master_status" | awk 'NR==3&#123;print $2&#125;'`</span><br><span class="line">master_log_file="'""$master_log_file""'"</span><br><span class="line"></span><br><span class="line"><span class="meta">#</span><span class="bash"><span class="comment"># Setting Up Replication Slaves </span></span></span><br><span class="line">docker exec -it slave mysql -S /var/lib/mysql/mysql.sock -e "CHANGE MASTER TO MASTER_HOST='127.0.0.1',MASTER_PORT=3306,MASTER_USER='repl',MASTER_PASSWORD='repl',MASTER_LOG_FILE=$master_log_file,MASTER_LOG_POS=$master_log_pos;"docker exec -it slave mysql -S /var/lib/mysql/mysql.sock -e "start slave;"</span><br><span class="line">docker exec -it slave mysql -S /var/lib/mysql/mysql.sock -e "show slave status\G"</span><br><span class="line"></span><br><span class="line"><span class="meta">#</span><span class="bash"><span class="comment"># Creates shortcuts</span></span></span><br><span class="line">grep "alias master" /etc/profile</span><br><span class="line">if [ $? -eq 1 ];then</span><br><span class="line">    echo 'alias mysql="docker exec -it master mysql"' &gt;&gt; /etc/profile</span><br><span class="line">    echo 'alias master="docker exec -it master mysql -h 127.0.0.1 -P3306"' &gt;&gt; /etc/profile</span><br><span class="line">    echo 'alias slave="docker exec -it master mysql -h 127.0.0.1 -P3307"' &gt;&gt; /etc/profile</span><br><span class="line">    source /etc/profile</span><br><span class="line">fi</span><br></pre></td></tr></table></figure>
+<h3 id="docker-部署项目"><a href="#docker-部署项目" class="headerlink" title="docker 部署项目"></a>docker 部署项目</h3><p>构建docker文件</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">FROM livingobjects/jre8</span><br><span class="line"> VOLUME /tmp</span><br><span class="line"><span class="meta">#</span><span class="bash">  作者签名</span></span><br><span class="line"> MAINTAINER hp</span><br><span class="line"></span><br><span class="line"><span class="meta">#</span><span class="bash">  简化 jar 的名字路径 （<span class="comment">#：表示注释掉）</span></span></span><br><span class="line"> COPY jar/dist-primary-1.1.4.jar  /app.jar</span><br><span class="line"></span><br><span class="line"><span class="meta">#</span><span class="bash">  执行 java -jar 命令 （CMD：在启动容器时才执行此行。RUN：构建镜像时就执行此行）</span></span><br><span class="line"> CMD java -jar /app.jar</span><br></pre></td></tr></table></figure>
+<p>运行命令</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">docker build -t admin .</span><br><span class="line"><span class="meta">#</span><span class="bash"> 启动</span></span><br><span class="line">docker stop admin_hp</span><br><span class="line">docker rm admin_hp</span><br><span class="line">docker run -d -p 80:8081 -v /hp/data/docker/logs:/logs --name admin_hp admin</span><br></pre></td></tr></table></figure>
+<h3 id="docker-部署tomcat"><a href="#docker-部署tomcat" class="headerlink" title="docker 部署tomcat"></a>docker 部署tomcat</h3><p><a href="https://blog.csdn.net/qq_32351227/article/details/78673591" target="_blank" rel="noopener">文章地址</a></p>
+<p><a href="https://blog.csdn.net/qq_32351227/article/details/78673591" target="_blank" rel="noopener">https://blog.csdn.net/qq_32351227/article/details/78673591</a> </p>
+<p>docker run  -v  /hp/data/docker/cms/tomcat/webapps:/usr/local/tomcat/webapps -v   /hp/data/docker/cms/tomcat/logs:/usr/local/tomcat/logs -d  -p 8081:8080  -it  –name=cms tomcat </p>
 
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://huangpu311.github.io/xiaojiang/2018/02/27/docker/" data-id="cjnblvxx30009povahw3gycde" class="article-share-link">Share</a>
+      <a data-url="https://huangpu311.github.io/xiaojiang/2018/02/27/docker/" data-id="ck8h6wq77000fecva97ir5xnk" class="article-share-link">Share</a>
       
       
     </footer>
@@ -178,7 +198,7 @@
   <div class="widget-wrap">
     <h3 class="widget-title">Tags</h3>
     <div class="widget">
-      <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/xiaojiang/tags/spring源码/">spring源码</a></li><li class="tag-list-item"><a class="tag-list-link" href="/xiaojiang/tags/分销/">分销</a></li></ul>
+      <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/xiaojiang/tags/python/">python</a></li><li class="tag-list-item"><a class="tag-list-link" href="/xiaojiang/tags/spring源码/">spring源码</a></li><li class="tag-list-item"><a class="tag-list-link" href="/xiaojiang/tags/分销/">分销</a></li></ul>
     </div>
   </div>
 
@@ -188,7 +208,7 @@
   <div class="widget-wrap">
     <h3 class="widget-title">Tag Cloud</h3>
     <div class="widget tagcloud">
-      <a href="/xiaojiang/tags/spring源码/" style="font-size: 10px;">spring源码</a> <a href="/xiaojiang/tags/分销/" style="font-size: 10px;">分销</a>
+      <a href="/xiaojiang/tags/python/" style="font-size: 10px;">python</a> <a href="/xiaojiang/tags/spring源码/" style="font-size: 10px;">spring源码</a> <a href="/xiaojiang/tags/分销/" style="font-size: 10px;">分销</a>
     </div>
   </div>
 
@@ -197,7 +217,7 @@
   <div class="widget-wrap">
     <h3 class="widget-title">Archives</h3>
     <div class="widget">
-      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/xiaojiang/archives/2018/07/">July 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/xiaojiang/archives/2018/05/">May 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/xiaojiang/archives/2018/04/">April 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/xiaojiang/archives/2018/03/">March 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/xiaojiang/archives/2018/02/">February 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/xiaojiang/archives/2018/01/">January 2018</a></li></ul>
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/xiaojiang/archives/2019/09/">September 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/xiaojiang/archives/2019/02/">February 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/xiaojiang/archives/2019/01/">January 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/xiaojiang/archives/2018/07/">July 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/xiaojiang/archives/2018/05/">May 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/xiaojiang/archives/2018/04/">April 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/xiaojiang/archives/2018/03/">March 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/xiaojiang/archives/2018/02/">February 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/xiaojiang/archives/2018/01/">January 2018</a></li></ul>
     </div>
   </div>
 
@@ -210,23 +230,23 @@
       <ul>
         
           <li>
-            <a href="/xiaojiang/2018/07/19/分销管理总览/">(no title)</a>
+            <a href="/xiaojiang/2019/09/05/spring-boot/">(no title)</a>
           </li>
         
           <li>
-            <a href="/xiaojiang/2018/05/02/操作技巧/">操作技巧</a>
+            <a href="/xiaojiang/2019/02/27/正则表达式/">正则表达式</a>
           </li>
         
           <li>
-            <a href="/xiaojiang/2018/04/23/spring源码阅读/">spring源码阅读</a>
+            <a href="/xiaojiang/2019/02/22/并发编程/">并发编程</a>
           </li>
         
           <li>
-            <a href="/xiaojiang/2018/04/20/tomcat/">tomcat</a>
+            <a href="/xiaojiang/2019/01/24/mybatis/">mybatis</a>
           </li>
         
           <li>
-            <a href="/xiaojiang/2018/04/20/分销管理/">分销管理</a>
+            <a href="/xiaojiang/2019/01/18/java面试题/">java面试题</a>
           </li>
         
       </ul>
@@ -241,7 +261,7 @@
   
   <div class="outer">
     <div id="footer-info" class="inner">
-      &copy; 2018 小江<br>
+      &copy; 2020 小江<br>
       Powered by <a href="http://hexo.io/" target="_blank">Hexo</a>
     </div>
   </div>

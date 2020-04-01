@@ -15,7 +15,7 @@
 <meta property="og:site_name" content="小江的个人博客">
 <meta property="og:description" content="整体思路1、spring的出现时为了解决什么问题在没有框架的时候，代码的开发是通过servlet开发，并且没有相应的规则，项目完成之后代码比较乱，并且代码不能够符合”高内聚，松耦合”的原则，spring 的出现就是为了解决代码开发效率低，并且规范化开发的目的。 2、spring 的设计策略   a、基于POJO轻量级和最小侵入式原则    b、 通过依赖注入和面向接口实现松耦合的原则    c、基">
 <meta property="og:locale" content="default">
-<meta property="og:updated_time" content="2018-04-26T03:29:29.227Z">
+<meta property="og:updated_time" content="2019-07-23T08:09:23.760Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="spring源码阅读">
 <meta name="twitter:description" content="整体思路1、spring的出现时为了解决什么问题在没有框架的时候，代码的开发是通过servlet开发，并且没有相应的规则，项目完成之后代码比较乱，并且代码不能够符合”高内聚，松耦合”的原则，spring 的出现就是为了解决代码开发效率低，并且规范化开发的目的。 2、spring 的设计策略   a、基于POJO轻量级和最小侵入式原则    b、 通过依赖注入和面向接口实现松耦合的原则    c、基">
@@ -117,11 +117,25 @@
 <p>总结上面两点，DI为IOC的具体实现</p>
 <h5 id="IOC容器的初始化"><a href="#IOC容器的初始化" class="headerlink" title="IOC容器的初始化"></a>IOC容器的初始化</h5><p>IOC容器包括BeanDefinition的Resource的定位、注册和载入三个基本过程</p>
 <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ClassPathXmlApplicationContext -&gt;AbstractXmlApplicationContext-&gt;AbstractRefreshableConfigApplicationContext-&gt;AbstractRefreshableApplicationContext-&gt;ResourcePatternResolver</span><br></pre></td></tr></table></figure>
+<h2 id="Spring-文档"><a href="#Spring-文档" class="headerlink" title="Spring 文档"></a>Spring 文档</h2><h3 id="spring-framework-overview-spring-框架概览"><a href="#spring-framework-overview-spring-框架概览" class="headerlink" title="spring framework overview (spring 框架概览)"></a>spring framework overview (spring 框架概览)</h3><p>Spring makes it easy to create java enterprise applications.It provides everything you  need to embrace the Java language in an enterprise environment ,with support for Groovy and Kotlin as alternative languages on the JVM ,and with the flexibility to create many kinds of architectures depending on an application’s  needs .As of Spring Framework 5.1 ,Spring requires JDK 8 + and provides out-of-the-box supports for JDK 11 LTS.</p>
+<p>Spring 主要是为了能够让java企业级应用更加简单.它可以支持Groovy 或者Kotiln二选一，可以根据不同的需要创建应用.Spring 5.1 要求最低版本为8</p>
+<p>Spring supports a wide range of application scenarios . In a large enterprise ,applications often exist for a long time and have to run on a JDK and application server whose upgrade cycle is beyond developer control . Others may run as a single jar with the server embedded ,possibly in a cloud environment. Yet  others may be standalone applications(such as batch or integration workloads)that do not need a server.</p>
+<p>Spring 支持很多应用场景.在大型企业中，应用程序通常存在很长时间，并且运行在JDK和应用服务器上，升级周期超出了开发人员的控制，其他的方面可以作为单独的jar运行，并嵌入服务器，可能是在云环境，还有一个可能是不需要服务器的独立应用程序。</p>
+<p>Spring is open source.It has a large and  active community that provides continuous feedback based on diverse range of real-world use case .This has helped Spring to successfully evolve over a very long time.</p>
+<p>Spring 是开源的，Spring 拥有一个大型并且活跃的社区，该社区基于各种实际用例提供持续性的反馈，这有助于spring在很长一段时间成功的发展.</p>
+<h4 id="what-we-mean-by-Spring"><a href="#what-we-mean-by-Spring" class="headerlink" title="what we mean by Spring"></a>what we mean by Spring</h4><p>The term “Spring” means different things in different contexts. It can be used to refer to the Spring Framework project itself ,which is where it all started.Over time ,other Spring projects have been built on top of the Spring Framework .Most often ,when people say “Spring” ,they mean the entire family of projects .This reference documentation focuses on the foundation:the Spring Framework itself.</p>
+<p>Spring 在不同的上下文中有着不同的含义，开始的时候是指引用Spring 框架本身，随着时间的推移，其他Spring 项目已经构建在Spring 框架基础之上，通常，当人们说Spring 的时候，他们指的是Spring整个系列，框架参考的是Spring框架的本身。</p>
+<p>The Spring Framework is divided into modules. Applications can choose which modules they need .At the heart art the modules of the core container.including a configuration model and a dependency  injection mechanism.Beyond that ,the Spring Framework provides foundational supports for different application architectures ,including messaging ,transactional data and persistence ,and web .It also includes the Servlet-based Spring MVC web framework and ,in parallel,The Spring WebFlux reactive web framework.</p>
+<p>Spring 框架被划分为多个模块。应用程序可以选择自己需要的模块。核心模块包括配置模型和依赖注入，除此之外,Spring框架还提供不同的应用程序体系提供基础支持，包括消息传递，事物控制和持久性，以及web应用，它还包括基于servlet的Spring mvc框架，以及Spring  webflux 反应式web框架.</p>
+<p>A note about modules:Spring ‘s framework jars allow for deployment to JDK 9’s module path(“jigsaw”) For use in Jigsaw-enabled applications ,the Spring Framework 5 jars come with “Automatic-Module-Name” manifest entries which define stable language-level module names (“spring.core”,”spring.context” etc) independent from jar artifact name (the jars follow the same naming pattern with “-“ instead of “.” ,e.g. “spring-core” and “spring-context”).Of course ,Spring’s framework jars keep working fine on the classpath on both JDK8 and 9 +.</p>
+<p>这段主要说支持jdk9 的模块化.</p>
+<h4 id="History-of-Spring-and-the-Spring-Framework"><a href="#History-of-Spring-and-the-Spring-Framework" class="headerlink" title="History of Spring and the Spring Framework"></a>History of Spring and the Spring Framework</h4><p>Spring came into being in 2003 as a response to the complexity of the early J2EE specifications. While some consider Java EE and Spring to be in competition,Spring is ,in fact complementary to Java EE.The Spring programming model does not embrace the Java EE platform specification ;rather ,it integrates wiht carefully selected individual specification from the EE umbrella:</p>
+<p>Spring 是在2003 年作为对早起J2EE规范复杂性的响应而出现的。虽然有些人认为Java EE 和Spring 是竞争对手，但是，Spring实际上是对Java EE 平台规范的补充。Spring 编程模式不包含Jave EE平台规范，相反，它继承了精心选择的EE框架中的各个规范</p>
 
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://huangpu311.github.io/xiaojiang/2018/04/23/spring源码阅读/" data-id="cjnblvxxc000fpovatwhno0ov" class="article-share-link">Share</a>
+      <a data-url="https://huangpu311.github.io/xiaojiang/2018/04/23/spring源码阅读/" data-id="ck8h6wq7f000jecva644l6fq4" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/xiaojiang/tags/spring源码/">spring源码</a></li></ul>
@@ -163,7 +177,7 @@
   <div class="widget-wrap">
     <h3 class="widget-title">Tags</h3>
     <div class="widget">
-      <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/xiaojiang/tags/spring源码/">spring源码</a></li><li class="tag-list-item"><a class="tag-list-link" href="/xiaojiang/tags/分销/">分销</a></li></ul>
+      <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/xiaojiang/tags/python/">python</a></li><li class="tag-list-item"><a class="tag-list-link" href="/xiaojiang/tags/spring源码/">spring源码</a></li><li class="tag-list-item"><a class="tag-list-link" href="/xiaojiang/tags/分销/">分销</a></li></ul>
     </div>
   </div>
 
@@ -173,7 +187,7 @@
   <div class="widget-wrap">
     <h3 class="widget-title">Tag Cloud</h3>
     <div class="widget tagcloud">
-      <a href="/xiaojiang/tags/spring源码/" style="font-size: 10px;">spring源码</a> <a href="/xiaojiang/tags/分销/" style="font-size: 10px;">分销</a>
+      <a href="/xiaojiang/tags/python/" style="font-size: 10px;">python</a> <a href="/xiaojiang/tags/spring源码/" style="font-size: 10px;">spring源码</a> <a href="/xiaojiang/tags/分销/" style="font-size: 10px;">分销</a>
     </div>
   </div>
 
@@ -182,7 +196,7 @@
   <div class="widget-wrap">
     <h3 class="widget-title">Archives</h3>
     <div class="widget">
-      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/xiaojiang/archives/2018/07/">July 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/xiaojiang/archives/2018/05/">May 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/xiaojiang/archives/2018/04/">April 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/xiaojiang/archives/2018/03/">March 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/xiaojiang/archives/2018/02/">February 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/xiaojiang/archives/2018/01/">January 2018</a></li></ul>
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/xiaojiang/archives/2019/09/">September 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/xiaojiang/archives/2019/02/">February 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/xiaojiang/archives/2019/01/">January 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/xiaojiang/archives/2018/07/">July 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/xiaojiang/archives/2018/05/">May 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/xiaojiang/archives/2018/04/">April 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/xiaojiang/archives/2018/03/">March 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/xiaojiang/archives/2018/02/">February 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/xiaojiang/archives/2018/01/">January 2018</a></li></ul>
     </div>
   </div>
 
@@ -195,23 +209,23 @@
       <ul>
         
           <li>
-            <a href="/xiaojiang/2018/07/19/分销管理总览/">(no title)</a>
+            <a href="/xiaojiang/2019/09/05/spring-boot/">(no title)</a>
           </li>
         
           <li>
-            <a href="/xiaojiang/2018/05/02/操作技巧/">操作技巧</a>
+            <a href="/xiaojiang/2019/02/27/正则表达式/">正则表达式</a>
           </li>
         
           <li>
-            <a href="/xiaojiang/2018/04/23/spring源码阅读/">spring源码阅读</a>
+            <a href="/xiaojiang/2019/02/22/并发编程/">并发编程</a>
           </li>
         
           <li>
-            <a href="/xiaojiang/2018/04/20/tomcat/">tomcat</a>
+            <a href="/xiaojiang/2019/01/24/mybatis/">mybatis</a>
           </li>
         
           <li>
-            <a href="/xiaojiang/2018/04/20/分销管理/">分销管理</a>
+            <a href="/xiaojiang/2019/01/18/java面试题/">java面试题</a>
           </li>
         
       </ul>
@@ -226,7 +240,7 @@
   
   <div class="outer">
     <div id="footer-info" class="inner">
-      &copy; 2018 小江<br>
+      &copy; 2020 小江<br>
       Powered by <a href="http://hexo.io/" target="_blank">Hexo</a>
     </div>
   </div>

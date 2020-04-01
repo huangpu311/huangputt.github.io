@@ -1,0 +1,369 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+
+  
+  <title>spring-batch | 小江的个人博客</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="description" content="spring batch 结构spring batch 运行的基本单位是一个job，一个job就做一件批处理的事情，一个job包含很多step，step就是每个job要执行的单个步骤 step里面会有tasklet，tasklet是一个任务单元，他是属于可以重复利用的东西，然后是chunk，chunk就是数据块，你需要定义多大数据量是一个chunk。 chunk里面就是不断循环一个流程，读数据，处">
+<meta property="og:type" content="article">
+<meta property="og:title" content="spring-batch">
+<meta property="og:url" content="https://huangpu311.github.io/xiaojiang/2019/01/15/spring-batch/index.html">
+<meta property="og:site_name" content="小江的个人博客">
+<meta property="og:description" content="spring batch 结构spring batch 运行的基本单位是一个job，一个job就做一件批处理的事情，一个job包含很多step，step就是每个job要执行的单个步骤 step里面会有tasklet，tasklet是一个任务单元，他是属于可以重复利用的东西，然后是chunk，chunk就是数据块，你需要定义多大数据量是一个chunk。 chunk里面就是不断循环一个流程，读数据，处">
+<meta property="og:locale" content="default">
+<meta property="og:image" content="https://huangpu311.github.io/xiaojiang/2019/01/15/_posts/spring-batch/spring-batch-layers.png">
+<meta property="og:updated_time" content="2019-01-29T13:19:31.799Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="spring-batch">
+<meta name="twitter:description" content="spring batch 结构spring batch 运行的基本单位是一个job，一个job就做一件批处理的事情，一个job包含很多step，step就是每个job要执行的单个步骤 step里面会有tasklet，tasklet是一个任务单元，他是属于可以重复利用的东西，然后是chunk，chunk就是数据块，你需要定义多大数据量是一个chunk。 chunk里面就是不断循环一个流程，读数据，处">
+<meta name="twitter:image" content="https://huangpu311.github.io/xiaojiang/2019/01/15/_posts/spring-batch/spring-batch-layers.png">
+  
+    <link rel="alternate" href="/xiaojiang/atom.xml" title="小江的个人博客" type="application/atom+xml">
+  
+  
+    <link rel="icon" href="/favicon.png">
+  
+  
+    <link href="//fonts.googleapis.com/css?family=Source+Code+Pro" rel="stylesheet" type="text/css">
+  
+  <link rel="stylesheet" href="/xiaojiang/css/style.css">
+</head>
+
+<body>
+  <div id="container">
+    <div id="wrap">
+      <header id="header">
+  <div id="banner"></div>
+  <div id="header-outer" class="outer">
+    <div id="header-title" class="inner">
+      <h1 id="logo-wrap">
+        <a href="/xiaojiang/" id="logo">小江的个人博客</a>
+      </h1>
+      
+    </div>
+    <div id="header-inner" class="inner">
+      <nav id="main-nav">
+        <a id="main-nav-toggle" class="nav-icon"></a>
+        
+          <a class="main-nav-link" href="/xiaojiang/">Home</a>
+        
+          <a class="main-nav-link" href="/xiaojiang/archives">Archives</a>
+        
+      </nav>
+      <nav id="sub-nav">
+        
+          <a id="nav-rss-link" class="nav-icon" href="/xiaojiang/atom.xml" title="RSS Feed"></a>
+        
+        <a id="nav-search-btn" class="nav-icon" title="Search"></a>
+      </nav>
+      <div id="search-form-wrap">
+        <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" class="search-form-input" placeholder="Search"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="https://huangpu311.github.io/xiaojiang"></form>
+      </div>
+    </div>
+  </div>
+</header>
+      <div class="outer">
+        <section id="main"><article id="post-spring-batch" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/xiaojiang/2019/01/15/spring-batch/" class="article-date">
+  <time datetime="2019-01-15T06:21:57.000Z" itemprop="datePublished">2019-01-15</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      spring-batch
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h2 id="spring-batch-结构"><a href="#spring-batch-结构" class="headerlink" title="spring batch 结构"></a>spring batch 结构</h2><p>spring batch 运行的基本单位是一个job，一个job就做一件批处理的事情，一个job包含很多step，step就是每个job要执行的单个步骤</p>
+<p>step里面会有tasklet，tasklet是一个任务单元，他是属于可以重复利用的东西，然后是chunk，chunk就是数据块，你需要定义多大数据量是一个chunk。</p>
+<p>chunk里面就是不断循环一个流程，读数据，处理数据，然后写数据，spring batch  会不断的循环这个流程，直到批处理数据完成。</p>
+<h2 id="文档翻译"><a href="#文档翻译" class="headerlink" title="文档翻译"></a>文档翻译</h2><h3 id="1、Spring-Batch-Introduction-spring-batch-介绍"><a href="#1、Spring-Batch-Introduction-spring-batch-介绍" class="headerlink" title="1、Spring  Batch Introduction (spring  batch 介绍)"></a>1、Spring  Batch Introduction (spring  batch 介绍)</h3><p>Many applications within the enterprise domain require bulk（容量） processing to perform(执行)  business operations in mission critical(关键的) environments.These business operations include:</p>
+<p>许多企业应用需要执行重要的批量任务，这些任务包括：</p>
+<p>Automated （自动的）,complex processiong of large volumes(体积、容量) of information that is most efficiently(高效的) processed（加工过的） without user interaction（互动）.</p>
+<p>用户不需要操作，就可以高效的、自动的执行大量的数据</p>
+<p>These operations typically(代表性的) include time-based event(such as month-end calculations,notices,or correspondence（通信）)</p>
+<p>这些操作包括基于时间的事件（比如整月的计算、通知、通信）</p>
+<p>Periodic(定期的) application of complex(复杂的) business rules processed repetitively （重复地）acrossvery large data sets (for example ,insurance(保险费) benefit（好处） determination(确定，决心) or rate adjustments)</p>
+<p>应用定期的扫描重复的数据集合（比如，保险费的处理或者利率的调整）</p>
+<p>Integration(整合) of information that is received from internal(本质) and external(表面的，外部的) systems that typically requires formatting,validation ,and processing in a transactional manner into the system of record .Batch processing is used to process billions of transactions（处理） every day for enterprises（企业）.</p>
+<p>从系统内部和外部在事物中整合验证。批量程序每天为企业处理数十亿·的数据.</p>
+<p>Spring batch  is a light weight ,comprehensive(综合的，广泛的) batch framework designed to enable the development of robust（强健的，健壮） batch applications vital（至关重要的） for the daily （日常的）operations of enterprise systems.Spring Batch builds upon(根据，在..之上) the characteristics（特性，特征） of the Spring Framework that people have come to expect (期望)(productivity,POJO-based development approach （方法）,and general ease of use),while making it easy for developers to access(使用) and leverage(杠杆） more advance enterprise services where necessary.Spring Batch is not a scheduling framework.There are many good enterprise schedulers (such as Quartz ,Tivoli,Control-M,etc) available in both the commercial（商业的） and open source spaces ,It is intended （故意的）to work in conjunction(结合) with a scheduler ,not replace as a scheduler.</p>
+<p>spring batch 是 个轻量级的软件，批量设计被用于企业的日常操作系统中，spring batch  建立在大家都用的spring框架之上（多产的、基于POJO方法的、并且适合易用的），它让需要的企业使用起来更加容易，spring batch 不是一个调度框架，有很多好的调度器 可用（如…）他们当中有商业的也有开源的，他被有意的设计成和一个调度器结合使用，并不是替代一个调度器。</p>
+<hr>
+<p>Spring batch  provides(规定) reusable (可再用的)functions （功能）that are essential(基本的，必要的) in processing（对..处理） large volumes of records ,including logging/tracing ,transaction management,job processing statistics,job  restart,skip , and resource management.It also provides more advanced technical services and features that enable extremely . high-volume and high performance(性能) batch  jobs though optimization(优化) and partitioning techniques .Spring Batch can be used in both simple use cases (such as reading a file into a database or running a stored procedure ) as well as complex（复杂的） ,high volume use cases (such as moving high volumes of data between databases ,transforming（转换，改造） it ,and so on ).High-volume batch jobs can leverage the framework in a highly scalable(可扩展的) manner（方式） to process significant （重大的，有效的）volumes of informatiion.</p>
+<p>spring batch  规定对处理大量的数据是可重复使用的，包括  记录/跟踪，事物管理，job统计处理，job重启，跳过和资源管理，</p>
+<p>他当然规定了更高级的技术服务和特点，大容量和高性能批量处理通过优化和分区技术。</p>
+<p>spring batch 可以使用在简单的用例（比如读一个文件到一个数据库或者存储数据），或者复杂的，大容量的用例（比如移动大量的数据，转换它等等）</p>
+<p>大容量批处理可以是框架用以可扩展的方式处理重要的数据。</p>
+<hr>
+<h4 id="1-1-Background-（背景介绍）"><a href="#1-1-Background-（背景介绍）" class="headerlink" title="1.1 Background （背景介绍）"></a>1.1 Background （背景介绍）</h4><p> While open source softwore  projects and associated(交往) communities(社团) have focused greater attention(注意力，关心) on web-based and microservices-based architecture(架构) frameworks, there has been a notable(值得注意的) lack（缺乏，不足） of focus on reusable（可再用的） architecture frameworks  to accommodate(容纳，适应) Java-based batch processing needs ,despite（尽管） continued needs to handle such processing within enterprise IT environments.The lack of a standard ,reusable batch architecture has resulted in the proliferation(扩散) of many one-off,in-house solutions (解决方案) developed within client enterprise IT functions.</p>
+<p>当开源软件和社区将注意力放在基于web和微服务的架构，值得注意的是可在用架构去适应基于java批量应用一直不足，尽管企业需要处理一些批量应用，没有标准，可用的批量架构一般都是一次性的，内部的接近方案。</p>
+<hr>
+<p>SpringSource(now Pivotal(关键的) ) and Accenture collaborated(合作) to change this.Accenture’s hands-on(亲身实践的) industry（产业） and technical experience(经验) in implementing(即时通讯) batch architectures,SpringSource’s  depth (深度)of technical experience ,and  Spring’s  proven（证明） programming model together made a natural and powerful(强大的) partnership(部分) to create high-quality(高质量),market-relevant （市场）software aimed(目的) at filling（填充） and important gap(分歧，间隙) in enterprise Java . Both companies worked with a number of clients who were solving(解决) similar (相似的)problems by developing Spring-based batch architecture solutions .This provided some useful additional(附件的、额外的) detail and real-life(现实) constraints(约束) that helped to ensure(保证) the solution can ben applied to the real-world problems posed by clients.</p>
+<hr>
+<p>Accenturn contributed(贡献) previously(以前) proprietary(专利的，所有权) batch processing architecture frameworks to the Spring Batch project ,along with committer（提交者） resources to drive support ,enhancements(增强的),and the existing feature set ,Accenture’s contribution was based upon(根据，在..之上) decades(数十年) of experience in building batch architectures with the last several(各自的) generation of platforms :COBOL/Mainframe ,C++ /Unix ,and now Java/anywhere</p>
+<hr>
+<p>The collaborative(合作的) effort(努力) between Accenture and SpringSource aimed(目的) to promote（促进） the standardization（标准化） of software processing approaches (处理，办法),frameworks ,and tools that can be consistently（一贯的） leveraged(杠杆) by enterprise users when creating batch applications . Companies and government agencies （经济公司）desiring（想要） to deliver(发表) standard ,proven（证明） solutions(解决方案) to their enterprise IT environments can benefit(有益的) from Spring Batch .</p>
+<hr>
+<h4 id="1-2-Usage-Scenarios-使用场景"><a href="#1-2-Usage-Scenarios-使用场景" class="headerlink" title="1.2 Usage Scenarios(使用场景)"></a>1.2 Usage Scenarios(使用场景)</h4><p>A typical batch program generally :</p>
+<ul>
+<li>Reads a large number of records from a database ,file or queue </li>
+<li>Processes the data in some fasion (潮流)</li>
+<li>Write  back data in a modified form </li>
+</ul>
+<p>Spring Batch automates(自动化的） this basic iteration（重复） ,providing the capability（性能） to process similar（相似的） transactions as a set ,typically in an offline（脱机的） environment without any user interaction(互动). Batch jobs are part of most IT project,and Spring Batch is the only open source framework that provides a robust （强健的）,enterprise-scale solution.</p>
+<hr>
+<p>Bussiness Scenarios (业务场景</p>
+<ul>
+<li>Commit batch process periodically(定期的)</li>
+<li>Concurrent(并发的) batch processing :parallel（平行） processing of a job </li>
+<li>Staged（分期的） ,enterprise message-driven processing </li>
+<li>Massively(大量地) parallel batch processing </li>
+<li>Manual(手工的) or scheduled restart after failure </li>
+<li>Sequential(连续的) processing of dependent（依赖的） steps (with extensions toworkflow-driven batches )</li>
+<li>Partial(局部的) processing:skip records (for example on rollback)</li>
+<li>Whole-batch transaction,for  cases with a small batch size or exsting stored procedures/scripts</li>
+</ul>
+<p>Technical Objectives (技术目标)</p>
+<ul>
+<li>Batch developers use the Spring programming model: Concentrate(集中) on business logic(逻辑) and let the framework take care of infrastructure(基本建设).</li>
+<li>Clear separation(分开) of concerns(关注) between the infrastructure ,the batch execution(执行) environment ,and the batch application.</li>
+<li>Provide(规定) common ,core execution services as interfaces that all projects can implement </li>
+<li>Provide simple and default implementations(实现) of the core execution interfaces that can be used  ‘out of the box’</li>
+<li>Easy to configure ,customize(习惯),and extend services ,by leveraging(杠杆作用) the spring framework in all layers.</li>
+<li>Provide a simple deployment model ,with the architecture(架构) JARs completely separate(分开) from the application ,built(建造) using Maven.</li>
+</ul>
+<hr>
+<h4 id="1-3-Spring-Batch-Architecture（spring-batch-架构）"><a href="#1-3-Spring-Batch-Architecture（spring-batch-架构）" class="headerlink" title="1.3 Spring Batch Architecture（spring  batch 架构）"></a>1.3 Spring Batch Architecture（spring  batch 架构）</h4><p><img src="/xiaojiang/2019/01/15/spring-batch/../_posts\spring-batch\spring-batch-layers.png" alt="spring-batch-layers"></p>
+<p>This layered architecture highlights(强调)  three major（主要的） high-level(高级的) components: Application ,Core and Infrastructure .The application contains all batch jobs and custom code written by developers using Spring Batch . The Batch Core contains the core runtime classes necessary to launch(发射，下水) and control a batch job .It includes implementations for <code>JobLauncher</code>,<code>Job</code> and <code>Step</code>. Both Application and Core are built on top of common infrastructure .This infrastructure contains common readers and writers and services (such as the <code>RetryTemplate</code>), which are used both by application deveplopers (readers and writers ,such as <code>ItemReader</code> and  <code>ItemWriter</code> ) and the core framework ifself (retry ,which its own library).</p>
+<hr>
+<h4 id="1-4General-Batch-Principles-and-Guidelines-一般批量原则和方针"><a href="#1-4General-Batch-Principles-and-Guidelines-一般批量原则和方针" class="headerlink" title="1.4General Batch Principles and Guidelines(一般批量原则和方针)"></a>1.4General Batch Principles and Guidelines(一般批量原则和方针)</h4><p>The following key principles,guidelines ,and general considerations(考虑) should be considered when building a batch solution（解决方案）.</p>
+<ul>
+<li><p>Remember that a batch architecture typically affects on-line architecture and vice(缺点) versa (反的) (反之亦然).Design with both architectures and environments in mind using common building blocks when possible.</p>
+</li>
+<li><p>Simplify as much as  possible and avoid(避免) building complex(复杂的) logical structures(业务方式) in single batch applications.</p>
+</li>
+<li><p>Keep the processing and storage of data physically close together (in other workds, keep your data where your processing occurs(重现，出现发生)).</p>
+</li>
+<li><p>Minimize system resource use,ecpecially I/O.Perform(执行) as many operations as possible in internal (内部的，本质的)memory .</p>
+</li>
+<li><p>Review application I/O (analyze(分解) SQL statements) to ensure(保证) that unnecessary physical I/O  is avoided(避免) .In particular(特别的) ,the following four common flaws(缺陷) need to be looke for:</p>
+<blockquote>
+<ul>
+<li>Reading  data for every transaction when the data could be read once and cached or kept in the working storage .</li>
+<li>Rereading data for a transaction where the data was read earlier in the same transation.</li>
+<li>Causing unnecessary table or index scans.</li>
+<li>Not specifying(说明,指定) key values in the WHERE clause of an SQL statement.</li>
+</ul>
+</blockquote>
+</li>
+<li><p>Do not do things twice in a batch run .For instance ,if you need data summarization(摘要) for reporting purposes(目的),you should (if possible) increment stored totals when data is being initially(最初，首先) processed,so your reporting application does not have to reprocess(再加工) the same data .</p>
+</li>
+<li><p>Allocate(分配)  enough memory at the beginning of a batch application to avoid(避免)  time-consuming（耗时） reallocation(再分配) during the process.</p>
+</li>
+<li><p>Always assume(假定) the worst(最差的) with regard（注意） to data integrity(完整) ,Insert adequate（充足的） checks and record validation to maintain（维持） data integrity.</p>
+</li>
+<li><p>Implement checksums（校验码） for internal(本质) validation where possible .For example ,flat(平的，单调的) files should have a trailer record （尾部记录） telling the total of records in the file and an aggregate（集合） of the key fileds.</p>
+</li>
+<li><p>Plan and execute stress(压力) tests as early as possible in a production-like environment with realistic（现实的，逼真的） data volumes.</p>
+</li>
+<li><p>In large batch systems ,backups can ben chanllenging (挑战的),especially(特别是) if the system is running concurrent with on-line a 24-7 basis .Database backups are typically well taken care of in the on-line design ,but file backups should be considered to be just as important.If the system depends on flat files,file backup procedures should not only be in place and documented but be regularly（定期的，有规律的） tested as well.</p>
+</li>
+</ul>
+<h4 id="1-5-Batch-Processing-Strategies-策略"><a href="#1-5-Batch-Processing-Strategies-策略" class="headerlink" title="1.5 Batch Processing Strategies(策略)"></a>1.5 Batch Processing Strategies(策略)</h4><p> To help design and implement batch systems ,basic batch application building blocks and patterns should be provided to the designers and programmers in the form of sample structure(建造，组织) chats and code shells .When starting to design a batch job,the business logic should be decomposed(已分解的) into a series(系列) of steps that can be implemented using the folowing standard building blocks:</p>
+<ul>
+<li>Conversion (转换)Applications:For each type of file supplied(提供) by or generated to  an external system ,a conversion application must be created to convert the transaction records supplied into a standard format required for processing.This type of batch application can partly or entirely（完全地） consist(在于，由..组成) of translation utility (实用)modules (see Basic Batch Services)</li>
+<li>Validation Applications: Validation applications ensure that all input/output records are correct(改正，正确的) and consistent(一致的) .Validation is typically based on file headers and trailers,checksums(总和检查) and validation algorithms(算法) ,and record level cross-checks.</li>
+<li>Extract Applications:An application that reads a set of records from a database or input file ,selects records based on predefined rules,and writes the records to an output file.</li>
+<li>Extract/Update Application :An application that reads records from a database or an input file and makes changes to a database or an output file driven by the data found in each input record.</li>
+<li>Processing and Updating Applications:An application that performs(执行) processing on input transactions from an extract or a valication application.The processing usually involves(包含) reading a database to obtain(获得) data required for processing ,potentially(可能的) updating the database and creating records for output processing.</li>
+<li>Output/Format Applications:Applications that read an input file,restructure(重构) data from this record according to a standard format,and produce(生产，引起) an output file for printing or transmission to another program or system.</li>
+</ul>
+<p>Additionally（另外） ,a basic application shell should be provided for business logic that connot be built using the previously(先前) mentioned(提及) building blocks.</p>
+<hr>
+<p>In addition to the main building blocks ,each application many use one or more of standard utility steps ,such as:</p>
+<ul>
+<li>Sort: A program that reads an input file and produces an output file where records have been re-sequenced according to a sort key field in the records.Sorts are usually performed by standard system utilities.</li>
+<li>Split: A program that reads a single input file and writes each record  to one of several (几个的，各自的)output files based on a field value.Splits can be tailored(定做的) or performed .</li>
+<li>Merge: A program that reads records from multiple input files and produces on output file with combined(联合) data from the input files.Merges can be tailored or performed by parameter-driven standard system utilties.</li>
+</ul>
+<hr>
+<p>Batch application can additionally be categorized by heir input source:</p>
+<ul>
+<li>Database-driven applications are driven by rows or values retrieved(恢复) from the database.</li>
+<li>File-driven applications are driven by records or values retrieved from a file.</li>
+<li>Message-driven applications are driven by messages retrieved from a message queue.</li>
+</ul>
+<p>The foundation of any batch system is the processing strategy .Factors affecting the selection of the strategy include:estimated batch system volume ,concurrency with on-line systems or with other batch sytems,available batch windows .(Note that ,with more enterprises wanting to be up and running 24*7,clear batch windows are disappering).</p>
+<p>Typical processing options for batch are (in increasing order of implementation complexity):</p>
+<ul>
+<li>Normal processing during a batch window in off-lne mode</li>
+<li>Concurrent batch or on-line processing </li>
+<li>Parallel processing of many different batch runs or jobs at the sam time .</li>
+<li>Parttioning (processing of many instances of the same job at the same time).</li>
+<li>a combination of the preceding options.</li>
+</ul>
+<p>Some or all of these options may be supported by a commercial scheduler.</p>
+<p>The following section discusses these processing options in more detail.It is important to notice that, as a rule of thumb ,the commit and locking strategy adopted by batch processed depends on the type processing performed and that the on-line locking strategy should also use the same principles.Therefore ,the batch architecture cannot be simply an afterthought when designing an overrall architecture.</p>
+<p>The locking strategy can be use only normal database licks or to implement an additional custom locking service in the archtecture.The locking service would track database locking (for example ,by storing the necessary information in a dedicated db-table) and give or deny permissions to the application programs requesting a db operation.Retry logic could also be implemented by this architecture to avoid aborting a batch job in case of lock situation.</p>
+<ol>
+<li><p>Normal processing in a batch window For simple batch processes running in a separate batch window where the data being updated is not required by on-line users or other batch processes ,concurrency is not an issue and a single commit can be done at the edn of the batch run.</p>
+<p>In most cases ,a more robust approach is more appropriate .Keep in mind that batch systems hav a tendecy to grow as time goes by ,both in terms of complexity and the data volumes they handle.if no locking strategy is in place and the system still relies on wihtd the simples batch systems,consider the need for commit logic for restart reovery options as well as the information concerning the more comple cases described later in this section.</p>
+<p>2.Concurrent batch or on-line processing Batch applications processing data theat can be simultaneously updated by on-line users should not lock any data(either in the database or in files) which cold be required by on-lne users for more than a few seconds .Also ,updates should be committed to the database at the end of erver few transactions .This  minimizes the of data that is unavaiable to other processes and the elapsed time the data is unavaliable.</p>
+</li>
+</ol>
+<p>Another option to minimize physical locking is to have logical row-level loakcing implemented with either an Optimistic  Locking Pattern or a Pessimistic Locking Pattern.</p>
+<ul>
+<li>Optimistic locking assumes a low likelihood of record contention.It typically means inserting a timestamp column in each database tablee used concurrently by both batch and on-line processing .When an application fetches a row for processing ,it also fetches the timestamp.As the application then tries to update the processed row ,the update uses the original timestamp in the WHERE clause .If the timestamp matches,the data and the timestamp are updated .If the timestamp does not match ,this indicates that another application has updated them same row between the fetch and the update attempt ,Thereform,the update connot be performed.</li>
+<li>Pessimistic locking is any locking strategy theat assumes there is a hgh likelihood of record contention and therefore either a physical or logical lock needs a dedicated lock-column in the database table .When an application retrieves the row for update,it set a flag in the lock column.With the flag in place ,other applications attempting to retrieved by toher applications.Please note that the integrity of data must be maintained also between the intial fetch and the inital fetch and the setting of the flag ,for example by using db locks (such as select for update).Note also that this method suffers from the same downside as physical locking except that it is somewhat easier to manage building a time-out mechanism that gets the lock released if the user goes to lunch while the record is locked.</li>
+</ul>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="https://huangpu311.github.io/xiaojiang/2019/01/15/spring-batch/" data-id="ck8h6wq79000gecvabyfb724s" class="article-share-link">Share</a>
+      
+      
+    </footer>
+  </div>
+  
+    
+<nav id="article-nav">
+  
+    <a href="/xiaojiang/2019/01/18/java面试题/" id="article-nav-newer" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Newer</strong>
+      <div class="article-nav-title">
+        
+          java面试题
+        
+      </div>
+    </a>
+  
+  
+    <a href="/xiaojiang/2019/01/13/用户粘合度/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Older</strong>
+      <div class="article-nav-title">用户粘合度</div>
+    </a>
+  
+</nav>
+
+  
+</article>
+
+</section>
+        
+          <aside id="sidebar">
+  
+    
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Tags</h3>
+    <div class="widget">
+      <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/xiaojiang/tags/python/">python</a></li><li class="tag-list-item"><a class="tag-list-link" href="/xiaojiang/tags/spring源码/">spring源码</a></li><li class="tag-list-item"><a class="tag-list-link" href="/xiaojiang/tags/分销/">分销</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Tag Cloud</h3>
+    <div class="widget tagcloud">
+      <a href="/xiaojiang/tags/python/" style="font-size: 10px;">python</a> <a href="/xiaojiang/tags/spring源码/" style="font-size: 10px;">spring源码</a> <a href="/xiaojiang/tags/分销/" style="font-size: 10px;">分销</a>
+    </div>
+  </div>
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Archives</h3>
+    <div class="widget">
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/xiaojiang/archives/2019/09/">September 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/xiaojiang/archives/2019/02/">February 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/xiaojiang/archives/2019/01/">January 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/xiaojiang/archives/2018/07/">July 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/xiaojiang/archives/2018/05/">May 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/xiaojiang/archives/2018/04/">April 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/xiaojiang/archives/2018/03/">March 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/xiaojiang/archives/2018/02/">February 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/xiaojiang/archives/2018/01/">January 2018</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Recent Posts</h3>
+    <div class="widget">
+      <ul>
+        
+          <li>
+            <a href="/xiaojiang/2019/09/05/spring-boot/">(no title)</a>
+          </li>
+        
+          <li>
+            <a href="/xiaojiang/2019/02/27/正则表达式/">正则表达式</a>
+          </li>
+        
+          <li>
+            <a href="/xiaojiang/2019/02/22/并发编程/">并发编程</a>
+          </li>
+        
+          <li>
+            <a href="/xiaojiang/2019/01/24/mybatis/">mybatis</a>
+          </li>
+        
+          <li>
+            <a href="/xiaojiang/2019/01/18/java面试题/">java面试题</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+
+  
+</aside>
+        
+      </div>
+      <footer id="footer">
+  
+  <div class="outer">
+    <div id="footer-info" class="inner">
+      &copy; 2020 小江<br>
+      Powered by <a href="http://hexo.io/" target="_blank">Hexo</a>
+    </div>
+  </div>
+</footer>
+    </div>
+    <nav id="mobile-nav">
+  
+    <a href="/xiaojiang/" class="mobile-nav-link">Home</a>
+  
+    <a href="/xiaojiang/archives" class="mobile-nav-link">Archives</a>
+  
+</nav>
+    
+
+<script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
+
+
+  <link rel="stylesheet" href="/xiaojiang/fancybox/jquery.fancybox.css">
+  <script src="/xiaojiang/fancybox/jquery.fancybox.pack.js"></script>
+
+
+<script src="/xiaojiang/js/script.js"></script>
+
+
+
+  </div>
+</body>
+</html>
